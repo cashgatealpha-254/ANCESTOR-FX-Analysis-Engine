@@ -1,0 +1,177 @@
+from data.fetcher import connect_mt5, disconnect_mt5
+from data.get_candles import get_candles
+
+from indicators.ema import calculate_ema
+from indicators.rsi import calculate_rsi, analyze_rsi
+from indicators.atr import calculate_atr, analyze_atr
+
+from analysis.trend import analyze_trend
+from analysis.market_state import analyze_market_state
+from analysis.market_bias import analyze_market_bias
+from analysis.market_structure import analyze_market_structure
+from analysis.support_resistance import analyze_support_resistance
+
+from analysis.bos import analyze_bos
+from analysis.choch import analyze_choch
+from analysis.liquidity import analyze_liquidity
+from analysis.supply_demand import analyze_supply_demand
+
+from analysis.swings import detect_swings
+from analysis.structure_memory import build_structure_memory
+from analysis.protected_levels import detect_protected_levels
+from analysis.structure_strength import analyze_structure_strength
+
+from analysis.confidence import calculate_confidence
+from analysis.confluence import analyze_confluence
+from analysis.reasoning import ReasoningEngine
+
+from strategy.decision import DecisionEngine
+from strategy.execution import ExecutionEngine
+from strategy.grade import GradeEngine
+from strategy.setup import SetupEngine
+from strategy.execution import ExecutionEngine
+
+
+decision_engine = DecisionEngine()
+grade_engine = GradeEngine()
+setup_engine = SetupEngine()
+execution_engine = ExecutionEngine()
+reasoning_engine = ReasoningEngine()
+
+
+def run_analysis(symbol):
+
+    connect_mt5()
+
+    try:
+
+        df = get_candles(symbol.upper(), n=100)
+
+        df = calculate_ema(df, 20)
+        df = calculate_ema(df, 50)
+
+        df = calculate_rsi(df)
+        df = calculate_atr(df)
+
+        trend = analyze_trend(df)
+        rsi = analyze_rsi(df)
+        atr = analyze_atr(df)
+
+        market_state = analyze_market_state(
+            trend,
+            rsi,
+            atr
+        )
+
+        market_bias = analyze_market_bias(
+            trend,
+            rsi,
+            atr,
+            market_state
+        )
+
+        market_structure = analyze_market_structure(df)
+
+        levels = analyze_support_resistance(df)
+
+        bos = analyze_bos(df)
+        choch = analyze_choch(df)
+
+        liquidity = analyze_liquidity(df)
+        supply_demand = analyze_supply_demand(df)
+
+        swings = detect_swings(df)
+        structure_memory = build_structure_memory(swings)
+        protected_levels = detect_protected_levels(structure_memory)
+        structure_strength = analyze_structure_strength(structure_memory)
+
+        confidence = calculate_confidence(
+            trend,
+            rsi,
+            atr,
+            market_state,
+            market_bias,
+            market_structure,
+            bos,
+            choch,
+            liquidity,
+            supply_demand,
+            structure_memory,
+            protected_levels,
+            structure_strength
+        )
+
+        results = {
+            "trend": trend,
+            "bos": bos,
+            "choch": choch,
+            "liquidity": liquidity,
+            "supply_demand": supply_demand,
+            "market_structure": market_structure
+        }
+
+        confluence = analyze_confluence(results)
+
+        grade = grade_engine.grade(confidence)
+
+        decision = decision_engine.evaluate({
+            "trend": trend["Trend"],
+            "confidence": confidence,
+            "structure_memory": structure_memory,
+            "protected_levels": protected_levels,
+            "structure_strength": structure_strength["Structure Strength"],
+            "market_bias": market_bias["Market Bias"],
+            "market_state": market_state["Market State"],
+            "market_structure": market_structure["Structure"]
+        })
+
+        setup = setup_engine.build({
+            "trend": trend["Trend"],
+            "Decision": decision["decision"],
+            "support": levels["Support"],
+            "resistance": levels["Resistance"],
+            "supply_demand": supply_demand["Current Zone"],
+            "atr": atr["ATR"],
+            "rsi": rsi["RSI"],
+        })
+
+        execution = execution_engine.execute(decision, setup, df["close"].iloc[-1])
+
+        reasoning = reasoning_engine.explain({
+            "trend": trend["Trend"],
+            "market_bias": market_bias["Market Bias"],
+            "market_structure": market_structure["Structure"],
+            "bos": bos,
+            "choch": choch["CHoCH"],
+            "liquidity": liquidity,
+            "supply_demand": supply_demand["Current Zone"],
+        })
+
+        return {
+            "symbol": symbol.upper(),
+            "trend": trend["Trend"],
+            "rsi": rsi,
+            "atr": atr,
+            "market_state": market_state["Market State"],
+            "market_bias": market_bias["Market Bias"],
+            "market_structure": market_structure["Structure"],
+            "support_resistance": levels,
+            "bos": bos,
+            "choch": choch,
+            "liquidity": liquidity,
+            "supply_demand": supply_demand,
+            "swings": swings,
+            "structure_memory": structure_memory,
+            "protected_levels": protected_levels,
+            "structure_strength": structure_strength["Structure Strength"],
+            "confidence": confidence,
+            "confluence": confluence,
+            "grade": grade,
+            "decision": decision,
+            "setup": setup,
+            "execution": execution,
+            "reasoning": reasoning
+        }
+
+    finally:
+        disconnect_mt5()
