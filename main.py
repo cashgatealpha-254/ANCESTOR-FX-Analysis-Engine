@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from engine.analyze import run_analysis
+from engine.logger import save_analysis
 
 app = FastAPI(title="Market Analysis Engine")
 
@@ -11,7 +12,9 @@ def home():
         "engine": "Market Analysis Engine",
         "pairs": [
             "GBPUSD",
-            "XAUUSD"
+            "XAUUSD",
+            "EURUSD",
+            "USDJPY",
         ]
     }
 
@@ -25,4 +28,6 @@ def health():
 
 @app.get("/analysis/{symbol}")
 def analyze(symbol: str):
-    return run_analysis(symbol)
+    result = run_analysis(symbol)
+    save_analysis(symbol, result)
+    return result

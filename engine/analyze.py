@@ -1,6 +1,10 @@
+from analysis import supply_demand
+from analysis import liquidity
+from analysis import choch
 from data.fetcher import connect_mt5, disconnect_mt5
 from data.get_candles import get_candles
 
+from indicators import atr
 from indicators.ema import calculate_ema
 from indicators.rsi import calculate_rsi, analyze_rsi
 from indicators.atr import calculate_atr, analyze_atr
@@ -31,12 +35,16 @@ from strategy.grade import GradeEngine
 from strategy.setup import SetupEngine
 from strategy.execution import ExecutionEngine
 
+from engine.confidence import calculate_confidence
+from engine.logger import save_analysis
+
 
 decision_engine = DecisionEngine()
 grade_engine = GradeEngine()
 setup_engine = SetupEngine()
 execution_engine = ExecutionEngine()
 reasoning_engine = ReasoningEngine()
+save_analysis = save_analysis
 
 
 def run_analysis(symbol):
@@ -85,21 +93,15 @@ def run_analysis(symbol):
         protected_levels = detect_protected_levels(structure_memory)
         structure_strength = analyze_structure_strength(structure_memory)
 
-        confidence = calculate_confidence(
-            trend,
-            rsi,
-            atr,
-            market_state,
-            market_bias,
-            market_structure,
-            bos,
-            choch,
-            liquidity,
-            supply_demand,
-            structure_memory,
-            protected_levels,
-            structure_strength
-        )
+        confidence = calculate_confidence({
+            "trend": trend["Trend"],
+            "bos": bos,
+            "choch": choch["CHoCH"],
+            "liquidity": liquidity,
+            "supply_demand": supply_demand["Current Zone"],
+            "atr": atr["ATR"]
+        })
+
 
         results = {
             "trend": trend,
