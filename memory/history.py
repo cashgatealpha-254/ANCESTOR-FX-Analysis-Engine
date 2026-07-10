@@ -1,11 +1,11 @@
 import json
 import os
+from datetime import datetime
 
 MEMORY_FILE = "memory/history.json"
 
 
 def load_history():
-
     if not os.path.exists(MEMORY_FILE):
         return []
 
@@ -14,24 +14,38 @@ def load_history():
 
 
 def save_history(history):
-
     with open(MEMORY_FILE, "w") as f:
         json.dump(history, f, indent=4)
 
+
+def append_analysis(data):
+    history = load_history()
+
+    history.append({
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        **data
+    })
+
+    save_history(history)
+
+
+def get_symbol_history(symbol):
+    history = load_history()
+
+    return [
+        trade
+        for trade in history
+        if trade["symbol"] == symbol.upper()
+    ]
+
 def get_recent_history(n=10):
     history = load_history()
-    return history[-n:] if len(history) >= n else history        
+    return history[-n:]
 
-def get_symbol_history(symbol, n=10):
-    history = load_history()
-    symbol_history = [entry for entry in history if entry["symbol"] == symbol]
-    return symbol_history[-n:] if len(symbol_history) >= n else symbol_history
-
-def average_confidence(symbol, n=10):
-    symbol_history = get_symbol_history(symbol, n)
-    if not symbol_history:
+def average_confidence(symbol):
+    history = get_symbol_history(symbol)
+    if not history:
         return None
-    total_confidence = sum(entry["confidence"] for entry in symbol_history)
-    return total_confidence / len(symbol_history)
 
-        
+    total_confidence = sum(item["confidence"] for item in history)
+    return round(total_confidence / len(history), 2)

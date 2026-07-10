@@ -25,7 +25,6 @@ from analysis.structure_memory import build_structure_memory
 from analysis.protected_levels import detect_protected_levels
 from analysis.structure_strength import analyze_structure_strength
 
-from analysis.confidence import calculate_confidence
 from analysis.confluence import analyze_confluence
 from analysis.reasoning import ReasoningEngine
 
@@ -38,6 +37,8 @@ from strategy.execution import ExecutionEngine
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
 
+from alerts.notify import send_alert
+
 
 decision_engine = DecisionEngine()
 grade_engine = GradeEngine()
@@ -45,11 +46,18 @@ setup_engine = SetupEngine()
 execution_engine = ExecutionEngine()
 reasoning_engine = ReasoningEngine()
 save_analysis = save_analysis
+send_alert = send_alert
 
 
 def run_analysis(symbol):
 
+    print("="*50)
+    print("Starting Analysis")
+    print("="*50)
+
     connect_mt5()
+
+    send_alert("🚨 Starting Analysis 🚨")
 
     try:
 
@@ -102,6 +110,8 @@ def run_analysis(symbol):
             "atr": atr["ATR"]
         })
 
+        send_alert("🚨 Confidence Calculation Complete 🚨")
+
 
         results = {
             "trend": trend,
@@ -113,8 +123,27 @@ def run_analysis(symbol):
         }
 
         confluence = analyze_confluence(results)
-
+        
+        print("Reached confidence calculation")
+        send_alert("🚨 Confidence Calculation Complete 🚨")
         grade = grade_engine.grade(confidence)
+        print(f"Grade: {grade}")
+        print(f"Confidence: {confidence}")
+
+        if grade == "NO TRADE":
+             send_alert("⚪ No trade setup detected")
+
+        if grade == "C":
+             send_alert("🔴 Grade C setup detected")
+
+        if grade == "B":
+             send_alert("🟡 Grade B setup detected")
+
+        elif grade == "A":
+             send_alert("🟢 Grade A setup detected")
+
+        elif grade == "A+":
+             send_alert("🔥 Grade A+ setup detected")
 
         decision = decision_engine.evaluate({
             "trend": trend["Trend"],
@@ -149,6 +178,7 @@ def run_analysis(symbol):
             "supply_demand": supply_demand["Current Zone"],
         })
 
+        send_alert("🚨 Analysis Complete 🚨")
         return {
             "symbol": symbol.upper(),
             "trend": trend["Trend"],
