@@ -43,6 +43,8 @@ from engine.logger import save_analysis
 
 from alerts.notify import send_alert
 
+from mt5.connection import connect_mt5, disconnect_mt5
+
 
 decision_engine = DecisionEngine()
 grade_engine = GradeEngine()
@@ -55,6 +57,9 @@ send_alert = send_alert
 
 
 def run_analysis(symbol):
+
+    if not connect_mt5():
+         return {"error": "Failed to connect to MT5"}
 
     print("="*50)
     print("Starting Analysis")
@@ -102,6 +107,7 @@ def run_analysis(symbol):
 
         liquidity = analyze_liquidity(df)
         supply_demand = analyze_supply_demand(df)
+        print(supply_demand)
 
         market_context = analyze_market_context(
             multi_timeframe,

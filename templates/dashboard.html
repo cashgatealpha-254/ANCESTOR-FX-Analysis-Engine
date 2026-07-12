@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancestor FX Dashboard</title>
+
+    <style>
+        body{
+            background:#0f172a;
+            color:white;
+            font-family:Arial, Helvetica, sans-serif;
+            margin:40px;
+        }
+
+        h1{
+            color:#38bdf8;
+        }
+
+        .card{
+            background:#1e293b;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:12px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th,td{
+            padding:10px;
+            border-bottom:1px solid #334155;
+            text-align:left;
+        }
+
+        th{
+            color:#38bdf8;
+        }
+
+        .green{
+            color:#22c55e;
+        }
+
+        .red{
+            color:#ef4444;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>📊 Ancestor FX Dashboard</h1>
+
+<div class="card">
+
+{% if connected %}
+
+<h2 class="green">MT5 Connected</h2>
+
+<p><strong>Name:</strong> {{ account.name }}</p>
+
+<p><strong>Server:</strong> {{ account.server }}</p>
+
+<p><strong>Login:</strong> {{ account.login }}</p>
+
+<p><strong>Balance:</strong> {{ account.balance }} {{ account.currency }}</p>
+
+<p><strong>Equity:</strong> {{ account.equity }}</p>
+
+<p><strong>Profit:</strong> {{ account.profit }}</p>
+
+<p><strong>Margin:</strong> {{ account.margin }}</p>
+
+<p><strong>Free Margin:</strong> {{ account.free_margin }}</p>
+
+<p><strong>Leverage:</strong> 1:{{ account.leverage }}</p>
+
+{% else %}
+
+<h2 class="red">MT5 Not Connected</h2>
+
+{% endif %}
+
+</div>
+
+<div class="card">
+
+<h2>Open Positions</h2>
+
+{% if positions %}
+
+<table>
+
+<tr>
+<th>Symbol</th>
+<th>Type</th>
+<th>Lot</th>
+<th>Entry</th>
+<th>Current</th>
+<th>Profit</th>
+</tr>
+
+{% for p in positions %}
+
+<tr>
+
+<td>{{ p.symbol }}</td>
+
+<td>{{ p.type }}</td>
+
+<td>{{ p.volume }}</td>
+
+<td>{{ p.price_open }}</td>
+
+<td>{{ p.price_current }}</td>
+
+<td>{{ p.profit }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No open positions.</p>
+
+{% endif %}
+
+</div>
+
+<div class="card">
+
+<h2>Market Signals</h2>
+
+{% if signals %}
+
+<table>
+
+<tr>
+
+<th>Symbol</th>
+<th>Decision</th>
+<th>Confidence</th>
+<th>Supply Zone</th>
+<th>Demand Zone</th>
+
+</tr>
+
+{% for signal in signals %}
+
+<tr>
+
+<td>{{ signal.symbol }}</td>
+
+<td>{{ signal.decision }}</td>
+
+<td>{{ signal.confidence }}%</td>
+
+<td>
+{{ signal.supply_low }}
+-
+{{ signal.supply_high }}
+</td>
+
+<td>
+{{ signal.demand_low }}
+-
+{{ signal.demand_high }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No signals available.</p>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

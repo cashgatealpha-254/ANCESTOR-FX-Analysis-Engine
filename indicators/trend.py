@@ -1,6 +1,6 @@
 import pandas as pd
 
-def calculate_ema(df: pd.DataFrame):
+def calculate_ema(df: pd.DataFrame, period: int):
     """
     Calculate EMA20 and EMA50.
     """

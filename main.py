@@ -1,10 +1,50 @@
 from fastapi import FastAPI
+from fastapi import Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 from engine.analyze import run_analysis
 from engine.logger import save_analysis
+from engine.account import get_account_info
+from engine.positions import get_positions
+from engine.dashboard import dashboard_analysis
+from mt5.connection import connect_mt5, disconnect_mt5
 from memory.history import load_history, get_symbol_history, append_analysis, get_recent_history, average_confidence
 
 app = FastAPI(title="Market Analysis Engine")
+templates = Jinja2Templates(directory="templates")
 
+
+@app.get("/")
+def home():
+    return {"message": "Market Analysis Engine Running"}
+
+@app.get("/dashboard", response_class=HTMLResponse)
+def dashboard(request: Request):
+
+    if not connect_mt5():
+        return templates.TemplateResponse(
+            request,
+            "dashboard.html",
+            {
+             "connected": False
+            }
+        )
+
+    account = get_account_info()
+    positions = get_positions()
+    signals = dashboard_analysis()
+    print(signals)
+
+    return templates.TemplateResponse(
+        "dashboard.html",
+        {
+         "request": request,
+         "connected": True,
+         "account": account,
+         "positions": positions,
+         "signals": signals
+        }
+    )
 
 @app.get("/")
 def home():

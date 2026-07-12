@@ -12,7 +12,7 @@ class DecisionEngine:
         structure_memory = analysis["structure_memory"]
         protected_levels = analysis["protected_levels"]
         structure_strength = analysis["structure_strength"]
-
+        market_structure = analysis["market_structure"]
         if (
             trend == "Bullish"
             and market_bias == "BUY"
