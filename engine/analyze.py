@@ -26,13 +26,17 @@ from analysis.protected_levels import detect_protected_levels
 from analysis.structure_strength import analyze_structure_strength
 
 from analysis.confluence import analyze_confluence
+from analysis.execution import analyze_execution
 from analysis.reasoning import ReasoningEngine
+from analysis.multi_timeframe import analyze_multi_timeframe
+from analysis.market_context import analyze_market_context
 
 from strategy.decision import DecisionEngine
 from strategy.execution import ExecutionEngine
 from strategy.grade import GradeEngine
 from strategy.setup import SetupEngine
 from strategy.execution import ExecutionEngine
+from strategy.risk import RiskEngine
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
@@ -44,6 +48,7 @@ decision_engine = DecisionEngine()
 grade_engine = GradeEngine()
 setup_engine = SetupEngine()
 execution_engine = ExecutionEngine()
+risk_engine = RiskEngine()
 reasoning_engine = ReasoningEngine()
 save_analysis = save_analysis
 send_alert = send_alert
@@ -88,6 +93,8 @@ def run_analysis(symbol):
 
         market_structure = analyze_market_structure(df)
 
+        multi_timeframe = analyze_multi_timeframe(symbol)
+ 
         levels = analyze_support_resistance(df)
 
         bos = analyze_bos(df)
@@ -95,6 +102,13 @@ def run_analysis(symbol):
 
         liquidity = analyze_liquidity(df)
         supply_demand = analyze_supply_demand(df)
+
+        market_context = analyze_market_context(
+            multi_timeframe,
+            market_bias["Market Bias"],
+            market_structure["Structure"],
+            supply_demand["Current Zone"]
+        )
 
         swings = detect_swings(df)
         structure_memory = build_structure_memory(swings)
@@ -168,6 +182,26 @@ def run_analysis(symbol):
 
         execution = execution_engine.execute(decision, setup, df["close"].iloc[-1])
 
+        current_price = df["close"].iloc[-1]
+
+        execution = analyze_execution(
+            symbol,
+            trend,
+            supply_demand,
+            protected_levels,
+            atr,
+            current_price
+        )
+
+        send_alert("🚨 Execution complete🚨")
+        print("Execution:", execution)
+
+        risk = risk_engine.calculate(
+            execution["entry"],
+            execution["sl"],
+            execution["tp"]
+        )
+
         reasoning = reasoning_engine.explain({
             "trend": trend["Trend"],
             "market_bias": market_bias["Market Bias"],
@@ -179,6 +213,7 @@ def run_analysis(symbol):
         })
 
         send_alert("🚨 Analysis Complete 🚨")
+
         return {
             "symbol": symbol.upper(),
             "trend": trend["Trend"],
@@ -202,7 +237,11 @@ def run_analysis(symbol):
             "decision": decision,
             "setup": setup,
             "execution": execution,
-            "reasoning": reasoning
+            "risk": risk,
+            "reasoning": reasoning,
+            "multi_timeframe": multi_timeframe,
+            "market_context": market_context,
+            "execution" : execution
         }
 
     finally:
