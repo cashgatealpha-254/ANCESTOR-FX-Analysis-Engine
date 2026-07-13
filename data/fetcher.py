@@ -28,6 +28,27 @@ def get_price(symbol: str):
         "spread": tick.ask - tick.bid,
         "time": tick.time
     } 
+
+import pandas as pd
+
+def get_candles(symbol, timeframe, bars):
+    rates = mt5.copy_rates_from_pos(
+        symbol,
+        timeframe,
+        0,
+        bars
+    )
+
+    if rates is None:
+        raise Exception(f"Failed to get candles for {symbol}")
+
+    df = pd.DataFrame(rates)
+
+    df["time"] = pd.to_datetime(df["time"], unit="s")
+
+    df.set_index("time", inplace=True)
+
+    return df
 def connect_mt5():
     if not mt5.initialize():
         raise Exception(f"MT5 initialization failed: {mt5.last_error()}")

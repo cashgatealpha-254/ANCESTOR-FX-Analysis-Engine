@@ -1,14 +1,22 @@
-def analyze_supply_demand(df):
+def analyze_supply_demand(df, swings):
 
+    swing_highs = swings["swing_highs"]
+    swing_lows = swings["swing_lows"]
+
+    if not swing_highs or not swing_lows:
+        return None
+    
     lookback = 20
-
     recent = df.tail(lookback)
+    
+    last_supply = swing_highs[-1]
+    last_demand = swing_lows[-1]
 
-    supply_high = recent["high"].max()
-    supply_low = recent["high"].nlargest(3).min()
+    supply_high = last_supply["price"]
+    supply_low = supply_high - 0.0010   # temporary zone width
 
-    demand_low = recent["low"].min()
-    demand_high = recent["low"].nsmallest(3).max()
+    demand_low = last_demand["price"]
+    demand_high = demand_low + 0.0010   # temporary zone width
 
     current_price = recent["close"].iloc[-1]
 

@@ -8,6 +8,7 @@ from engine.account import get_account_info
 from engine.positions import get_positions
 from engine.dashboard import dashboard_analysis
 from mt5.connection import connect_mt5, disconnect_mt5
+from charts.plot_chart import create_chart
 from memory.history import load_history, get_symbol_history, append_analysis, get_recent_history, average_confidence
 
 app = FastAPI(title="Market Analysis Engine")
@@ -31,18 +32,21 @@ def dashboard(request: Request):
         )
 
     account = get_account_info()
+    chart = create_chart("GBPUSD")
     positions = get_positions()
     signals = dashboard_analysis()
     print(signals)
 
     return templates.TemplateResponse(
-        "dashboard.html",
-        {
+        request= request,
+        name="dashboard.html",
+        context={
          "request": request,
          "connected": True,
          "account": account,
          "positions": positions,
-         "signals": signals
+         "signals": signals,
+         "chart": chart
         }
     )
 

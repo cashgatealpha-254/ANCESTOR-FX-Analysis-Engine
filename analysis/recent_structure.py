@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def analyze_market_structure(df: pd.DataFrame):
+def analyze_recent_structure(df: pd.DataFrame):
 
     high1 = df["high"].iloc[-1]
     high2 = df["high"].iloc[-2]

@@ -6,7 +6,7 @@ import pandas as pd
 
 
 from analysis.trend import analyze_trend
-from analysis.market_structure import analyze_market_structure
+from analysis.recent_structure import analyze_recent_structure
 
 from indicators.ema import calculate_ema
 
@@ -26,8 +26,8 @@ def analyze_multi_timeframe(symbol):
     m15 = calculate_ema(m15, 50)
 
     h4_trend = analyze_trend(h4)
-    h1_structure = analyze_market_structure(h1)
-    m15_structure = analyze_market_structure(m15)
+    h1_structure = analyze_recent_structure(h1)
+    m15_structure = analyze_recent_structure(m15)
 
     alignment = (
         h4_trend["Trend"] ==

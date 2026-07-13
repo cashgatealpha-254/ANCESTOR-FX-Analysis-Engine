@@ -12,7 +12,7 @@ from indicators.atr import calculate_atr, analyze_atr
 from analysis.trend import analyze_trend
 from analysis.market_state import analyze_market_state
 from analysis.market_bias import analyze_market_bias
-from analysis.market_structure import analyze_market_structure
+from analysis.recent_structure import analyze_recent_structure
 from analysis.support_resistance import analyze_support_resistance
 
 from analysis.bos import analyze_bos
@@ -96,19 +96,27 @@ def run_analysis(symbol):
             market_state
         )
 
-        market_structure = analyze_market_structure(df)
+        swings = detect_swings(df)
+
+        market_structure = analyze_recent_structure(df)
+
+        structure_memory = build_structure_memory(swings)
+
+        protected_levels = detect_protected_levels(structure_memory)
+
+        bos = analyze_bos(df, swings)
+
+        choch = analyze_choch(df, protected_levels)
+
+        supply_demand = analyze_supply_demand(df, swings)
+        print(supply_demand)
 
         multi_timeframe = analyze_multi_timeframe(symbol)
  
         levels = analyze_support_resistance(df)
 
-        bos = analyze_bos(df)
-        choch = analyze_choch(df)
-
-        liquidity = analyze_liquidity(df)
-        supply_demand = analyze_supply_demand(df)
-        print(supply_demand)
-
+        liquidity = analyze_liquidity(df, swings)
+        
         market_context = analyze_market_context(
             multi_timeframe,
             market_bias["Market Bias"],
@@ -116,9 +124,6 @@ def run_analysis(symbol):
             supply_demand["Current Zone"]
         )
 
-        swings = detect_swings(df)
-        structure_memory = build_structure_memory(swings)
-        protected_levels = detect_protected_levels(structure_memory)
         structure_strength = analyze_structure_strength(structure_memory)
 
         confidence = calculate_confidence({

@@ -16,6 +16,7 @@ def detect_swings(df):
             swing_highs.append(
                 {
                     "index": i,
+                    "time": df.index[i],
                     "price": high
                 }
             )
@@ -31,11 +32,12 @@ def detect_swings(df):
             swing_lows.append(
                 {
                     "index": i,
+                    "time": df.index[i],
                     "price": low
                 }
             )
 
     return {
-        "Swing Highs": swing_highs,
-        "Swing Lows": swing_lows
+        "swing_highs": swing_highs,
+        "swing_lows": swing_lows
     }

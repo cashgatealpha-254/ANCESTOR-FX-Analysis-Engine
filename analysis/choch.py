@@ -1,19 +1,21 @@
-def analyze_choch(df):
+def analyze_choch(df, protected_levels):
 
-    last_close = df["close"].iloc[-1]
-    previous_close = df["close"].iloc[-2]
+    current_price = df["close"].iloc[-1]
 
-    last_open = df["open"].iloc[-1]
-    previous_open = df["open"].iloc[-2]
+    protected_high = protected_levels["Protected High"]
+    protected_low = protected_levels["Protected Low"]
 
-    if previous_close < previous_open and last_close > last_open:
-        choch = "Bullish CHoCH"
+    choch = "No CHoCH"
 
-    elif previous_close > previous_open and last_close < last_open:
-        choch = "Bearish CHoCH"
+    if protected_high is not None:
 
-    else:
-        choch = "No CHoCH"
+        if current_price > protected_high["price"]:
+            choch = "Bullish CHoCH"
+
+    elif protected_low is not None:
+
+        if current_price < protected_low["price"]:
+            choch = "Bearish CHoCH"
 
     return {
         "CHoCH": choch

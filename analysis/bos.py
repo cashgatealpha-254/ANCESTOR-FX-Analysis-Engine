@@ -1,20 +1,27 @@
-def analyze_bos(df):
+def analyze_bos(df, swings):
 
-    recent_high = df["high"].iloc[-2]
-    previous_high = df["high"].iloc[-3]
+    swing_highs = swings["swing_highs"]
+    swing_lows = swings["swing_lows"]
 
-    recent_low = df["low"].iloc[-2]
-    previous_low = df["low"].iloc[-3]
+    if len(swing_highs) == 0 or len(swing_lows) == 0:
+        return {"BOS": "No BOS"}
 
-    if recent_high > previous_high:
+    current_price = df["close"].iloc[-1]
+
+    last_swing_high = swing_highs[-1]["price"]
+    last_swing_low = swing_lows[-1]["price"]
+
+    if current_price > last_swing_high:
         bos = "Bullish BOS"
 
-    elif recent_low < previous_low:
+    elif current_price < last_swing_low:
         bos = "Bearish BOS"
 
     else:
         bos = "No BOS"
 
     return {
-        "BOS": bos
+        "BOS": bos,
+        "Last Swing High": last_swing_high,
+        "Last Swing Low": last_swing_low
     }
