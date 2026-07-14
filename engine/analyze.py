@@ -128,11 +128,11 @@ def run_analysis(symbol):
 
         confidence = calculate_confidence({
             "trend": trend["Trend"],
-            "bos": bos,
+            "bos": bos["BOS"],
             "choch": choch["CHoCH"],
-            "liquidity": liquidity,
+            "liquidity": liquidity["Liquidity"],
             "supply_demand": supply_demand["Current Zone"],
-            "atr": atr["ATR"]
+            "atr": atr["Volatility"]
         })
 
         send_alert("🚨 Confidence Calculation Complete 🚨")
@@ -187,6 +187,7 @@ def run_analysis(symbol):
             "support": levels["Support"],
             "resistance": levels["Resistance"],
             "supply_demand": supply_demand["Current Zone"],
+            "protected_levels": protected_levels,
             "atr": atr["ATR"],
             "rsi": rsi["RSI"],
         })

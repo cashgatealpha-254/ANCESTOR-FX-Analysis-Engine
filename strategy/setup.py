@@ -7,26 +7,27 @@ class SetupEngine:
 
         RR = 5
 
-        trend = analysis["trend"]
         decision = analysis["Decision"]
         support = analysis["support"]
         resistance = analysis["resistance"]
-        supply_demand = analysis["supply_demand"]
-        atr = analysis["atr"]
+        protected_levels = analysis["protected_levels"]
 
         if decision == "BUY":
 
             entry = support
-            stop_loss = support * 0.998
-            
+            stop_loss = protected_levels["Protected Low"]["price"]
+
             risk = abs(entry - stop_loss)
+
             take_profit = entry + (risk * RR)
 
         elif decision == "SELL":
 
             entry = resistance
-            stop_loss = resistance * 1.002
-            risk = abs(entry - stop_loss)
+            stop_loss = protected_levels["Protected High"]["price"]
+
+            risk = abs(stop_loss - entry)
+
             take_profit = entry - (risk * RR)
 
         else:

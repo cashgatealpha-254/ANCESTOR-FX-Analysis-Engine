@@ -1,35 +1,53 @@
 def analyze_confluence(results):
 
-    score = 0
+    bullish = 0
+    bearish = 0
 
-    if results["trend"]["Trend"] in ["Bullish", "Bearish"]:
-        score += 1
+    # Trend
+    if results["trend"]["Trend"] == "Bullish":
+        bullish += 1
+    elif results["trend"]["Trend"] == "Bearish":
+        bearish += 1
 
-    if results["bos"]["BOS"] != "No BOS":
-        score += 1
+    # BOS
+    if results["bos"]["BOS"] == "Bullish BOS":
+        bullish += 1
+    elif results["bos"]["BOS"] == "Bearish BOS":
+        bearish += 1
 
-    if results["choch"]["CHoCH"] != "No CHoCH":
-        score += 1
+    # CHoCH
+    if results["choch"]["CHoCH"] == "Bullish CHoCH":
+        bullish += 1
+    elif results["choch"]["CHoCH"] == "Bearish CHoCH":
+        bearish += 1
 
-    if results["liquidity"]["Liquidity"] != "No Sweep":
-        score += 1
+    # Supply / Demand
+    if results["supply_demand"]["Current Zone"] == "Demand":
+        bullish += 1
+    elif results["supply_demand"]["Current Zone"] == "Supply":
+        bearish += 1
 
-    if results["supply_demand"]["Current Zone"] != "Neutral":
-        score += 1
+    # Liquidity
+    if results["liquidity"]["Liquidity"] == "Sell-side Liquidity Swept":
+        bullish += 1
+    elif results["liquidity"]["Liquidity"] == "Buy-side Liquidity Swept":
+        bearish += 1
 
-    if score >= 5:
-        confluence = "Excellent"
-
-    elif score >= 4:
-        confluence = "Strong"
-
-    elif score >= 3:
-        confluence = "Moderate"
-
+    # Decide dominant side
+    if bullish > bearish:
+        direction = "Bullish"
+        confirmations = bullish
+    elif bearish > bullish:
+        direction = "Bearish"
+        confirmations = bearish
     else:
-        confluence = "Weak"
+        direction = "Neutral"
+        confirmations = bullish
 
-    return {
-        "Confluence": confluence,
-        "Score": score
-    }
+    # Grade confluence
+    if confirmations >= 4:
+        confluence = "High"
+    elif confirmations >= 2:
+        confluence = "Medium"
+    else:
+        confluence = "Low"
