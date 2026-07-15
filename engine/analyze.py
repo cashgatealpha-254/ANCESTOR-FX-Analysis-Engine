@@ -31,12 +31,12 @@ from analysis.reasoning import ReasoningEngine
 from analysis.multi_timeframe import analyze_multi_timeframe
 from analysis.market_context import analyze_market_context
 from analysis.validation import validate_analysis
+from analysis.narrative import build_narrative
 
 from strategy.decision import DecisionEngine
 from strategy.execution import ExecutionEngine
 from strategy.grade import GradeEngine
 from strategy.setup import SetupEngine
-from strategy.execution import ExecutionEngine
 from strategy.risk import RiskEngine
 
 from engine.confidence import calculate_confidence
@@ -118,93 +118,106 @@ def run_analysis(symbol):
         supply_demand = analyze_supply_demand(df, swings)
         liquidity = analyze_liquidity(df, swings)
 
-        levels = analyze_support_resistance(df)
-
         structure_strength = analyze_structure_strength(structure_memory)
 
         market_structure = analyze_recent_structure(df)
 
-        supply_demand = analyze_supply_demand(df, swings)
-
       # Get the zone safely
-        current_zone = supply_demand.get("Current Zone")
-
-        if current_zone is None:
-         current_zone = supply_demand.get("current_zone")
-
-        elif current_zone is None:
-          current_zone = "UNKNOWN"
-
-       
-       
+        current_zone = (
+            supply_demand.get("Current Zone")
+            or
+            supply_demand.get("current_zone")
+            or "UNKNOWN"
+       )
+               
         multi_timeframe = analyze_multi_timeframe(symbol)
 
+        levels = analyze_support_resistance(df)
+        
         market_context = analyze_market_context(
          multi_timeframe,
          market_bias["Market Bias"],
          market_structure["Structure"],
          current_zone
        )
+        
+        # -------------------------
+        # BUILD RESULTS DICTIONARY
+        # -------------------------
+        send_alert("Building Dictionary:)")
+
+        results = {
+           "symbol": symbol,
+
+            "trend": trend,
+            "rsi": rsi,
+            "atr": atr,
+            "market_bias": market_bias,
+            "market_state": market_state,
+            "swings": swings,
+            "structure_memory": structure_memory,
+            "protected_levels": protected_levels,
+            "bos": bos,
+            "choch": choch,
+            "supply_demand": supply_demand,
+            "liquidity": liquidity,
+            "levels": levels,
+            "market_structure": market_structure,
+            "structure_strength": structure_strength,
+            "multi_timeframe": multi_timeframe,
+            "market_context": market_context
+       }
+        
+       
+        results["support"] = levels["Support"]
+        results["resistance"] = levels["Resistance"]
 
         # -------------------------
         # CONFIDENCE
         # -------------------------
         send_alert("📊 Calculating Confidence")
 
-        confidence = calculate_confidence({
-         "trend": trend["Trend"],
-         "bos": bos["BOS"],
-         "choch": choch["CHoCH"],
-         "liquidity": liquidity["Liquidity"],
-         "supply_demand": supply_demand["Current Zone"],
-         "atr": atr["Volatility"]
-        })
+        results["confidence"] = calculate_confidence(results)
 
-        results = {
-    "trend": trend,
-    "bos": bos,
-    "choch": choch,
-    "liquidity": liquidity,
-    "supply_demand": supply_demand,
-    "market_structure": market_structure,
-    "structure_memory": structure_memory,
-    "protected_levels": protected_levels
-}
+        # --------------------------
+        # CONFLUENCE
+        # --------------------------
+        send_alert("Getting Confluence")
 
-        
-        confluence = analyze_confluence(results)
+        results["confluence"] = analyze_confluence(results)
 
-        grade = grade_engine.grade(confidence)
+        # --------------------------
+        # GRADE
+        # --------------------------
 
-        send_alert(f"🎯 Grade: {grade}")
+        results["grade"] = grade_engine.grade(results["confidence"])
+
+        send_alert(f"🎯 Grade: {results['grade']}")
 
         # -------------------------
-        # STRATEGY
+        # DECISION
         # -------------------------
-        send_alert("⚙️ Building Strategy")
+        send_alert("⚙️ Building Decision")
 
-        decision = decision_engine.evaluate({
-    "trend": trend["Trend"],
-    "confidence": confidence,
-    "market_bias": market_bias["Market Bias"],
-    "market_state": market_state["Market State"],
-    "market_structure": market_structure["Structure"],
-    "structure_memory": structure_memory,
-    "protected_levels": protected_levels,
-    "structure_strength": structure_strength["Structure Strength"]
-})
+        results["decision"] = decision_engine.evaluate(results)
 
-        setup = setup_engine.build({
-    "decision": decision["decision"],
-    "support": levels["Support"],
-    "resistance": levels["Resistance"]
-})
+        # -------------------------
+        # SETUP
+        # -------------------------
+        send_alert("Finding Setup")
+
+        results["setup"] = setup_engine.build(results)
+
+        # --------------------------
+        # EXECUTION
+        # --------------------------
+        send_alert("Building Execution")
 
         execution = execution_engine.execute(
-            decision,
-            setup,
-            df["close"].iloc[-1]
-        )
+           results["decision"], results["setup"], df["close"].iloc[-1]
+       )
+        results["execution"] = execution
+
 
         # -------------------------
         # RISK
@@ -213,55 +226,38 @@ def run_analysis(symbol):
 
         risk = None
 
-        if execution["entry"] is not None:
-            risk = risk_engine.calculate(
+        if results["execution"]["entry"] is not None:
+            results["risk"] = risk_engine.calculate(
                 execution["entry"],
                 execution["stop_loss"],
                 execution["take_profit"]
             )
 
         # -------------------------
+        # NARRATIVE
+        # -------------------------    
+        send_alert("Generating Narrative")
+
+        narrative = build_narrative(results)
+        results["narrative"] = narrative
+
+        # -------------------------
         # REASONING
         # -------------------------
         send_alert("🧾 Generating Reasoning")
 
-        reasoning = reasoning_engine.explain({
-    "trend": trend["Trend"],
-    "market_bias": market_bias["Market Bias"],
-    "market_structure": market_structure["Structure"],
-    "bos": bos,
-    "choch": choch["CHoCH"],
-    "liquidity": liquidity,
-    "supply_demand": supply_demand["Current Zone"]
-})
+        reasoning = reasoning_engine.explain(results)
         send_alert("✅ Analysis Complete")
 
-        return {
-    "symbol": symbol.upper(),
-    "trend": trend,
-    "market_bias": market_bias,
-    "market state": market_state,
-    "market_structure": market_structure,
-    "structure_memory" : structure_memory,
-    "supply_demand": supply_demand,
-    "liquidity": liquidity,
-    "protected_levels": protected_levels,
-    "bos": bos,
-    "choch": choch,
-    "confidence": confidence,
-    "decision": decision,
-    "setup": setup,
-    "execution": execution,
-    "risk": risk,
-    "reasoning": reasoning,
-    "grade": grade,
-    "confluence": confluence
- }
-    
+        # --------------------------
+        # VALIDATION
+        # --------------------------
 
         validation = validate_analysis(results)
         results["validation"] = validation
 
+        return results
+
     finally:
      disconnect_mt5()
-send_alert("🔌 MT5 Disconnected")
+     send_alert("🔌 MT5 Disconnected")

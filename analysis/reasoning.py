@@ -2,21 +2,24 @@ class ReasoningEngine:
 
     def explain(self, analysis):
 
-        reasons = []
-
-        if analysis["trend"] == "Bullish":
-            reasons.append("Bullish EMA trend")
+        narrative = []
 
         if analysis["market_bias"] == "Bullish":
-            reasons.append("Market bias is bullish")
+            narrative.append("Higher timeframe bias is bullish.")
 
-        if analysis["market_structure"] == "Bullish":
-            reasons.append("Bullish market structure")
+        elif analysis["market_bias"] == "Bearish":
+            narrative.append("Higher timeframe bias is bearish.")
 
-        if analysis["bos"]["BOS"] != "No BOS":
-            reasons.append(analysis["bos"]["BOS"])
+        if analysis["bos"]:
+            narrative.append("Recent Break of Structure confirms continuation.")
 
-        if analysis["liquidity"]["Liquidity"] == "Buy Side":
-            reasons.append("Buy-side liquidity targeted")
+        if analysis["choch"]:
+            narrative.append("Change of Character detected.")
 
-        return reasons
+        if analysis["liquidity"]:
+            narrative.append("Liquidity sweep has occurred.")
+
+        if analysis["execution"]["entry"]:
+            narrative.append("Execution conditions satisfied.")
+
+        return " ".join(narrative)
