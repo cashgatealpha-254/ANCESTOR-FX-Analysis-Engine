@@ -15,21 +15,21 @@ def analyze_execution(
 
         execution["direction"] = "BUY"
         execution["entry"] = round(current_price, 5)
-        execution["sl"] = round(current_price - (2 * atr_value), 5)
-        execution["tp"] = round(current_price + (4 * atr_value), 5)
+        execution["stop_loss"] = round(current_price - (2 * atr_value), 5)
+        execution["take_profit"] = round(current_price + (4 * atr_value), 5)
 
     elif trend["Trend"] == "Bearish":
 
         execution["direction"] = "SELL"
         execution["entry"] = round(current_price, 5)
-        execution["sl"] = round(current_price + (2 * atr_value), 5)
-        execution["tp"] = round(current_price - (4 * atr_value), 5)
+        execution["stop_loss"] = round(current_price + (2 * atr_value), 5)
+        execution["take_profit"] = round(current_price - (4 * atr_value), 5)
 
     else:
 
         execution["direction"] = "WAIT"
         execution["entry"] = None
-        execution["sl"] = None
-        execution["tp"] = None
+        execution["stop_loss"] = None
+        execution["take_profit"] = None
 
     return execution

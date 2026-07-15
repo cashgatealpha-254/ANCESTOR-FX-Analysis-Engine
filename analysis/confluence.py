@@ -1,53 +1,51 @@
 def analyze_confluence(results):
 
-    bullish = 0
-    bearish = 0
+    score = 0
+    reasons = []
 
     # Trend
-    if results["trend"]["Trend"] == "Bullish":
-        bullish += 1
-    elif results["trend"]["Trend"] == "Bearish":
-        bearish += 1
+    if results["trend"]["Trend"] != "Neutral":
+        score += 20
+        reasons.append("Trend aligned")
 
     # BOS
-    if results["bos"]["BOS"] == "Bullish BOS":
-        bullish += 1
-    elif results["bos"]["BOS"] == "Bearish BOS":
-        bearish += 1
+    if results["bos"]["BOS"] != "None":
+        score += 15
+        reasons.append("Break of Structure confirmed")
 
     # CHoCH
-    if results["choch"]["CHoCH"] == "Bullish CHoCH":
-        bullish += 1
-    elif results["choch"]["CHoCH"] == "Bearish CHoCH":
-        bearish += 1
-
-    # Supply / Demand
-    if results["supply_demand"]["Current Zone"] == "Demand":
-        bullish += 1
-    elif results["supply_demand"]["Current Zone"] == "Supply":
-        bearish += 1
+    if results["choch"]["CHoCH"] != "None":
+        score += 10
+        reasons.append("CHoCH confirmed")
 
     # Liquidity
-    if results["liquidity"]["Liquidity"] == "Sell-side Liquidity Swept":
-        bullish += 1
-    elif results["liquidity"]["Liquidity"] == "Buy-side Liquidity Swept":
-        bearish += 1
+    if results["liquidity"]["Liquidity"] != "None":
+        score += 10
+        reasons.append("Liquidity event detected")
 
-    # Decide dominant side
-    if bullish > bearish:
-        direction = "Bullish"
-        confirmations = bullish
-    elif bearish > bullish:
-        direction = "Bearish"
-        confirmations = bearish
-    else:
-        direction = "Neutral"
-        confirmations = bullish
+    # Supply / Demand
+    zone = results["supply_demand"]["Current Zone"]
 
-    # Grade confluence
-    if confirmations >= 4:
-        confluence = "High"
-    elif confirmations >= 2:
-        confluence = "Medium"
-    else:
-        confluence = "Low"
+    if zone != "None":
+        score += 15
+        reasons.append(f"{zone} detected")
+
+    # Market Structure
+    if results["market_structure"]["Structure"] != "Neutral":
+        score += 15
+        reasons.append("Market structure aligned")
+
+    # Structure Memory
+    if results["structure_memory"]:
+        score += 10
+        reasons.append("Structure memory available")
+
+    # Protected Levels
+    if results["protected_levels"]:
+        score += 5
+        reasons.append("Protected levels identified")
+
+    return {
+        "Score": score,
+        "Reasons": reasons
+    }

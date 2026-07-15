@@ -8,13 +8,10 @@ class RiskEngine:
         risk = abs(entry - stop_loss)
         reward = abs(take_profit - entry)
 
-        if risk == 0:
-            rr = 0
-        else:
-            rr = round(reward / risk, 2)
+        rr = round(reward / risk, 2) if risk != 0 else 0
 
         return {
-            "Risk": round(risk, 5),
-            "Reward": round(reward, 5),
-            "RR": rr
+            "risk": risk,
+            "reward": reward,
+            "rr": rr
         }

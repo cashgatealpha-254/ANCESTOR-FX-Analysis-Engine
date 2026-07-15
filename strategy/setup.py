@@ -1,33 +1,27 @@
 class SetupEngine:
 
-    def __init__(self):
-        pass
-
     def build(self, analysis):
 
         RR = 5
 
-        decision = analysis["Decision"]
+        decision = analysis["decision"]
         support = analysis["support"]
         resistance = analysis["resistance"]
-        protected_levels = analysis["protected_levels"]
 
         if decision == "BUY":
 
             entry = support
-            stop_loss = protected_levels["Protected Low"]["price"]
+            stop_loss = support * 0.998
 
             risk = abs(entry - stop_loss)
-
             take_profit = entry + (risk * RR)
 
         elif decision == "SELL":
 
             entry = resistance
-            stop_loss = protected_levels["Protected High"]["price"]
+            stop_loss = resistance * 1.002
 
-            risk = abs(stop_loss - entry)
-
+            risk = abs(entry - stop_loss)
             take_profit = entry - (risk * RR)
 
         else:
@@ -37,8 +31,8 @@ class SetupEngine:
             take_profit = None
 
         return {
-            "Entry": entry,
-            "Stop Loss": stop_loss,
-            "Take Profit": take_profit,
-            "Risk Reward": f"1:{RR}"
+            "entry": entry,
+            "stop_loss": stop_loss,
+            "take_profit": take_profit,
+            "risk_reward": f"1:{RR}"
         }
