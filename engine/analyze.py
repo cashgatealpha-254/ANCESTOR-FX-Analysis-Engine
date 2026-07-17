@@ -38,9 +38,12 @@ from strategy.execution import ExecutionEngine
 from strategy.grade import GradeEngine
 from strategy.setup import SetupEngine
 from strategy.risk import RiskEngine
+from strategy.execution_plan import ExecutionPlanner
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
+
+from journal.logger import Journal 
 
 from alerts.notify import send_alert
 
@@ -53,6 +56,8 @@ setup_engine = SetupEngine()
 execution_engine = ExecutionEngine()
 risk_engine = RiskEngine()
 reasoning_engine = ReasoningEngine()
+execution_planner = ExecutionPlanner()
+journal = Journal()
 save_analysis = save_analysis
 send_alert = send_alert
 
@@ -209,6 +214,13 @@ def run_analysis(symbol):
         results["setup"] = setup_engine.build(results)
 
         # --------------------------
+        # EXECUTION PLANNER
+        # --------------------------
+        send_alert("Preparing Execution")
+
+        results["execution_plan"] = execution_planner.build(results)
+
+        # --------------------------
         # EXECUTION
         # --------------------------
         send_alert("Building Execution")
@@ -255,6 +267,15 @@ def run_analysis(symbol):
 
         validation = validate_analysis(results)
         results["validation"] = validation
+
+        # --------------------------
+        # TRADE JOURNAL
+        # --------------------------
+        send_alert("Journalling")
+
+        results["reasoning"] = reasoning
+
+        journal.save(results)
 
         return results
 

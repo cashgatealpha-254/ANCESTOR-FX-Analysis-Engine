@@ -1,0 +1,769 @@
+[
+    {
+        "date": "2026-07-17 06:09:38",
+        "symbol": "GBPUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bearish",
+                    "EMA20": 1.34653,
+                    "EMA50": 1.34658
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Sideways"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 97,
+                        "time": 97,
+                        "price": 1.34676
+                    },
+                    "Previous High": {
+                        "index": 90,
+                        "time": 90,
+                        "price": 1.34653
+                    },
+                    "Latest Low": {
+                        "index": 92,
+                        "time": 92,
+                        "price": 1.34636
+                    },
+                    "Previous Low": {
+                        "index": 72,
+                        "time": 72,
+                        "price": 1.34637
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.34653,
+            "EMA50": 1.34658
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bearish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Sideways. Price is trading near Supply. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:33:31",
+        "symbol": "GBPUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34677,
+                    "EMA50": 1.3467
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower High / Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 93,
+                        "time": 93,
+                        "price": 1.34686
+                    },
+                    "Previous High": {
+                        "index": 84,
+                        "time": 84,
+                        "price": 1.34698
+                    },
+                    "Latest Low": {
+                        "index": 76,
+                        "time": 76,
+                        "price": 1.3464800000000001
+                    },
+                    "Previous Low": {
+                        "index": 68,
+                        "time": 68,
+                        "price": 1.34636
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 1.34677,
+            "EMA50": 1.3467
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower High / Lower Low. Price is trading near Supply. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:33:31",
+        "symbol": "XAUUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 3996.88486,
+                    "EMA50": 3990.72232
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower High / Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 89,
+                        "time": 89,
+                        "price": 4006.92
+                    },
+                    "Previous High": {
+                        "index": 86,
+                        "time": 86,
+                        "price": 4007.19
+                    },
+                    "Latest Low": {
+                        "index": 94,
+                        "time": 94,
+                        "price": 3997.39
+                    },
+                    "Previous Low": {
+                        "index": 77,
+                        "time": 77,
+                        "price": 3986.11
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 3996.88486,
+            "EMA50": 3990.72232
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower High / Lower Low. Price is trading near Demand. Liquidity status: Sell-side Liquidity Swept."
+    },
+    {
+        "date": "2026-07-17 06:33:31",
+        "symbol": "EURUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.14386,
+                    "EMA50": 1.14383
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower High / Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 87,
+                        "time": 87,
+                        "price": 1.14398
+                    },
+                    "Previous High": {
+                        "index": 73,
+                        "time": 73,
+                        "price": 1.14399
+                    },
+                    "Latest Low": {
+                        "index": 92,
+                        "time": 92,
+                        "price": 1.14377
+                    },
+                    "Previous Low": {
+                        "index": 77,
+                        "time": 77,
+                        "price": 1.1437
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 1.14386,
+            "EMA50": 1.14383
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower High / Lower Low. Price is trading near Demand. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:33:32",
+        "symbol": "USDJPY",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bearish",
+                    "EMA20": 162.39543,
+                    "EMA50": 162.39964
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Higher High / Higher Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 94,
+                        "time": 94,
+                        "price": 162.408
+                    },
+                    "Previous High": {
+                        "index": 91,
+                        "time": 91,
+                        "price": 162.408
+                    },
+                    "Latest Low": {
+                        "index": 96,
+                        "time": 96,
+                        "price": 162.393
+                    },
+                    "Previous Low": {
+                        "index": 83,
+                        "time": 83,
+                        "price": 162.373
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 162.39543,
+            "EMA50": 162.39964
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bearish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Higher High / Higher Low. Price is trading near Supply. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:33:32",
+        "symbol": "GBPUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34677,
+                    "EMA50": 1.3467
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower High / Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 93,
+                        "time": 93,
+                        "price": 1.34686
+                    },
+                    "Previous High": {
+                        "index": 84,
+                        "time": 84,
+                        "price": 1.34698
+                    },
+                    "Latest Low": {
+                        "index": 76,
+                        "time": 76,
+                        "price": 1.3464800000000001
+                    },
+                    "Previous Low": {
+                        "index": 68,
+                        "time": 68,
+                        "price": 1.34636
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 1.34677,
+            "EMA50": 1.3467
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower High / Lower Low. Price is trading near Supply. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:36:14",
+        "symbol": "GBPUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34673,
+                    "EMA50": 1.34669
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower High / Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 90,
+                        "time": 90,
+                        "price": 1.34686
+                    },
+                    "Previous High": {
+                        "index": 81,
+                        "time": 81,
+                        "price": 1.34698
+                    },
+                    "Latest Low": {
+                        "index": 96,
+                        "time": 96,
+                        "price": 1.3465799999999999
+                    },
+                    "Previous Low": {
+                        "index": 73,
+                        "time": 73,
+                        "price": 1.3464800000000001
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 1.34673,
+            "EMA50": 1.34669
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower High / Lower Low. Price is trading near Demand. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:36:14",
+        "symbol": "XAUUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 3996.95252,
+                    "EMA50": 3991.47982
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Sideways"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 86,
+                        "time": 86,
+                        "price": 4006.92
+                    },
+                    "Previous High": {
+                        "index": 83,
+                        "time": 83,
+                        "price": 4007.19
+                    },
+                    "Latest Low": {
+                        "index": 97,
+                        "time": 97,
+                        "price": 3994.56
+                    },
+                    "Previous Low": {
+                        "index": 91,
+                        "time": 91,
+                        "price": 3997.39
+                    },
+                    "Trend": "Bearish"
+                },
+                "protected_levels": {
+                    "Protected High": {
+                        "index": 86,
+                        "time": 86,
+                        "price": 4006.92
+                    },
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Strong Bearish Structure"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 3996.95252,
+            "EMA50": 3991.47982
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Sideways. Price is trading near Demand. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:36:14",
+        "symbol": "EURUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.14384,
+                    "EMA50": 1.14382
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 84,
+                        "time": 84,
+                        "price": 1.14398
+                    },
+                    "Previous High": {
+                        "index": 70,
+                        "time": 70,
+                        "price": 1.14399
+                    },
+                    "Latest Low": {
+                        "index": 96,
+                        "time": 96,
+                        "price": 1.14372
+                    },
+                    "Previous Low": {
+                        "index": 89,
+                        "time": 89,
+                        "price": 1.14377
+                    },
+                    "Trend": "Bearish"
+                },
+                "protected_levels": {
+                    "Protected High": {
+                        "index": 84,
+                        "time": 84,
+                        "price": 1.14398
+                    },
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Strong Bearish Structure"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 1.14384,
+            "EMA50": 1.14382
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower Low. Price is trading near Demand. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:36:15",
+        "symbol": "USDJPY",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bearish",
+                    "EMA20": 162.39783,
+                    "EMA50": 162.40024
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Sideways"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 91,
+                        "time": 91,
+                        "price": 162.408
+                    },
+                    "Previous High": {
+                        "index": 88,
+                        "time": 88,
+                        "price": 162.408
+                    },
+                    "Latest Low": {
+                        "index": 93,
+                        "time": 93,
+                        "price": 162.393
+                    },
+                    "Previous Low": {
+                        "index": 80,
+                        "time": 80,
+                        "price": 162.373
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 162.39783,
+            "EMA50": 162.40024
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bearish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Sideways. Price is trading near Supply. Liquidity status: No Sweep."
+    },
+    {
+        "date": "2026-07-17 06:36:15",
+        "symbol": "GBPUSD",
+        "confidence": 65,
+        "grade": "NO TRADE",
+        "decision": {
+            "decision": "WAIT",
+            "analysis": {
+                "trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34673,
+                    "EMA50": 1.34669
+                },
+                "market_bias": {
+                    "Market Bias": "WAIT",
+                    "Reason": "Transition"
+                },
+                "market_state": {
+                    "Market State": "Transition"
+                },
+                "market_structure": {
+                    "Structure": "Lower High / Lower Low"
+                },
+                "confidence": 65,
+                "structure_memory": {
+                    "Latest High": {
+                        "index": 90,
+                        "time": 90,
+                        "price": 1.34686
+                    },
+                    "Previous High": {
+                        "index": 81,
+                        "time": 81,
+                        "price": 1.34698
+                    },
+                    "Latest Low": {
+                        "index": 96,
+                        "time": 96,
+                        "price": 1.3465799999999999
+                    },
+                    "Previous Low": {
+                        "index": 73,
+                        "time": 73,
+                        "price": 1.3464800000000001
+                    },
+                    "Trend": "Sideways"
+                },
+                "protected_levels": {
+                    "Protected High": null,
+                    "Protected Low": null
+                },
+                "structure_strength": {
+                    "Structure Strength": "Weak / Transition"
+                }
+            }
+        },
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 1.34673,
+            "EMA50": 1.34669
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "Trend is Bullish. Market bias remains {'Market Bias': 'WAIT', 'Reason': 'Transition'}. Current structure is Lower High / Lower Low. Price is trading near Demand. Liquidity status: No Sweep."
+    }
+]

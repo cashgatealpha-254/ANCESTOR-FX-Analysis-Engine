@@ -54,6 +54,40 @@
 
 <h1>📊 Ancestor FX Dashboard</h1>
 
+<!-- SUMMARY CARDS GO HERE -->
+
+<div style="display:flex; gap:20px; flex-wrap:wrap;">
+
+    <div class="card">
+        <h3>Balance</h3>
+        <h2>{{ account.balance }}</h2>
+    </div>
+
+    <div class="card">
+        <h3>Equity</h3>
+        <h2>{{ account.equity }}</h2>
+    </div>
+
+    <div class="card">
+        <h3>Profit</h3>
+
+        {% if account.profit >= 0 %}
+            <h2 class="green">{{ account.profit }}</h2>
+        {% else %}
+            <h2 class="red">{{ account.profit }}</h2>
+        {% endif %}
+
+    </div>
+
+    <div class="card">
+        <h3>Leverage</h3>
+        <h2>1:{{ account.leverage }}</h2>
+    </div>
+
+</div>
+
+<!-- MT5 CARD CONTINUES HERE -->
+
 <div class="card">
 
 {% if connected %}
@@ -187,6 +221,38 @@
 
 </div>
 
+<!-- EXECUTION PLAN -->
+
+<div class="card">
+
+<h2>Execution Plan</h2>
+
+{% if execution_plan %}
+
+<p><strong>Direction:</strong> {{ execution_plan.Direction }}</p>
+
+<p><strong>Entry:</strong> {{ execution_plan.Entry }}</p>
+
+<p><strong>Stop Loss:</strong> {{ execution_plan["Stop Loss"] }}</p>
+
+<p><strong>TP1:</strong> {{ execution_plan.TP1 }} pips</p>
+
+<p><strong>TP2:</strong> {{ execution_plan.TP2 }} pips</p>
+
+<p><strong>Lot Size:</strong> {{ execution_plan["Lot Size"] }}</p>
+
+<p><strong>Positions:</strong> {{ execution_plan.Positions }}</p>
+
+{% else %}
+
+<p>No execution plan available.</p>
+
+{% endif %}
+
+</div>
+
+<!-- LIVE CHART -->
+
 <div class="card">
     <h2>Live Chart</h2>
 
@@ -197,7 +263,7 @@
 <div class="card">
     <h3>Market Narrative</h3>
 
-    <p>{{ signals.narrative }}</p>
+    <p>{{ narrative }}</p>
 
 </div>
 

@@ -35,6 +35,7 @@ def dashboard(request: Request):
     chart = create_chart("GBPUSD")
     positions = get_positions()
     signals = dashboard_analysis()
+    analysis = run_analysis("GBPUSD")
     print(signals)
 
     return templates.TemplateResponse(
@@ -46,8 +47,16 @@ def dashboard(request: Request):
          "account": account,
          "positions": positions,
          "signals": signals,
-         "chart": chart
-        }
+         "chart": chart,
+
+         "execution_plan": analysis["execution_plan"],
+         "narrative": analysis["narrative"],
+         "reasoning": analysis["reasoning"],
+         "confidence": analysis["confidence"],
+         "grade": analysis["grade"],
+         "decision": analysis["decision"],
+         "trend": analysis["trend"]
+       }
     )
 
 @app.get("/")
