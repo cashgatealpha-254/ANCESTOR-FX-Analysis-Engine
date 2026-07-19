@@ -40,6 +40,11 @@ from strategy.setup import SetupEngine
 from strategy.risk import RiskEngine
 from strategy.execution_plan import ExecutionPlanner
 
+from brain.confidence import calculate
+from brain.decision import decide
+from brain.advisor import explain
+from brain.risk_manager import check
+
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
 
@@ -267,6 +272,38 @@ def run_analysis(symbol):
 
         validation = validate_analysis(results)
         results["validation"] = validation
+
+        # --------------------------
+        # BRAIN CONFIDENCE
+        # --------------------------
+
+        confidence = calculate(results)
+
+        results["confidence"] = confidence["score"]
+        results["confidence_breakdown"] = confidence["breakdown"]
+
+        # --------------------------
+        # BRAIN DECISION
+        # --------------------------
+
+        decision = decide(results)
+
+        results["decision"] = decide(results)
+
+        # --------------------------
+        # BRAIN ADVISOR
+        # --------------------------
+
+        results["narrative"] = explain(results)
+
+        # --------------------------
+        # BRAIN RISK_MANAGER
+        # --------------------------
+        
+        risk = check(results)
+
+        results["trade_allowed"] = risk["trade"]
+        results["risk_reason"] = risk["reason"]
 
         # --------------------------
         # TRADE JOURNAL
