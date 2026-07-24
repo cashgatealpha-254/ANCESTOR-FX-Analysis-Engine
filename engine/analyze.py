@@ -1,7 +1,6 @@
 from analysis import supply_demand
 from analysis import liquidity
 from analysis import choch
-from data.fetcher import connect_mt5, disconnect_mt5
 from data.get_candles import get_candles
 
 from indicators import atr
@@ -44,11 +43,14 @@ from brain.confidence import calculate
 from brain.decision import decide
 from brain.advisor import explain
 from brain.risk_manager import check
+from brain.execution import execution_plan
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
 
 from journal.logger import Journal 
+
+from dashboard.history import save_analysis
 
 from alerts.notify import send_alert
 
@@ -313,6 +315,13 @@ def run_analysis(symbol):
         results["reasoning"] = reasoning
 
         journal.save(results)
+
+        # -------------------------
+        # SAVE ANALYSIS
+        # -------------------------
+        send_alert("Saving 🧾")
+
+        save_analysis(symbol, results)
 
         return results
 

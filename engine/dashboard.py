@@ -22,7 +22,7 @@ def dashboard_analysis():
 
             signals.append({
                 "symbol": result["symbol"],
-                "decision": result["decision"]["decision"],
+                "decision": result["decision"],
                 "confidence": result["confidence"],
                 "grade": result["grade"],
                 "trend": result["trend"],
