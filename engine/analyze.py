@@ -47,6 +47,16 @@ from brain.execution import execution_plan
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
+from engine.report import build as build_report
+from engine.verdict import build as build_verdict
+from engine.summary import build as build_summary
+from engine.history import add as add_history
+from engine.history import previous
+from engine.change_detector import compare
+from engine.session_memory import update as update_session
+from engine.session_memory import get as session
+from engine.health_check import run as health_check
+from engine.performance import success, failure, stats
 
 from journal.logger import Journal 
 
@@ -68,6 +78,11 @@ journal = Journal()
 save_analysis = save_analysis
 send_alert = send_alert
 
+health = health_check()
+
+results = {
+    "health": health
+}
 
 def run_analysis(symbol):
 
@@ -322,6 +337,64 @@ def run_analysis(symbol):
         send_alert("Saving 🧾")
 
         save_analysis(symbol, results)
+
+        # -------------------------
+        # SEND REPORT
+        # -------------------------
+        send_alert("Reporting 🧾")
+
+        results["report"] = build_report(results)
+
+        # -------------------------
+        # SEND VERDICT
+        # -------------------------
+        send_alert("Verdicting 🛡️")
+
+        results["verdict"] = build_verdict(results["report"])
+
+        # -------------------------
+        # BUILD SUMMARY
+        # -------------------------
+        send_alert("Summarizing 🧾")
+
+        results["summary"] = build_summary(results)
+
+        # -------------------------
+        # ADDING HISTORY
+        # -------------------------
+        send_alert("Adding History 🧾")
+
+        add_history(results)
+
+        # -------------------------------
+        # COMPARISON OF PREVIOUS RESULTS
+        # -------------------------------
+        send_alert("Comparing 🧾")
+
+        previous_results = previous()
+
+        results["changes"] = compare(
+            results,
+            previous_results
+       )
+
+        # -------------------------------
+        # UPDATING OF PREVIOUS RESULTS
+        # -------------------------------
+        send_alert("Updating 🧾")
+
+        update_session(results)
+
+        results["session"] = session()
+
+        # -------------------------------
+        # PERFORMANCE UPDATING
+        # -------------------------------
+        send_alert("Updating Performance 🧾")
+
+        success()
+
+        results["engine_stats"] = stats()
 
         return results
 
