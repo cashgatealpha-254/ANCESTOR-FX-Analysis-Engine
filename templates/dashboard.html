@@ -52,7 +52,21 @@
 
 <body>
 
+<div class="card">
+
 <h1>📊 Ancestor FX Dashboard</h1>
+
+<p><strong>Symbol:</strong> {{ symbol }}</p>
+
+<p><strong>Time:</strong> {{ current_time }}</p>
+
+{% if connected %}
+<p class="green">🟢 Engine Online</p>
+{% else %}
+<p class="red">🔴 Engine Offline</p>
+{% endif %}
+
+</div>
 
 <!-- SUMMARY CARDS GO HERE -->
 
@@ -225,29 +239,60 @@
 
 <div class="card">
 
-<h2>Execution Plan</h2>
+    <h2>🎯 Execution Plan</h2>
 
-{% if execution_plan %}
+    {% if execution_plan %}
 
-<p><strong>Direction:</strong> {{ execution_plan.Direction }}</p>
+    <table>
 
-<p><strong>Entry:</strong> {{ execution_plan.Entry }}</p>
+        <tr>
+            <th>Direction</th>
+            <td>
+                {% if execution_plan.Direction == "BUY" %}
+                    <span class="green">🟢 BUY</span>
+                {% else %}
+                    <span class="red">🔴 SELL</span>
+                {% endif %}
+            </td>
+        </tr>
 
-<p><strong>Stop Loss:</strong> {{ execution_plan["Stop Loss"] }}</p>
+        <tr>
+            <th>Entry</th>
+            <td>{{ execution_plan.Entry }}</td>
+        </tr>
 
-<p><strong>TP1:</strong> {{ execution_plan.TP1 }} pips</p>
+        <tr>
+            <th>Stop Loss</th>
+            <td>{{ execution_plan["Stop Loss"] }}</td>
+        </tr>
 
-<p><strong>TP2:</strong> {{ execution_plan.TP2 }} pips</p>
+        <tr>
+            <th>Take Profit</th>
+            <td>{{ execution_plan.Take_Profit }}</td>
+        </tr>
 
-<p><strong>Lot Size:</strong> {{ execution_plan["Lot Size"] }}</p>
+        <tr>
+            <th>Risk : Reward</th>
+            <td>{{ execution_plan["Risk Reward"] }}</td>
+        </tr>
 
-<p><strong>Positions:</strong> {{ execution_plan.Positions }}</p>
+        <tr>
+            <th>Lot Size</th>
+            <td>{{ execution_plan["Lot Size"] }}</td>
+        </tr>
 
-{% else %}
+        <tr>
+            <th>Positions</th>
+            <td>{{ execution_plan.Positions }}</td>
+        </tr>
 
-<p>No execution plan available.</p>
+    </table>
 
-{% endif %}
+    {% else %}
+
+    <p>No execution plan available.</p>
+
+    {% endif %}
 
 </div>
 
@@ -264,6 +309,89 @@
     <h3>Market Narrative</h3>
 
     <p>{{ narrative }}</p>
+
+    </div>
+
+    <div class="card">
+
+    <h2>📈 Market Snapshot</h2>
+
+    <p><strong>Trend:</strong> {{ trend.Trend }}</p>
+
+    <p><strong>Bias:</strong> {{ market_bias["Market Bias"] }}</p>
+
+    <p><strong>Market State:</strong> {{ market_state["Market State"] }}</p>
+
+    <p><strong>Structure:</strong> {{ market_structure["Structure"] }}</p>
+
+    <p><strong>BOS:</strong> {{ bos.Result }}</p>
+
+    <p><strong>CHOCH:</strong> {{ choch.Result }}</p>
+
+</div>
+
+<div class="card">
+
+    <h2>🎯 Trade Decision</h2>
+
+    {% if decision == "EXECUTE" %}
+
+    <h1 class="green">🟢 {{ decision }}</h1>
+
+    {% elif decision == "WAIT" %}
+
+    <h1 style="color:orange;">🟡 {{ decision }}</h1>
+
+    {% else %}
+
+    <h1 class="red">🔴 {{ decision }}</h1>
+
+    {% endif %}
+
+    <p><strong>Confidence:</strong>
+
+    {% if confidence >= 80 %}
+        <span class="green">{{ confidence }}%</span>
+
+    {% elif confidence >= 60 %}
+        <span style="color:orange;">{{ confidence }}%</span>
+
+    {% else %}
+        <span class="red">{{ confidence }}%</span>
+
+    {% endif %}
+
+    </p>
+
+        <p><strong>Grade:</strong> {{ grade }}</p>
+
+    <hr>
+
+        <h3>Reasoning</h3>
+
+        <p>{{ reasoning }}
+
+<div class="card">
+
+    <h2>⚙️ Engine Status</h2>
+
+    <p>Connection:
+        {% if connected %}
+            <span class="green">🟢 ONLINE</span>
+        {% else %}
+            <span class="red">🔴 OFFLINE</span>
+        {% endif %}
+    </p>
+
+    <p>Symbol: GBPUSD</p>
+
+    <p>Analysis Engine:
+        <span class="green">READY</span>
+    </p>
+
+    <p>Dashboard Version:
+        v1.0
+    </p>
 
 </div>
 

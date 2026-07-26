@@ -5962,5 +5962,955 @@
         },
         "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
         "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:26:47",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:26:48",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:26:48",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:26:49",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:26:49",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:37:12",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:37:12",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:37:13",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:37:13",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:37:14",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:40:58",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:40:58",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:40:59",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:40:59",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 14:40:59",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:40:45",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:40:46",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:40:46",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:40:47",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:40:47",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:47:46",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:47:47",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:47:47",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:47:48",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:47:48",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:55:42",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:55:42",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:55:43",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:55:43",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 20:55:44",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:02:53",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:02:54",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:02:55",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:02:55",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:02:56",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:08:36",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:08:37",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:08:38",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:08:38",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:08:39",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:20:21",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:20:21",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:20:22",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:20:23",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:20:23",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:27:31",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:27:31",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4052.64235,
+            "EMA50": 4053.02355
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:27:31",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.13671,
+            "EMA50": 1.13675
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:27:32",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 163.85152,
+            "EMA50": 163.85802
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-26 21:27:32",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.33177,
+            "EMA50": 1.33183
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
     }
 ]

@@ -37,25 +37,33 @@ def dashboard(request: Request):
     signals = dashboard_analysis()
     analysis = run_analysis("GBPUSD")
     print(signals)
+    print(analysis.keys())
 
     return templates.TemplateResponse(
         request= request,
         name="dashboard.html",
         context={
-         "request": request,
-         "connected": True,
-         "account": account,
-         "positions": positions,
-         "signals": signals,
-         "chart": chart,
+            "request": request,
+            "connected": True,
+            "account": account,
+            "positions": positions,
+            "signals": signals,
+            "chart": chart,
 
-         "execution_plan": analysis["execution_plan"],
-         "narrative": analysis["narrative"],
-         "reasoning": analysis["reasoning"],
-         "confidence": analysis["confidence"],
-         "grade": analysis["grade"],
-         "decision": analysis["decision"],
-         "trend": analysis["trend"]
+            "execution_plan": analysis["execution_plan"],
+            "narrative": analysis["narrative"],
+            "reasoning": analysis["reasoning"],
+            "confidence": analysis["confidence"],
+            "grade": analysis["grade"],
+            "decision": analysis["decision"],
+            "trend": analysis["trend"],
+
+            # NEW
+            "market_bias": analysis["market_bias"],
+            "market_state": analysis["market_state"],
+            "market_structure": analysis["market_structure"],
+            "bos": analysis["bos"],
+            "choch": analysis["choch"]
        }
     )
 
