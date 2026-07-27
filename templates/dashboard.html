@@ -332,6 +332,32 @@
 
 <div class="card">
 
+    <h2>🧠 Analysis Pipeline</h2>
+
+    <ul>
+
+        <li>✅ Trend Analysis</li>
+
+        <li>✅ Market Structure</li>
+
+        <li>✅ Supply & Demand</li>
+
+        <li>✅ Liquidity Sweep</li>
+
+        <li>✅ BOS / CHOCH</li>
+
+        <li>✅ Confidence Engine</li>
+
+        <li>⬜ Risk Manager</li>
+
+        <li>⬜ Auto Execution</li>
+
+    </ul>
+
+</div>
+
+<div class="card">
+
     <h2>🎯 Trade Decision</h2>
 
     {% if decision == "EXECUTE" %}
@@ -370,6 +396,54 @@
         <h3>Reasoning</h3>
 
         <p>{{ reasoning }}
+
+<div class="card">
+
+    <h2>📒 Latest Analysis</h2>
+
+    <table>
+
+        <tr>
+            <th>Time</th>
+            <th>Pair</th>
+            <th>Decision</th>
+            <th>Confidence</th>
+            <th>Grade</th>
+        </tr>
+
+        {% for item in history %}
+
+        <tr>
+
+            <td>{{ item.timestamp }}</td>
+
+            <td>{{ item.symbol }}</td>
+
+            <td>{{ item.decision }}</td>
+
+            <td>{{ item.confidence }}%</td>
+
+            <td>{{ item.grade }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+<div class="card">
+
+    <h2>⭐ Ancestor Score</h2>
+
+    <h1>{{ confidence }}%</h1>
+
+    <progress value="{{ confidence }}" max="100"></progress>
+
+    <p><strong>Grade:</strong> {{ grade }}</p>
+
+</div>
 
 <div class="card">
 

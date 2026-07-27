@@ -36,6 +36,7 @@ def dashboard(request: Request):
     positions = get_positions()
     signals = dashboard_analysis()
     analysis = run_analysis("GBPUSD")
+    history = get_recent_history(10)
     print(signals)
     print(analysis.keys())
 
@@ -63,7 +64,8 @@ def dashboard(request: Request):
             "market_state": analysis["market_state"],
             "market_structure": analysis["market_structure"],
             "bos": analysis["bos"],
-            "choch": analysis["choch"]
+            "choch": analysis["choch"],
+            "history": history
        }
     )
 
