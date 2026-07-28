@@ -229,6 +229,20 @@ def run_analysis(symbol):
         results["decision"] = decision_engine.evaluate(results)
 
         # -------------------------
+        # REASONS
+        # -------------------------
+
+        results["reasons"] = [
+            f"Trend: {results['trend']}",
+            f"Market Bias: {results['market_bias']['Market Bias']}",
+            f"Structure: {results['market_structure']['Structure']}",
+            f"Supply/Demand Zone: {current_zone}",
+            f"Liquidity: {results['liquidity']['Liquidity']}",
+            f"BOS: {results['bos']['BOS']}",
+            f"CHOCH: {results['choch']['CHoCH']}",
+       ]
+
+        # -------------------------
         # SETUP
         # -------------------------
         send_alert("Finding Setup")
