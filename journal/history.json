@@ -8033,5 +8033,49 @@
         },
         "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
         "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-07-28 23:52:14",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.32858,
+            "EMA50": 1.32869
+        },
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "liquidity": "No Sweep",
+        "market_state": {
+            "Market State": "Transition"
+        },
+        "confluence": {
+            "Score": 3,
+            "Max Score": 9,
+            "Strength": "Low",
+            "Aligned Modules": [
+                "Trend",
+                "Structure Memory",
+                "Protected Levels"
+            ],
+            "Conflicting Modules": [
+                "BOS",
+                "CHoCH",
+                "Supply & Demand",
+                "Liquidity",
+                "Structure",
+                "Structure Strength"
+            ],
+            "Summary": "3/9 modules agree with the wait bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
     }
 ]

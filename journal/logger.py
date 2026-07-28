@@ -40,6 +40,16 @@ class Journal:
 
             "trend": analysis["trend"],
 
+            "bos": analysis["bos"]["BOS"],
+
+            "choch": analysis["choch"]["CHoCH"],
+
+            "liquidity": analysis["liquidity"]["Liquidity"],
+
+            "market_state": analysis["market_state"],
+
+            "confluence": analysis["confluence"],
+
             "reasoning": analysis["reasoning"],
 
             "narrative": analysis["narrative"]
