@@ -31,6 +31,7 @@ from analysis.multi_timeframe import analyze_multi_timeframe
 from analysis.market_context import analyze_market_context
 from analysis.validation import validate_analysis
 from analysis.narrative import build_narrative
+from analysis.checklist import build_checklist
 
 from strategy.decision import DecisionEngine
 from strategy.execution import ExecutionEngine
@@ -335,6 +336,12 @@ def run_analysis(symbol):
 
         results["trade_allowed"] = risk["trade"]
         results["risk_reason"] = risk["reason"]
+
+        # -------------------------
+        # BUILD CHECKLIST
+        # -------------------------
+        
+        results["checklist"] = build_checklist(results)
 
         # --------------------------
         # TRADE JOURNAL

@@ -1,10 +1,25 @@
 def analyze_confluence(results):
 
     score = 0
+
     aligned = []
     conflicting = []
 
     bias = results["market_bias"]["Market Bias"]
+
+    weights = {
+
+        "Trend": 2,
+        "BOS": 2,
+        "CHoCH": 2,
+        "Supply & Demand": 2,
+        "Liquidity": 1,
+        "Structure": 2,
+        "Structure Memory": 2,
+        "Protected Levels": 1,
+        "Structure Strength": 2
+
+    }
 
     if bias == "Bullish":
 
@@ -17,13 +32,13 @@ def analyze_confluence(results):
              results["bos"]["BOS"] == "Bullish BOS"),
 
             ("CHoCH",
-             results["choch"]["CHoCH"] == "Bullish"),
+             results["choch"]["CHoCH"] == "Bullish CHoCH"),
 
             ("Supply & Demand",
              results["supply_demand"]["Current Zone"] == "Demand"),
 
             ("Liquidity",
-             results["liquidity"]["Liquidity"] == "Buy Side"),
+             results["liquidity"]["Liquidity"] == "Sell-side Liquidity Swept"),
 
             ("Structure",
              results["market_structure"]["Structure"] == "Bullish"),
@@ -50,13 +65,13 @@ def analyze_confluence(results):
              results["bos"]["BOS"] == "Bearish BOS"),
 
             ("CHoCH",
-             results["choch"]["CHoCH"] == "Bearish"),
+             results["choch"]["CHoCH"] == "Bearish CHoCH"),
 
             ("Supply & Demand",
              results["supply_demand"]["Current Zone"] == "Supply"),
 
             ("Liquidity",
-             results["liquidity"]["Liquidity"] == "Sell Side"),
+             results["liquidity"]["Liquidity"] == "Buy-side Liquidity Swept"),
 
             ("Structure",
              results["market_structure"]["Structure"] == "Bearish"),
@@ -73,26 +88,55 @@ def analyze_confluence(results):
         ]
 
     for module, passed in checks:
+
         if passed:
-            score += 1
-            aligned.append(module)
+
+            score += weights[module]
+
+            aligned.append({
+
+                "Module": module,
+                "Weight": weights[module]
+
+            })
+
         else:
-            conflicting.append(module)
 
-    max_score = len(checks)
+            conflicting.append({
 
-    if score >= 8:
+                "Module": module,
+                "Weight": weights[module]
+
+            })
+
+    max_score = sum(weights.values())
+
+    percentage = round((score / max_score) * 100, 1)
+
+    if percentage >= 80:
         strength = "High"
-    elif score >= 5:
+
+    elif percentage >= 60:
         strength = "Medium"
+
     else:
         strength = "Low"
 
     return {
+
         "Score": score,
+
         "Max Score": max_score,
+
+        "Percentage": percentage,
+
         "Strength": strength,
+
         "Aligned Modules": aligned,
+
         "Conflicting Modules": conflicting,
-        "Summary": f"{score}/{max_score} modules agree with the {bias.lower()} bias."
+
+        "Summary":
+        f"{score}/{max_score} ({percentage}%) confluence with {bias.lower()} bias."
+
     }
