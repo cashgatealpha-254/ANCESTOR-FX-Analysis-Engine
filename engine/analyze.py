@@ -32,6 +32,9 @@ from analysis.market_context import analyze_market_context
 from analysis.validation import validate_analysis
 from analysis.narrative import build_narrative
 from analysis.checklist import build_checklist
+from analysis.execution_quality import analyze_execution_quality
+from analysis.wait_signal import analyze_wait_signal
+from analysis.final_filter import final_filter
 
 from strategy.decision import DecisionEngine
 from strategy.execution import ExecutionEngine
@@ -336,6 +339,24 @@ def run_analysis(symbol):
 
         results["trade_allowed"] = risk["trade"]
         results["risk_reason"] = risk["reason"]
+
+        # --------------------------
+        # EXECUTION QUALITY
+        # --------------------------
+
+        results["execution_quality"] = analyze_execution_quality(results)
+
+        # --------------------------
+        # WAIT SIGNAL
+        # --------------------------
+
+        results["wait_signal"] = analyze_wait_signal(results)
+
+        # --------------------------
+        # WAIT SIGNAL
+        # --------------------------
+
+        results["final_filter"] = final_filter(results)
 
         # -------------------------
         # BUILD CHECKLIST
