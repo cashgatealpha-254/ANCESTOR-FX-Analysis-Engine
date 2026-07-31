@@ -35,6 +35,17 @@ from analysis.checklist import build_checklist
 from analysis.execution_quality import analyze_execution_quality
 from analysis.wait_signal import analyze_wait_signal
 from analysis.final_filter import final_filter
+from analysis.fresh_zone import analyze_fresh_zone
+from analysis.session_filter import analyze_session
+from analysis.trade_score import calculate_trade_score
+
+from analysis.market_memory import update_market_memory
+from analysis.continuation import analyze_continuation
+from analysis.stability import analyze_stability
+
+from analysis.setup_tracker import track_setup
+from analysis.reflection import reflect
+from analysis.improvement import analyze_improvement
 
 from strategy.decision import DecisionEngine
 from strategy.execution import ExecutionEngine
@@ -357,6 +368,29 @@ def run_analysis(symbol):
         # --------------------------
 
         results["final_filter"] = final_filter(results)
+
+        # --------------------------
+        # WAIT SIGNAL
+        # --------------------------
+
+        results["fresh_zone"] = analyze_fresh_zone(df, supply_demand)
+
+        results["session"] = analyze_session()
+
+        results["trade_score"] = calculate_trade_score(results)
+
+        results["market_memory"] = update_market_memory(results)
+
+        results["continuation"] = analyze_continuation(
+        results,
+        previous_results if "previous_results" in locals() else None
+        )
+
+        results["setup_tracker"] = track_setup(results)
+
+        results["reflection"] = reflect(results)
+
+        results["improvements"] = analyze_improvement(results)
 
         # -------------------------
         # BUILD CHECKLIST
