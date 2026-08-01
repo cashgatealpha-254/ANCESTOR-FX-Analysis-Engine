@@ -45,7 +45,10 @@ from analysis.stability import analyze_stability
 
 from analysis.setup_tracker import track_setup
 from analysis.reflection import reflect
-from analysis.improvement import analyze_improvement
+from analysis.improvement import analyze_improvements
+from analysis.strengths import analyze_strengths
+from analysis.watchlist import analyze_watchlist
+from analysis.coach import coach
 
 from strategy.decision import DecisionEngine
 from strategy.execution import ExecutionEngine
@@ -390,7 +393,13 @@ def run_analysis(symbol):
 
         results["reflection"] = reflect(results)
 
-        results["improvements"] = analyze_improvement(results)
+        results["improvements"] = analyze_improvements(results)
+
+        results["strengths"] = analyze_strengths(results)
+
+        results["watchlist"] = analyze_watchlist(results)
+
+        results["coach"] = coach(results)
 
         # -------------------------
         # BUILD CHECKLIST
