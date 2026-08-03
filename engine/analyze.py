@@ -1,6 +1,7 @@
 from analysis import supply_demand
 from analysis import liquidity
 from analysis import choch
+from brain.coach import CoachEngine
 from data.get_candles import get_candles
 
 from indicators import atr
@@ -64,6 +65,8 @@ from brain.risk_manager import check
 from brain.execution import execution_plan
 from brain.memory import MarketMemory
 from brain.adaptive_confidence import AdaptiveConfidence
+from brain.replay import ReplayEngine
+from brain.patterns import PatternEngine
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
@@ -97,6 +100,8 @@ execution_planner = ExecutionPlanner()
 journal = Journal()
 memory = MarketMemory()
 adaptive_engine = AdaptiveConfidence()
+replay_engine = ReplayEngine()
+pattern_engine = PatternEngine()
 save_analysis = save_analysis
 send_alert = send_alert
 
@@ -403,8 +408,6 @@ def run_analysis(symbol):
 
         results["watchlist"] = analyze_watchlist(results)
 
-        results["coach"] = coach(results)
-
         # -------------------------
         # BUILD CHECKLIST
         # -------------------------
@@ -444,9 +447,58 @@ def run_analysis(symbol):
 
         )
 
+        results["coach"] = CoachEngine().advise(results)
+        
+        results["coach_summary"] = CoachEngine().summary(results)
+
         results["best_conditions"] = memory.best_conditions()
 
         results["worst_conditions"] = memory.worst_conditions()
+
+        records = memory.load()
+
+        filters = {
+
+            "bias": results["market_bias"]["Market Bias"],
+
+            "zone": results["supply_demand"]["Current Zone"],
+
+            "liquidity": results["liquidity"]["Liquidity"]
+
+        }
+
+        results["replay_matches"] = replay_engine.search(
+            records,
+            filters
+        )
+
+        results["replay_statistics"] = replay_engine.statistics(
+            results["replay_matches"]
+        )
+
+        results["patterns"] = pattern_engine.analyze(
+            results["replay_matches"]
+        )
+
+        results["strongest_pattern"] = (
+
+        pattern_engine.strongest_pattern(
+
+            results["replay_matches"]
+        )
+        )
+
+    
+
+
+
+        results["weakest_pattern"] = (
+
+        pattern_engine.weakest_pattern(
+
+            results["replay_matches"]
+        )
+        )
 
         # -------------------------
         # SAVE ANALYSIS
