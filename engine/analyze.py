@@ -62,6 +62,8 @@ from brain.decision import decide
 from brain.advisor import explain
 from brain.risk_manager import check
 from brain.execution import execution_plan
+from brain.memory import MarketMemory
+from brain.adaptive_confidence import AdaptiveConfidence
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
@@ -93,6 +95,8 @@ risk_engine = RiskEngine()
 reasoning_engine = ReasoningEngine()
 execution_planner = ExecutionPlanner()
 journal = Journal()
+memory = MarketMemory()
+adaptive_engine = AdaptiveConfidence()
 save_analysis = save_analysis
 send_alert = send_alert
 
@@ -415,6 +419,34 @@ def run_analysis(symbol):
         results["reasoning"] = reasoning
 
         journal.save(results)
+
+        # --------------------------
+        # TRADE MEMORY
+        # --------------------------
+        send_alert("Updating Memory")
+
+        memory.record(results)
+
+        results["historical_probability"] = memory.historical_probability(results)
+
+        adaptive = adaptive_engine.calculate(
+
+            results["confidence"],
+
+            results["historical_probability"]
+        )
+
+        results["adaptive_confidence"] = adaptive
+
+        results["adaptive_recommendation"] = (
+
+        adaptive_engine.recommendation(adaptive)
+
+        )
+
+        results["best_conditions"] = memory.best_conditions()
+
+        results["worst_conditions"] = memory.worst_conditions()
 
         # -------------------------
         # SAVE ANALYSIS

@@ -1,0 +1,32 @@
+[
+    {
+        "symbol": "GBPUSD",
+        "bias": "SELL",
+        "trend": "Bearish",
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "zone": "Demand",
+        "liquidity": "No Sweep",
+        "strength": "Strong Bearish Structure",
+        "confidence": 0,
+        "decision": "IGNORE",
+        "grade": "NO TRADE",
+        "trade_allowed": false,
+        "outcome": "Pending"
+    },
+    {
+        "symbol": "GBPUSD",
+        "bias": "SELL",
+        "trend": "Bearish",
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "zone": "Demand",
+        "liquidity": "No Sweep",
+        "strength": "Strong Bearish Structure",
+        "confidence": 0,
+        "decision": "IGNORE",
+        "grade": "NO TRADE",
+        "trade_allowed": false,
+        "outcome": "Pending"
+    }
+]
