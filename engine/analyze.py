@@ -67,6 +67,11 @@ from brain.memory import MarketMemory
 from brain.adaptive_confidence import AdaptiveConfidence
 from brain.replay import ReplayEngine
 from brain.patterns import PatternEngine
+from brain.behavior import BehaviorEngine
+from brain.dna import TraderDNA
+from brain.evolution import StrategyEvolution 
+from brain.replay_studio import ReplayStudio
+from brain.intelligence import IntelligenceCore
 
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
@@ -102,6 +107,11 @@ memory = MarketMemory()
 adaptive_engine = AdaptiveConfidence()
 replay_engine = ReplayEngine()
 pattern_engine = PatternEngine()
+behavior_engine = BehaviorEngine()
+dna_engine = TraderDNA()
+evolution_engine = StrategyEvolution()
+replay_studio = ReplayStudio()
+intelligence = IntelligenceCore()
 save_analysis = save_analysis
 send_alert = send_alert
 
@@ -456,6 +466,94 @@ def run_analysis(symbol):
         results["worst_conditions"] = memory.worst_conditions()
 
         records = memory.load()
+
+        records = memory.load()
+
+        results["behaviour"] = behavior_engine.analyze(
+            records
+        )
+
+        results["behaviour_recommendation"] = (
+
+        behavior_engine.recommendation(
+
+             results["behaviour"]
+
+        )
+        )
+
+        records = memory.load()
+
+        results["trader_dna"] = dna_engine.analyze(
+            records
+        )
+
+        results["dna_summary"] = dna_engine.summary(
+            results["trader_dna"]
+        )
+
+        records = memory.load()
+
+        results["strategy_evolution"] = (
+
+            evolution_engine.analyze(
+
+                records
+            )
+        )
+
+        results["strongest_strategy"] = (
+
+            evolution_engine.strongest(
+
+        results["strategy_evolution"]
+            )
+        )
+
+    
+
+
+
+        results["weakest_strategy"] = (
+
+            evolution_engine.weakest(
+
+        results["strategy_evolution"]
+            )
+        )
+
+        records = memory.load()
+
+        results["timeline"] = replay_studio.latest(records)
+
+        results["last_trade"] = replay_studio.replay(
+
+            records,
+
+            len(records) - 1
+
+        )
+
+        results["intelligence"] = (
+
+        intelligence.summarize(results)
+
+        )
+
+        results["intelligence_score"] = (
+
+            intelligence.score(results)
+
+        )
+
+        results["final_recommendation"] = (
+
+            intelligence.recommendation(
+
+        results["intelligence_score"]
+
+            )
+        )
 
         filters = {
 
