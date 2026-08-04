@@ -1,3 +1,5 @@
+from venv import logger
+
 from analysis import supply_demand
 from analysis import liquidity
 from analysis import choch
@@ -73,6 +75,20 @@ from brain.evolution import StrategyEvolution
 from brain.replay_studio import ReplayStudio
 from brain.intelligence import IntelligenceCore
 
+from core.service_registry import ServiceRegistry
+from core.config import Config
+from core.logger import Logger
+from core.exceptions import (
+    MT5ConnectionError,
+    CandleDataError,
+    IndicatorError,
+    StrategyError,
+    MemoryError,
+    RiskError,
+    handle_exception
+)
+from core.container import Container
+
 from engine.confidence import calculate_confidence
 from engine.logger import save_analysis
 from engine.report import build as build_report
@@ -112,6 +128,7 @@ dna_engine = TraderDNA()
 evolution_engine = StrategyEvolution()
 replay_studio = ReplayStudio()
 intelligence = IntelligenceCore()
+container = Container()
 save_analysis = save_analysis
 send_alert = send_alert
 
@@ -132,6 +149,8 @@ def run_analysis(symbol):
         send_alert("❌ MT5 Connection Failed")
         return {"error": "Failed to connect to MT5"}
 
+    logger.info(f"Starting analysis for {symbol}")
+
     try:
 
         send_alert(f"📈 Fetching candles for {symbol}")
@@ -140,6 +159,8 @@ def run_analysis(symbol):
         # DATA
         # -------------------------
         df = get_candles(symbol.upper(), n=100)
+
+        logger.info(f"Retrieved candles for {symbol}")
 
         # -------------------------
         # INDICATORS
@@ -186,6 +207,8 @@ def run_analysis(symbol):
 
         market_structure = analyze_recent_structure(df)
 
+        logger.info(f"Analyzed market structure for {symbol}")
+
       # Get the zone safely
         current_zone = (
             supply_demand.get("Current Zone")
@@ -204,6 +227,8 @@ def run_analysis(symbol):
          market_structure["Structure"],
          current_zone
        )
+
+        logger.info(f"Market context analyzed for {symbol}")
         
         # -------------------------
         # BUILD RESULTS DICTIONARY
@@ -332,7 +357,7 @@ def run_analysis(symbol):
         send_alert("🧾 Generating Reasoning")
 
         reasoning = reasoning_engine.explain(results)
-        send_alert("✅ Analysis Complete")
+        logger.info("✅ Analysis Complete")
 
         # --------------------------
         # VALIDATION
@@ -427,7 +452,7 @@ def run_analysis(symbol):
         # --------------------------
         # TRADE JOURNAL
         # --------------------------
-        send_alert("Journalling")
+        logger.info("Journalling")
 
         results["reasoning"] = reasoning
 
@@ -436,7 +461,7 @@ def run_analysis(symbol):
         # --------------------------
         # TRADE MEMORY
         # --------------------------
-        send_alert("Updating Memory")
+        logger.info("Updating Memory")
 
         memory.record(results)
 
@@ -601,42 +626,42 @@ def run_analysis(symbol):
         # -------------------------
         # SAVE ANALYSIS
         # -------------------------
-        send_alert("Saving 🧾")
+        logger.info("Saving analysis")
 
         save_analysis(symbol, results)
 
         # -------------------------
         # SEND REPORT
         # -------------------------
-        send_alert("Reporting 🧾")
+        logger.info("Building report")
 
         results["report"] = build_report(results)
 
         # -------------------------
         # SEND VERDICT
         # -------------------------
-        send_alert("Verdicting 🛡️")
+        logger.info("Verdicting 🛡️")
 
         results["verdict"] = build_verdict(results["report"])
 
         # -------------------------
         # BUILD SUMMARY
         # -------------------------
-        send_alert("Summarizing 🧾")
+        logger.info("Summarizing 🧾")
 
         results["summary"] = build_summary(results)
 
         # -------------------------
         # ADDING HISTORY
         # -------------------------
-        send_alert("Adding History 🧾")
+        logger.info("Adding History 🧾")
 
         add_history(results)
 
         # -------------------------------
         # COMPARISON OF PREVIOUS RESULTS
         # -------------------------------
-        send_alert("Comparing 🧾")
+        logger.info("Comparing 🧾")
 
         previous_results = previous()
 
@@ -648,7 +673,7 @@ def run_analysis(symbol):
         # -------------------------------
         # UPDATING OF PREVIOUS RESULTS
         # -------------------------------
-        send_alert("Updating 🧾")
+        logger.info("Updating 🧾")
 
         update_session(results)
 
@@ -657,14 +682,27 @@ def run_analysis(symbol):
         # -------------------------------
         # PERFORMANCE UPDATING
         # -------------------------------
-        send_alert("Updating Performance 🧾")
+        logger.info("Updating Performance 🧾")
 
         success()
 
         results["engine_stats"] = stats()
 
+        logger.info("Analysis complete")
+
         return results
 
+    except Exception as e:
+
+        logger.error(f"Error during analysis: {e}")
+
+        failure()
+
+        results["engine_stats"] = stats()
+
+        return handle_exception(e)
+
     finally:
+     logger.info("🔌 Disconnecting MT5")
      disconnect_mt5()
-     send_alert("🔌 MT5 Disconnected")
+     logger.info("🔌 MT5 Disconnected")

@@ -83401,5 +83401,4432 @@
                 "Total Trades": 0
             }
         }
+    },
+    {
+        "time": "2026-08-05 01:38:29",
+        "symbol": "GBPUSD",
+        "results": {
+            "symbol": "GBPUSD",
+            "trend": {
+                "Trend": "Bullish",
+                "EMA20": 1.34504,
+                "EMA50": 1.3449
+            },
+            "rsi": {
+                "RSI": 52.0,
+                "Direction": "Falling",
+                "Territory": "Above 50"
+            },
+            "atr": {
+                "ATR": 5e-05,
+                "Volatility": "Increasing"
+            },
+            "market_bias": {
+                "Market Bias": "WAIT",
+                "Reason": "Transition"
+            },
+            "market_state": {
+                "Market State": "Transition"
+            },
+            "swings": {
+                "swing_highs": [
+                    {
+                        "index": 4,
+                        "time": 4,
+                        "price": 1.3452
+                    },
+                    {
+                        "index": 20,
+                        "time": 20,
+                        "price": 1.3450199999999999
+                    },
+                    {
+                        "index": 35,
+                        "time": 35,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 40,
+                        "time": 40,
+                        "price": 1.34445
+                    },
+                    {
+                        "index": 46,
+                        "time": 46,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 57,
+                        "time": 57,
+                        "price": 1.34485
+                    },
+                    {
+                        "index": 61,
+                        "time": 61,
+                        "price": 1.34501
+                    },
+                    {
+                        "index": 71,
+                        "time": 71,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 74,
+                        "time": 74,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 91,
+                        "time": 91,
+                        "price": 1.34506
+                    }
+                ],
+                "swing_lows": [
+                    {
+                        "index": 2,
+                        "time": 2,
+                        "price": 1.3449200000000001
+                    },
+                    {
+                        "index": 8,
+                        "time": 8,
+                        "price": 1.34416
+                    },
+                    {
+                        "index": 14,
+                        "time": 14,
+                        "price": 1.34424
+                    },
+                    {
+                        "index": 22,
+                        "time": 22,
+                        "price": 1.3437299999999999
+                    },
+                    {
+                        "index": 30,
+                        "time": 30,
+                        "price": 1.34424
+                    },
+                    {
+                        "index": 33,
+                        "time": 33,
+                        "price": 1.34428
+                    },
+                    {
+                        "index": 36,
+                        "time": 36,
+                        "price": 1.34398
+                    },
+                    {
+                        "index": 44,
+                        "time": 44,
+                        "price": 1.34429
+                    },
+                    {
+                        "index": 48,
+                        "time": 48,
+                        "price": 1.34422
+                    },
+                    {
+                        "index": 61,
+                        "time": 61,
+                        "price": 1.34427
+                    },
+                    {
+                        "index": 64,
+                        "time": 64,
+                        "price": 1.34449
+                    },
+                    {
+                        "index": 70,
+                        "time": 70,
+                        "price": 1.34477
+                    },
+                    {
+                        "index": 82,
+                        "time": 82,
+                        "price": 1.34493
+                    },
+                    {
+                        "index": 86,
+                        "time": 86,
+                        "price": 1.34494
+                    }
+                ]
+            },
+            "structure_memory": {
+                "Latest High": {
+                    "index": 91,
+                    "time": 91,
+                    "price": 1.34506
+                },
+                "Previous High": {
+                    "index": 74,
+                    "time": 74,
+                    "price": 1.34506
+                },
+                "Latest Low": {
+                    "index": 86,
+                    "time": 86,
+                    "price": 1.34494
+                },
+                "Previous Low": {
+                    "index": 82,
+                    "time": 82,
+                    "price": 1.34493
+                },
+                "Trend": "Sideways"
+            },
+            "protected_levels": {
+                "Protected High": null,
+                "Protected Low": null
+            },
+            "bos": {
+                "BOS": "No BOS",
+                "Last Swing High": 1.34506,
+                "Last Swing Low": 1.34494
+            },
+            "choch": {
+                "CHoCH": "No CHoCH"
+            },
+            "supply_demand": {
+                "Current Zone": "Supply",
+                "Supply Zone": {
+                    "high": 1.34506,
+                    "low": 1.34406
+                },
+                "Demand Zone": {
+                    "high": 1.34594,
+                    "low": 1.34494
+                }
+            },
+            "liquidity": {
+                "Liquidity": "No Sweep",
+                "Buy-side": 1.34506,
+                "Sell-side": 1.34494
+            },
+            "levels": {
+                "Support": 1.34493,
+                "Resistance": 1.34521,
+                "Current Price": 1.34505,
+                "Location": "Between Levels"
+            },
+            "market_structure": {
+                "Structure": "Higher High"
+            },
+            "structure_strength": {
+                "Structure Strength": "Weak / Transition"
+            },
+            "multi_timeframe": {
+                "H4 Trend": "Bullish",
+                "H1 Structure": "Higher High / Higher Low",
+                "M15 Structure": "Higher High / Higher Low",
+                "alignment": false
+            },
+            "market_context": {
+                "Context": "Reversal Watch",
+                "HTF Alignment": false
+            },
+            "support": 1.34493,
+            "resistance": 1.34521,
+            "confidence": 0,
+            "confluence": {
+                "Score": 2,
+                "Max Score": 16,
+                "Percentage": 12.5,
+                "Strength": "Low",
+                "Aligned Modules": [
+                    {
+                        "Module": "Supply & Demand",
+                        "Weight": 2
+                    }
+                ],
+                "Conflicting Modules": [
+                    {
+                        "Module": "Trend",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "BOS",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "CHoCH",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Liquidity",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Structure Memory",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Protected Levels",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure Strength",
+                        "Weight": 2
+                    }
+                ],
+                "Summary": "2/16 (12.5%) confluence with wait bias."
+            },
+            "grade": "NO TRADE",
+            "decision": "IGNORE",
+            "reasons": [
+                "Trend: {'Trend': 'Bullish', 'EMA20': np.float64(1.34504), 'EMA50': np.float64(1.3449)}",
+                "Market Bias: WAIT",
+                "Structure: Higher High",
+                "Supply/Demand Zone: Supply",
+                "Liquidity: No Sweep",
+                "BOS: No BOS",
+                "CHOCH: No CHoCH"
+            ],
+            "setup": {
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null,
+                "risk_reward": "1:5"
+            },
+            "execution_plan": {
+                "Status": "READY",
+                "Direction": {
+                    "decision": "WAIT",
+                    "analysis": {
+                        "trend": {
+                            "Trend": "Bullish",
+                            "EMA20": 1.34504,
+                            "EMA50": 1.3449
+                        },
+                        "market_bias": {
+                            "Market Bias": "WAIT",
+                            "Reason": "Transition"
+                        },
+                        "market_state": {
+                            "Market State": "Transition"
+                        },
+                        "market_structure": {
+                            "Structure": "Higher High"
+                        },
+                        "confidence": 65,
+                        "structure_memory": {
+                            "Latest High": {
+                                "index": 91,
+                                "time": 91,
+                                "price": 1.34506
+                            },
+                            "Previous High": {
+                                "index": 74,
+                                "time": 74,
+                                "price": 1.34506
+                            },
+                            "Latest Low": {
+                                "index": 86,
+                                "time": 86,
+                                "price": 1.34494
+                            },
+                            "Previous Low": {
+                                "index": 82,
+                                "time": 82,
+                                "price": 1.34493
+                            },
+                            "Trend": "Sideways"
+                        },
+                        "protected_levels": {
+                            "Protected High": null,
+                            "Protected Low": null
+                        },
+                        "structure_strength": {
+                            "Structure Strength": "Weak / Transition"
+                        }
+                    }
+                },
+                "Entry": null,
+                "Stop Loss": null,
+                "TP1": 100,
+                "TP2": 200,
+                "Positions": 2,
+                "Lot Size": 0.01,
+                "Management": {
+                    "TP1": "Close Position 1",
+                    "TP2": "Hold Position 2",
+                    "After TP1": "Move SL to Break Even"
+                }
+            },
+            "execution": {
+                "status": "WAIT",
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null
+            },
+            "narrative": "No strong confluence detected.",
+            "validation": {
+                "Valid": false,
+                "Errors": [
+                    "risk missing"
+                ]
+            },
+            "confidence_breakdown": {
+                "Trend": 0,
+                "Structure": 0,
+                "Zones": 0,
+                "Liquidity": 0,
+                "Momentum": 0
+            },
+            "trade_allowed": false,
+            "risk_reason": "Confidence below trading threshold.",
+            "execution_quality": {
+                "Score": 0,
+                "Max Score": 5,
+                "Quality": "Poor",
+                "Reasons": []
+            },
+            "wait_signal": {
+                "Signal": "WAIT",
+                "Reasons": [
+                    "Confidence below 70.",
+                    "Weak confluence.",
+                    "Poor execution quality.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "final_filter": {
+                "Passed": false,
+                "Reasons": [
+                    "Confidence too low.",
+                    "Execution quality insufficient.",
+                    "Wait signal active.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "fresh_zone": {
+                "Freshness": "Fresh"
+            },
+            "session": {
+                "Session": "Asian"
+            },
+            "trade_score": {
+                "Trade Score": 0
+            },
+            "market_memory": {
+                "Previous Bias": "WAIT",
+                "Previous Trend": "Bullish",
+                "Previous Structure": "Higher High",
+                "Previous Decision": "IGNORE"
+            },
+            "continuation": {
+                "Continuation": "Unknown"
+            },
+            "setup_tracker": {
+                "Bias": "WAIT",
+                "Confidence": 0,
+                "Grade": "NO TRADE",
+                "Decision": "IGNORE",
+                "Trade Score": 0
+            },
+            "reflection": {
+                "Reflection": [
+                    "Bias: WAIT",
+                    "Trend: Bullish",
+                    "Confidence: 0",
+                    "Trade Score: 0",
+                    "Decision: IGNORE"
+                ]
+            },
+            "improvements": {
+                "Improvements": [
+                    "Increase confidence before execution.",
+                    "Wait for stronger confluence.",
+                    "Risk conditions are not satisfied.",
+                    "Market bias is neutral. Wait.",
+                    "Wait for a Break Of Structure.",
+                    "No Change Of Character detected.",
+                    "Wait for liquidity sweep.",
+                    "No executable setup."
+                ]
+            },
+            "strengths": {
+                "Strengths": [
+                    "Trend is bullish."
+                ]
+            },
+            "watchlist": {
+                "Watchlist": [
+                    "Watch for bullish continuation.",
+                    "Watch for liquidity sweep.",
+                    "Watch for Break of Structure.",
+                    "Watch for Change of Character.",
+                    "Watch for bearish reaction in supply.",
+                    "No trade until risk conditions improve."
+                ]
+            },
+            "checklist": {
+                "Trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34504,
+                    "EMA50": 1.3449
+                },
+                "Market Bias": "WAIT",
+                "BOS": "No BOS",
+                "CHoCH": "No CHoCH",
+                "Liquidity": "No Sweep",
+                "Risk Allowed": false,
+                "Confidence": 0,
+                "Decision": "IGNORE"
+            },
+            "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+            "historical_probability": {
+                "Probability": 0.0,
+                "Wins": 0,
+                "Losses": 0,
+                "Sample Size": 4
+            },
+            "adaptive_confidence": {
+                "Current Confidence": 0,
+                "Historical Confidence": 0.0,
+                "Adaptive Confidence": 0,
+                "Confidence Level": "Very Low",
+                "Sample Size": 4,
+                "Wins": 0,
+                "Losses": 0,
+                "Confidence Weight": 0.7,
+                "History Weight": 0.3
+            },
+            "adaptive_recommendation": "Avoid trade. Wait for better confirmation.",
+            "coach": [
+                "Trade blocked by Risk Manager.",
+                "Weak setup. Preserve capital.",
+                "Break of Structure confirmed.",
+                "Change of Character detected.",
+                "Liquidity Event: No Sweep"
+            ],
+            "coach_summary": "IGNORE | Confidence: 0%",
+            "best_conditions": [],
+            "worst_conditions": [],
+            "behaviour": {
+                "Early Entries": 0,
+                "Late Entries": 0,
+                "Rule Violations": 0,
+                "Wins": 0,
+                "Losses": 0,
+                "Behaviour Score": 100
+            },
+            "behaviour_recommendation": "Excellent discipline.",
+            "trader_dna": {
+                "Preferred Bias": "WAIT",
+                "Preferred Pair": "GBPUSD",
+                "Preferred Session": null,
+                "Preferred Zone": "Supply",
+                "Preferred Grade": "NO TRADE",
+                "Average Duration": 0.0,
+                "Trading Style": "Scalper"
+            },
+            "dna_summary": "Scalper | GBPUSD | None",
+            "strategy_evolution": {
+                "SELL | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 8,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | Sell-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | Buy-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 1,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 3,
+                    "Win Rate": 0.0
+                }
+            },
+            "strongest_strategy": "SELL | Demand | No Sweep",
+            "weakest_strategy": "SELL | Demand | No Sweep",
+            "timeline": [
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "XAUUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "EURUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "Buy-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "USDJPY",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                }
+            ],
+            "last_trade": {
+                "symbol": "GBPUSD",
+                "bias": "WAIT",
+                "trend": "Bullish",
+                "bos": "No BOS",
+                "choch": "No CHoCH",
+                "zone": "Supply",
+                "liquidity": "No Sweep",
+                "strength": "Weak / Transition",
+                "confidence": 0,
+                "decision": "IGNORE",
+                "grade": "NO TRADE",
+                "trade_allowed": false,
+                "outcome": "Pending"
+            },
+            "intelligence": {
+                "Decision": "IGNORE",
+                "Confidence": 0,
+                "Behaviour": 100,
+                "DNA": "Scalper",
+                "Strongest Strategy": "SELL | Demand | No Sweep",
+                "Coach": "IGNORE | Confidence: 0%"
+            },
+            "intelligence_score": 30.0,
+            "final_recommendation": "Stand Aside",
+            "replay_matches": [
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "USDJPY",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                }
+            ],
+            "replay_statistics": {
+                "Total": 8,
+                "Wins": 0,
+                "Losses": 0,
+                "Pending": 8,
+                "Win Rate": 0.0
+            },
+            "patterns": {
+                "Most Common Bias": "WAIT",
+                "Most Common Zone": "Supply",
+                "Most Common Liquidity": "No Sweep",
+                "Best Grade": "NO TRADE",
+                "Total Trades": 8
+            },
+            "strongest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            },
+            "weakest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            }
+        }
+    },
+    {
+        "time": "2026-08-05 01:44:40",
+        "symbol": "GBPUSD",
+        "results": {
+            "symbol": "GBPUSD",
+            "trend": {
+                "Trend": "Bullish",
+                "EMA20": 1.3451,
+                "EMA50": 1.34496
+            },
+            "rsi": {
+                "RSI": 63.41,
+                "Direction": "Falling",
+                "Territory": "Above 50"
+            },
+            "atr": {
+                "ATR": 5e-05,
+                "Volatility": "Decreasing"
+            },
+            "market_bias": {
+                "Market Bias": "WAIT",
+                "Reason": "Transition"
+            },
+            "market_state": {
+                "Market State": "Transition"
+            },
+            "swings": {
+                "swing_highs": [
+                    {
+                        "index": 14,
+                        "time": 14,
+                        "price": 1.3450199999999999
+                    },
+                    {
+                        "index": 29,
+                        "time": 29,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 34,
+                        "time": 34,
+                        "price": 1.34445
+                    },
+                    {
+                        "index": 40,
+                        "time": 40,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 51,
+                        "time": 51,
+                        "price": 1.34485
+                    },
+                    {
+                        "index": 55,
+                        "time": 55,
+                        "price": 1.34501
+                    },
+                    {
+                        "index": 65,
+                        "time": 65,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 68,
+                        "time": 68,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 85,
+                        "time": 85,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 95,
+                        "time": 95,
+                        "price": 1.34522
+                    }
+                ],
+                "swing_lows": [
+                    {
+                        "index": 2,
+                        "time": 2,
+                        "price": 1.34416
+                    },
+                    {
+                        "index": 8,
+                        "time": 8,
+                        "price": 1.34424
+                    },
+                    {
+                        "index": 16,
+                        "time": 16,
+                        "price": 1.3437299999999999
+                    },
+                    {
+                        "index": 24,
+                        "time": 24,
+                        "price": 1.34424
+                    },
+                    {
+                        "index": 27,
+                        "time": 27,
+                        "price": 1.34428
+                    },
+                    {
+                        "index": 30,
+                        "time": 30,
+                        "price": 1.34398
+                    },
+                    {
+                        "index": 38,
+                        "time": 38,
+                        "price": 1.34429
+                    },
+                    {
+                        "index": 42,
+                        "time": 42,
+                        "price": 1.34422
+                    },
+                    {
+                        "index": 55,
+                        "time": 55,
+                        "price": 1.34427
+                    },
+                    {
+                        "index": 58,
+                        "time": 58,
+                        "price": 1.34449
+                    },
+                    {
+                        "index": 64,
+                        "time": 64,
+                        "price": 1.34477
+                    },
+                    {
+                        "index": 76,
+                        "time": 76,
+                        "price": 1.34493
+                    },
+                    {
+                        "index": 80,
+                        "time": 80,
+                        "price": 1.34494
+                    },
+                    {
+                        "index": 93,
+                        "time": 93,
+                        "price": 1.34505
+                    }
+                ]
+            },
+            "structure_memory": {
+                "Latest High": {
+                    "index": 95,
+                    "time": 95,
+                    "price": 1.34522
+                },
+                "Previous High": {
+                    "index": 85,
+                    "time": 85,
+                    "price": 1.34506
+                },
+                "Latest Low": {
+                    "index": 93,
+                    "time": 93,
+                    "price": 1.34505
+                },
+                "Previous Low": {
+                    "index": 80,
+                    "time": 80,
+                    "price": 1.34494
+                },
+                "Trend": "Bullish"
+            },
+            "protected_levels": {
+                "Protected High": null,
+                "Protected Low": {
+                    "index": 93,
+                    "time": 93,
+                    "price": 1.34505
+                }
+            },
+            "bos": {
+                "BOS": "No BOS",
+                "Last Swing High": 1.34522,
+                "Last Swing Low": 1.34505
+            },
+            "choch": {
+                "CHoCH": "No CHoCH"
+            },
+            "supply_demand": {
+                "Current Zone": "Supply",
+                "Supply Zone": {
+                    "high": 1.34522,
+                    "low": 1.34422
+                },
+                "Demand Zone": {
+                    "high": 1.34605,
+                    "low": 1.34505
+                }
+            },
+            "liquidity": {
+                "Liquidity": "No Sweep",
+                "Buy-side": 1.34522,
+                "Sell-side": 1.34505
+            },
+            "levels": {
+                "Support": 1.34494,
+                "Resistance": 1.34522,
+                "Current Price": 1.34514,
+                "Location": "Between Levels"
+            },
+            "market_structure": {
+                "Structure": "Lower High / Lower Low"
+            },
+            "structure_strength": {
+                "Structure Strength": "Strong Bullish Structure"
+            },
+            "multi_timeframe": {
+                "H4 Trend": "Bullish",
+                "H1 Structure": "Higher High / Higher Low",
+                "M15 Structure": "Higher High / Higher Low",
+                "alignment": false
+            },
+            "market_context": {
+                "Context": "Reversal Watch",
+                "HTF Alignment": false
+            },
+            "support": 1.34494,
+            "resistance": 1.34522,
+            "confidence": 0,
+            "confluence": {
+                "Score": 2,
+                "Max Score": 16,
+                "Percentage": 12.5,
+                "Strength": "Low",
+                "Aligned Modules": [
+                    {
+                        "Module": "Supply & Demand",
+                        "Weight": 2
+                    }
+                ],
+                "Conflicting Modules": [
+                    {
+                        "Module": "Trend",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "BOS",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "CHoCH",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Liquidity",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Structure Memory",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Protected Levels",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure Strength",
+                        "Weight": 2
+                    }
+                ],
+                "Summary": "2/16 (12.5%) confluence with wait bias."
+            },
+            "grade": "NO TRADE",
+            "decision": "IGNORE",
+            "reasons": [
+                "Trend: {'Trend': 'Bullish', 'EMA20': np.float64(1.3451), 'EMA50': np.float64(1.34496)}",
+                "Market Bias: WAIT",
+                "Structure: Lower High / Lower Low",
+                "Supply/Demand Zone: Supply",
+                "Liquidity: No Sweep",
+                "BOS: No BOS",
+                "CHOCH: No CHoCH"
+            ],
+            "setup": {
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null,
+                "risk_reward": "1:5"
+            },
+            "execution_plan": {
+                "Status": "READY",
+                "Direction": {
+                    "decision": "WAIT",
+                    "analysis": {
+                        "trend": {
+                            "Trend": "Bullish",
+                            "EMA20": 1.3451,
+                            "EMA50": 1.34496
+                        },
+                        "market_bias": {
+                            "Market Bias": "WAIT",
+                            "Reason": "Transition"
+                        },
+                        "market_state": {
+                            "Market State": "Transition"
+                        },
+                        "market_structure": {
+                            "Structure": "Lower High / Lower Low"
+                        },
+                        "confidence": 65,
+                        "structure_memory": {
+                            "Latest High": {
+                                "index": 95,
+                                "time": 95,
+                                "price": 1.34522
+                            },
+                            "Previous High": {
+                                "index": 85,
+                                "time": 85,
+                                "price": 1.34506
+                            },
+                            "Latest Low": {
+                                "index": 93,
+                                "time": 93,
+                                "price": 1.34505
+                            },
+                            "Previous Low": {
+                                "index": 80,
+                                "time": 80,
+                                "price": 1.34494
+                            },
+                            "Trend": "Bullish"
+                        },
+                        "protected_levels": {
+                            "Protected High": null,
+                            "Protected Low": {
+                                "index": 93,
+                                "time": 93,
+                                "price": 1.34505
+                            }
+                        },
+                        "structure_strength": {
+                            "Structure Strength": "Strong Bullish Structure"
+                        }
+                    }
+                },
+                "Entry": null,
+                "Stop Loss": null,
+                "TP1": 100,
+                "TP2": 200,
+                "Positions": 2,
+                "Lot Size": 0.01,
+                "Management": {
+                    "TP1": "Close Position 1",
+                    "TP2": "Hold Position 2",
+                    "After TP1": "Move SL to Break Even"
+                }
+            },
+            "execution": {
+                "status": "WAIT",
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null
+            },
+            "narrative": "No strong confluence detected.",
+            "validation": {
+                "Valid": false,
+                "Errors": [
+                    "risk missing"
+                ]
+            },
+            "confidence_breakdown": {
+                "Trend": 0,
+                "Structure": 0,
+                "Zones": 0,
+                "Liquidity": 0,
+                "Momentum": 0
+            },
+            "trade_allowed": false,
+            "risk_reason": "Confidence below trading threshold.",
+            "execution_quality": {
+                "Score": 0,
+                "Max Score": 5,
+                "Quality": "Poor",
+                "Reasons": []
+            },
+            "wait_signal": {
+                "Signal": "WAIT",
+                "Reasons": [
+                    "Confidence below 70.",
+                    "Weak confluence.",
+                    "Poor execution quality.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "final_filter": {
+                "Passed": false,
+                "Reasons": [
+                    "Confidence too low.",
+                    "Execution quality insufficient.",
+                    "Wait signal active.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "fresh_zone": {
+                "Freshness": "Fresh"
+            },
+            "session": {
+                "Session": "Asian"
+            },
+            "trade_score": {
+                "Trade Score": 0
+            },
+            "market_memory": {
+                "Previous Bias": "WAIT",
+                "Previous Trend": "Bullish",
+                "Previous Structure": "Lower High / Lower Low",
+                "Previous Decision": "IGNORE"
+            },
+            "continuation": {
+                "Continuation": "Unknown"
+            },
+            "setup_tracker": {
+                "Bias": "WAIT",
+                "Confidence": 0,
+                "Grade": "NO TRADE",
+                "Decision": "IGNORE",
+                "Trade Score": 0
+            },
+            "reflection": {
+                "Reflection": [
+                    "Bias: WAIT",
+                    "Trend: Bullish",
+                    "Confidence: 0",
+                    "Trade Score: 0",
+                    "Decision: IGNORE"
+                ]
+            },
+            "improvements": {
+                "Improvements": [
+                    "Increase confidence before execution.",
+                    "Wait for stronger confluence.",
+                    "Risk conditions are not satisfied.",
+                    "Market bias is neutral. Wait.",
+                    "Wait for a Break Of Structure.",
+                    "No Change Of Character detected.",
+                    "Wait for liquidity sweep.",
+                    "No executable setup."
+                ]
+            },
+            "strengths": {
+                "Strengths": [
+                    "Trend is bullish."
+                ]
+            },
+            "watchlist": {
+                "Watchlist": [
+                    "Watch for bullish continuation.",
+                    "Watch for liquidity sweep.",
+                    "Watch for Break of Structure.",
+                    "Watch for Change of Character.",
+                    "Watch for bearish reaction in supply.",
+                    "No trade until risk conditions improve."
+                ]
+            },
+            "checklist": {
+                "Trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.3451,
+                    "EMA50": 1.34496
+                },
+                "Market Bias": "WAIT",
+                "BOS": "No BOS",
+                "CHoCH": "No CHoCH",
+                "Liquidity": "No Sweep",
+                "Risk Allowed": false,
+                "Confidence": 0,
+                "Decision": "IGNORE"
+            },
+            "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+            "historical_probability": {
+                "Probability": 0.0,
+                "Wins": 0,
+                "Losses": 0,
+                "Sample Size": 5
+            },
+            "adaptive_confidence": {
+                "Current Confidence": 0,
+                "Historical Confidence": 0.0,
+                "Adaptive Confidence": 0,
+                "Confidence Level": "Very Low",
+                "Sample Size": 5,
+                "Wins": 0,
+                "Losses": 0,
+                "Confidence Weight": 0.7,
+                "History Weight": 0.3
+            },
+            "adaptive_recommendation": "Avoid trade. Wait for better confirmation.",
+            "coach": [
+                "Trade blocked by Risk Manager.",
+                "Weak setup. Preserve capital.",
+                "Break of Structure confirmed.",
+                "Change of Character detected.",
+                "Liquidity Event: No Sweep"
+            ],
+            "coach_summary": "IGNORE | Confidence: 0%",
+            "best_conditions": [],
+            "worst_conditions": [],
+            "behaviour": {
+                "Early Entries": 0,
+                "Late Entries": 0,
+                "Rule Violations": 0,
+                "Wins": 0,
+                "Losses": 0,
+                "Behaviour Score": 100
+            },
+            "behaviour_recommendation": "Excellent discipline.",
+            "trader_dna": {
+                "Preferred Bias": "WAIT",
+                "Preferred Pair": "GBPUSD",
+                "Preferred Session": null,
+                "Preferred Zone": "Supply",
+                "Preferred Grade": "NO TRADE",
+                "Average Duration": 0.0,
+                "Trading Style": "Scalper"
+            },
+            "dna_summary": "Scalper | GBPUSD | None",
+            "strategy_evolution": {
+                "SELL | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 9,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | Sell-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | Buy-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 1,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 3,
+                    "Win Rate": 0.0
+                }
+            },
+            "strongest_strategy": "SELL | Demand | No Sweep",
+            "weakest_strategy": "SELL | Demand | No Sweep",
+            "timeline": [
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "XAUUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "EURUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "Buy-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "USDJPY",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                }
+            ],
+            "last_trade": {
+                "symbol": "GBPUSD",
+                "bias": "WAIT",
+                "trend": "Bullish",
+                "bos": "No BOS",
+                "choch": "No CHoCH",
+                "zone": "Supply",
+                "liquidity": "No Sweep",
+                "strength": "Strong Bullish Structure",
+                "confidence": 0,
+                "decision": "IGNORE",
+                "grade": "NO TRADE",
+                "trade_allowed": false,
+                "outcome": "Pending"
+            },
+            "intelligence": {
+                "Decision": "IGNORE",
+                "Confidence": 0,
+                "Behaviour": 100,
+                "DNA": "Scalper",
+                "Strongest Strategy": "SELL | Demand | No Sweep",
+                "Coach": "IGNORE | Confidence: 0%"
+            },
+            "intelligence_score": 30.0,
+            "final_recommendation": "Stand Aside",
+            "replay_matches": [
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "USDJPY",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Supply",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                }
+            ],
+            "replay_statistics": {
+                "Total": 9,
+                "Wins": 0,
+                "Losses": 0,
+                "Pending": 9,
+                "Win Rate": 0.0
+            },
+            "patterns": {
+                "Most Common Bias": "WAIT",
+                "Most Common Zone": "Supply",
+                "Most Common Liquidity": "No Sweep",
+                "Best Grade": "NO TRADE",
+                "Total Trades": 9
+            },
+            "strongest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            },
+            "weakest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            }
+        }
+    },
+    {
+        "time": "2026-08-05 01:59:04",
+        "symbol": "GBPUSD",
+        "results": {
+            "symbol": "GBPUSD",
+            "trend": {
+                "Trend": "Bullish",
+                "EMA20": 1.34503,
+                "EMA50": 1.34498
+            },
+            "rsi": {
+                "RSI": 62.86,
+                "Direction": "Rising",
+                "Territory": "Above 50"
+            },
+            "atr": {
+                "ATR": 5e-05,
+                "Volatility": "Decreasing"
+            },
+            "market_bias": {
+                "Market Bias": "WAIT",
+                "Reason": "Transition"
+            },
+            "market_state": {
+                "Market State": "Transition"
+            },
+            "swings": {
+                "swing_highs": [
+                    {
+                        "index": 14,
+                        "time": 14,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 19,
+                        "time": 19,
+                        "price": 1.34445
+                    },
+                    {
+                        "index": 25,
+                        "time": 25,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 36,
+                        "time": 36,
+                        "price": 1.34485
+                    },
+                    {
+                        "index": 40,
+                        "time": 40,
+                        "price": 1.34501
+                    },
+                    {
+                        "index": 50,
+                        "time": 50,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 53,
+                        "time": 53,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 70,
+                        "time": 70,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 80,
+                        "time": 80,
+                        "price": 1.34522
+                    }
+                ],
+                "swing_lows": [
+                    {
+                        "index": 9,
+                        "time": 9,
+                        "price": 1.34424
+                    },
+                    {
+                        "index": 12,
+                        "time": 12,
+                        "price": 1.34428
+                    },
+                    {
+                        "index": 15,
+                        "time": 15,
+                        "price": 1.34398
+                    },
+                    {
+                        "index": 23,
+                        "time": 23,
+                        "price": 1.34429
+                    },
+                    {
+                        "index": 27,
+                        "time": 27,
+                        "price": 1.34422
+                    },
+                    {
+                        "index": 40,
+                        "time": 40,
+                        "price": 1.34427
+                    },
+                    {
+                        "index": 43,
+                        "time": 43,
+                        "price": 1.34449
+                    },
+                    {
+                        "index": 49,
+                        "time": 49,
+                        "price": 1.34477
+                    },
+                    {
+                        "index": 61,
+                        "time": 61,
+                        "price": 1.34493
+                    },
+                    {
+                        "index": 65,
+                        "time": 65,
+                        "price": 1.34494
+                    },
+                    {
+                        "index": 78,
+                        "time": 78,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 86,
+                        "time": 86,
+                        "price": 1.34487
+                    },
+                    {
+                        "index": 96,
+                        "time": 96,
+                        "price": 1.34496
+                    }
+                ]
+            },
+            "structure_memory": {
+                "Latest High": {
+                    "index": 80,
+                    "time": 80,
+                    "price": 1.34522
+                },
+                "Previous High": {
+                    "index": 70,
+                    "time": 70,
+                    "price": 1.34506
+                },
+                "Latest Low": {
+                    "index": 96,
+                    "time": 96,
+                    "price": 1.34496
+                },
+                "Previous Low": {
+                    "index": 86,
+                    "time": 86,
+                    "price": 1.34487
+                },
+                "Trend": "Bullish"
+            },
+            "protected_levels": {
+                "Protected High": null,
+                "Protected Low": {
+                    "index": 96,
+                    "time": 96,
+                    "price": 1.34496
+                }
+            },
+            "bos": {
+                "BOS": "No BOS",
+                "Last Swing High": 1.34522,
+                "Last Swing Low": 1.34496
+            },
+            "choch": {
+                "CHoCH": "No CHoCH"
+            },
+            "supply_demand": {
+                "Current Zone": "Demand",
+                "Supply Zone": {
+                    "high": 1.34522,
+                    "low": 1.34422
+                },
+                "Demand Zone": {
+                    "high": 1.34596,
+                    "low": 1.34496
+                }
+            },
+            "liquidity": {
+                "Liquidity": "No Sweep",
+                "Buy-side": 1.34522,
+                "Sell-side": 1.34496
+            },
+            "levels": {
+                "Support": 1.34487,
+                "Resistance": 1.34522,
+                "Current Price": 1.34505,
+                "Location": "Between Levels"
+            },
+            "market_structure": {
+                "Structure": "Sideways"
+            },
+            "structure_strength": {
+                "Structure Strength": "Strong Bullish Structure"
+            },
+            "multi_timeframe": {
+                "H4 Trend": "Bullish",
+                "H1 Structure": "Higher High / Higher Low",
+                "M15 Structure": "Lower High / Lower Low",
+                "alignment": false
+            },
+            "market_context": {
+                "Context": "Reversal Watch",
+                "HTF Alignment": false
+            },
+            "support": 1.34487,
+            "resistance": 1.34522,
+            "confidence": 0,
+            "confluence": {
+                "Score": 0,
+                "Max Score": 16,
+                "Percentage": 0.0,
+                "Strength": "Low",
+                "Aligned Modules": [],
+                "Conflicting Modules": [
+                    {
+                        "Module": "Trend",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "BOS",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "CHoCH",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Supply & Demand",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Liquidity",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Structure Memory",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Protected Levels",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure Strength",
+                        "Weight": 2
+                    }
+                ],
+                "Summary": "0/16 (0.0%) confluence with wait bias."
+            },
+            "grade": "NO TRADE",
+            "decision": "IGNORE",
+            "reasons": [
+                "Trend: {'Trend': 'Bullish', 'EMA20': np.float64(1.34503), 'EMA50': np.float64(1.34498)}",
+                "Market Bias: WAIT",
+                "Structure: Sideways",
+                "Supply/Demand Zone: Demand",
+                "Liquidity: No Sweep",
+                "BOS: No BOS",
+                "CHOCH: No CHoCH"
+            ],
+            "setup": {
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null,
+                "risk_reward": "1:5"
+            },
+            "execution_plan": {
+                "Status": "READY",
+                "Direction": {
+                    "decision": "WAIT",
+                    "analysis": {
+                        "trend": {
+                            "Trend": "Bullish",
+                            "EMA20": 1.34503,
+                            "EMA50": 1.34498
+                        },
+                        "market_bias": {
+                            "Market Bias": "WAIT",
+                            "Reason": "Transition"
+                        },
+                        "market_state": {
+                            "Market State": "Transition"
+                        },
+                        "market_structure": {
+                            "Structure": "Sideways"
+                        },
+                        "confidence": 65,
+                        "structure_memory": {
+                            "Latest High": {
+                                "index": 80,
+                                "time": 80,
+                                "price": 1.34522
+                            },
+                            "Previous High": {
+                                "index": 70,
+                                "time": 70,
+                                "price": 1.34506
+                            },
+                            "Latest Low": {
+                                "index": 96,
+                                "time": 96,
+                                "price": 1.34496
+                            },
+                            "Previous Low": {
+                                "index": 86,
+                                "time": 86,
+                                "price": 1.34487
+                            },
+                            "Trend": "Bullish"
+                        },
+                        "protected_levels": {
+                            "Protected High": null,
+                            "Protected Low": {
+                                "index": 96,
+                                "time": 96,
+                                "price": 1.34496
+                            }
+                        },
+                        "structure_strength": {
+                            "Structure Strength": "Strong Bullish Structure"
+                        }
+                    }
+                },
+                "Entry": null,
+                "Stop Loss": null,
+                "TP1": 100,
+                "TP2": 200,
+                "Positions": 2,
+                "Lot Size": 0.01,
+                "Management": {
+                    "TP1": "Close Position 1",
+                    "TP2": "Hold Position 2",
+                    "After TP1": "Move SL to Break Even"
+                }
+            },
+            "execution": {
+                "status": "WAIT",
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null
+            },
+            "narrative": "No strong confluence detected.",
+            "validation": {
+                "Valid": false,
+                "Errors": [
+                    "risk missing"
+                ]
+            },
+            "confidence_breakdown": {
+                "Trend": 0,
+                "Structure": 0,
+                "Zones": 0,
+                "Liquidity": 0,
+                "Momentum": 0
+            },
+            "trade_allowed": false,
+            "risk_reason": "Confidence below trading threshold.",
+            "execution_quality": {
+                "Score": 0,
+                "Max Score": 5,
+                "Quality": "Poor",
+                "Reasons": []
+            },
+            "wait_signal": {
+                "Signal": "WAIT",
+                "Reasons": [
+                    "Confidence below 70.",
+                    "Weak confluence.",
+                    "Poor execution quality.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "final_filter": {
+                "Passed": false,
+                "Reasons": [
+                    "Confidence too low.",
+                    "Execution quality insufficient.",
+                    "Wait signal active.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "fresh_zone": {
+                "Freshness": "Fresh"
+            },
+            "session": {
+                "Session": "Asian"
+            },
+            "trade_score": {
+                "Trade Score": 0
+            },
+            "market_memory": {
+                "Previous Bias": "WAIT",
+                "Previous Trend": "Bullish",
+                "Previous Structure": "Sideways",
+                "Previous Decision": "IGNORE"
+            },
+            "continuation": {
+                "Continuation": "Unknown"
+            },
+            "setup_tracker": {
+                "Bias": "WAIT",
+                "Confidence": 0,
+                "Grade": "NO TRADE",
+                "Decision": "IGNORE",
+                "Trade Score": 0
+            },
+            "reflection": {
+                "Reflection": [
+                    "Bias: WAIT",
+                    "Trend: Bullish",
+                    "Confidence: 0",
+                    "Trade Score: 0",
+                    "Decision: IGNORE"
+                ]
+            },
+            "improvements": {
+                "Improvements": [
+                    "Increase confidence before execution.",
+                    "Wait for stronger confluence.",
+                    "Risk conditions are not satisfied.",
+                    "Market bias is neutral. Wait.",
+                    "Wait for a Break Of Structure.",
+                    "No Change Of Character detected.",
+                    "Wait for liquidity sweep.",
+                    "No executable setup."
+                ]
+            },
+            "strengths": {
+                "Strengths": [
+                    "Trend is bullish."
+                ]
+            },
+            "watchlist": {
+                "Watchlist": [
+                    "Watch for bullish continuation.",
+                    "Watch for liquidity sweep.",
+                    "Watch for Break of Structure.",
+                    "Watch for Change of Character.",
+                    "Watch for bullish reaction in demand.",
+                    "No trade until risk conditions improve."
+                ]
+            },
+            "checklist": {
+                "Trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34503,
+                    "EMA50": 1.34498
+                },
+                "Market Bias": "WAIT",
+                "BOS": "No BOS",
+                "CHoCH": "No CHoCH",
+                "Liquidity": "No Sweep",
+                "Risk Allowed": false,
+                "Confidence": 0,
+                "Decision": "IGNORE"
+            },
+            "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+            "historical_probability": {
+                "Probability": 0.0,
+                "Wins": 0,
+                "Losses": 0,
+                "Sample Size": 1
+            },
+            "adaptive_confidence": {
+                "Current Confidence": 0,
+                "Historical Confidence": 0.0,
+                "Adaptive Confidence": 0,
+                "Confidence Level": "Very Low",
+                "Sample Size": 1,
+                "Wins": 0,
+                "Losses": 0,
+                "Confidence Weight": 0.7,
+                "History Weight": 0.3
+            },
+            "adaptive_recommendation": "Avoid trade. Wait for better confirmation.",
+            "coach": [
+                "Trade blocked by Risk Manager.",
+                "Weak setup. Preserve capital.",
+                "Break of Structure confirmed.",
+                "Change of Character detected.",
+                "Liquidity Event: No Sweep"
+            ],
+            "coach_summary": "IGNORE | Confidence: 0%",
+            "best_conditions": [],
+            "worst_conditions": [],
+            "behaviour": {
+                "Early Entries": 0,
+                "Late Entries": 0,
+                "Rule Violations": 0,
+                "Wins": 0,
+                "Losses": 0,
+                "Behaviour Score": 100
+            },
+            "behaviour_recommendation": "Excellent discipline.",
+            "trader_dna": {
+                "Preferred Bias": "WAIT",
+                "Preferred Pair": "GBPUSD",
+                "Preferred Session": null,
+                "Preferred Zone": "Supply",
+                "Preferred Grade": "NO TRADE",
+                "Average Duration": 0.0,
+                "Trading Style": "Scalper"
+            },
+            "dna_summary": "Scalper | GBPUSD | None",
+            "strategy_evolution": {
+                "SELL | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 9,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | Sell-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | Buy-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 1,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 4,
+                    "Win Rate": 0.0
+                }
+            },
+            "strongest_strategy": "SELL | Demand | No Sweep",
+            "weakest_strategy": "SELL | Demand | No Sweep",
+            "timeline": [
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "XAUUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "EURUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "Buy-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "USDJPY",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                }
+            ],
+            "last_trade": {
+                "symbol": "GBPUSD",
+                "bias": "WAIT",
+                "trend": "Bullish",
+                "bos": "No BOS",
+                "choch": "No CHoCH",
+                "zone": "Demand",
+                "liquidity": "No Sweep",
+                "strength": "Strong Bullish Structure",
+                "confidence": 0,
+                "decision": "IGNORE",
+                "grade": "NO TRADE",
+                "trade_allowed": false,
+                "outcome": "Pending"
+            },
+            "intelligence": {
+                "Decision": "IGNORE",
+                "Confidence": 0,
+                "Behaviour": 100,
+                "DNA": "Scalper",
+                "Strongest Strategy": "SELL | Demand | No Sweep",
+                "Coach": "IGNORE | Confidence: 0%"
+            },
+            "intelligence_score": 30.0,
+            "final_recommendation": "Stand Aside",
+            "replay_matches": [
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                }
+            ],
+            "replay_statistics": {
+                "Total": 4,
+                "Wins": 0,
+                "Losses": 0,
+                "Pending": 4,
+                "Win Rate": 0.0
+            },
+            "patterns": {
+                "Most Common Bias": "WAIT",
+                "Most Common Zone": "Demand",
+                "Most Common Liquidity": "No Sweep",
+                "Best Grade": "NO TRADE",
+                "Total Trades": 4
+            },
+            "strongest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            },
+            "weakest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            }
+        }
+    },
+    {
+        "time": "2026-08-05 02:04:37",
+        "symbol": "GBPUSD",
+        "results": {
+            "symbol": "GBPUSD",
+            "trend": {
+                "Trend": "Bullish",
+                "EMA20": 1.34497,
+                "EMA50": 1.34495
+            },
+            "rsi": {
+                "RSI": 33.33,
+                "Direction": "Falling",
+                "Territory": "Below 50"
+            },
+            "atr": {
+                "ATR": 6e-05,
+                "Volatility": "Decreasing"
+            },
+            "market_bias": {
+                "Market Bias": "WAIT",
+                "Reason": "Transition"
+            },
+            "market_state": {
+                "Market State": "Transition"
+            },
+            "swings": {
+                "swing_highs": [
+                    {
+                        "index": 9,
+                        "time": 9,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 14,
+                        "time": 14,
+                        "price": 1.34445
+                    },
+                    {
+                        "index": 20,
+                        "time": 20,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 31,
+                        "time": 31,
+                        "price": 1.34485
+                    },
+                    {
+                        "index": 35,
+                        "time": 35,
+                        "price": 1.34501
+                    },
+                    {
+                        "index": 45,
+                        "time": 45,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 48,
+                        "time": 48,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 65,
+                        "time": 65,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 75,
+                        "time": 75,
+                        "price": 1.34522
+                    },
+                    {
+                        "index": 94,
+                        "time": 94,
+                        "price": 1.34512
+                    }
+                ],
+                "swing_lows": [
+                    {
+                        "index": 4,
+                        "time": 4,
+                        "price": 1.34424
+                    },
+                    {
+                        "index": 7,
+                        "time": 7,
+                        "price": 1.34428
+                    },
+                    {
+                        "index": 10,
+                        "time": 10,
+                        "price": 1.34398
+                    },
+                    {
+                        "index": 18,
+                        "time": 18,
+                        "price": 1.34429
+                    },
+                    {
+                        "index": 22,
+                        "time": 22,
+                        "price": 1.34422
+                    },
+                    {
+                        "index": 35,
+                        "time": 35,
+                        "price": 1.34427
+                    },
+                    {
+                        "index": 38,
+                        "time": 38,
+                        "price": 1.34449
+                    },
+                    {
+                        "index": 44,
+                        "time": 44,
+                        "price": 1.34477
+                    },
+                    {
+                        "index": 56,
+                        "time": 56,
+                        "price": 1.34493
+                    },
+                    {
+                        "index": 60,
+                        "time": 60,
+                        "price": 1.34494
+                    },
+                    {
+                        "index": 73,
+                        "time": 73,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 81,
+                        "time": 81,
+                        "price": 1.34487
+                    },
+                    {
+                        "index": 91,
+                        "time": 91,
+                        "price": 1.34496
+                    }
+                ]
+            },
+            "structure_memory": {
+                "Latest High": {
+                    "index": 94,
+                    "time": 94,
+                    "price": 1.34512
+                },
+                "Previous High": {
+                    "index": 75,
+                    "time": 75,
+                    "price": 1.34522
+                },
+                "Latest Low": {
+                    "index": 91,
+                    "time": 91,
+                    "price": 1.34496
+                },
+                "Previous Low": {
+                    "index": 81,
+                    "time": 81,
+                    "price": 1.34487
+                },
+                "Trend": "Sideways"
+            },
+            "protected_levels": {
+                "Protected High": null,
+                "Protected Low": null
+            },
+            "bos": {
+                "BOS": "Bearish BOS",
+                "Last Swing High": 1.34512,
+                "Last Swing Low": 1.34496
+            },
+            "choch": {
+                "CHoCH": "No CHoCH"
+            },
+            "supply_demand": {
+                "Current Zone": "Demand",
+                "Supply Zone": {
+                    "high": 1.34512,
+                    "low": 1.34412
+                },
+                "Demand Zone": {
+                    "high": 1.34596,
+                    "low": 1.34496
+                }
+            },
+            "liquidity": {
+                "Liquidity": "Sell-side Liquidity Swept",
+                "Buy-side": 1.34512,
+                "Sell-side": 1.34496
+            },
+            "levels": {
+                "Support": 1.34474,
+                "Resistance": 1.34515,
+                "Current Price": 1.34482,
+                "Location": "Between Levels"
+            },
+            "market_structure": {
+                "Structure": "Sideways"
+            },
+            "structure_strength": {
+                "Structure Strength": "Weak / Transition"
+            },
+            "multi_timeframe": {
+                "H4 Trend": "Bullish",
+                "H1 Structure": "Sideways",
+                "M15 Structure": "Lower High / Lower Low",
+                "alignment": false
+            },
+            "market_context": {
+                "Context": "Reversal Watch",
+                "HTF Alignment": false
+            },
+            "support": 1.34474,
+            "resistance": 1.34515,
+            "confidence": 0,
+            "confluence": {
+                "Score": 2,
+                "Max Score": 16,
+                "Percentage": 12.5,
+                "Strength": "Low",
+                "Aligned Modules": [
+                    {
+                        "Module": "BOS",
+                        "Weight": 2
+                    }
+                ],
+                "Conflicting Modules": [
+                    {
+                        "Module": "Trend",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "CHoCH",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Supply & Demand",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Liquidity",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Structure Memory",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Protected Levels",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure Strength",
+                        "Weight": 2
+                    }
+                ],
+                "Summary": "2/16 (12.5%) confluence with wait bias."
+            },
+            "grade": "NO TRADE",
+            "decision": "IGNORE",
+            "reasons": [
+                "Trend: {'Trend': 'Bullish', 'EMA20': np.float64(1.34497), 'EMA50': np.float64(1.34495)}",
+                "Market Bias: WAIT",
+                "Structure: Sideways",
+                "Supply/Demand Zone: Demand",
+                "Liquidity: Sell-side Liquidity Swept",
+                "BOS: Bearish BOS",
+                "CHOCH: No CHoCH"
+            ],
+            "setup": {
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null,
+                "risk_reward": "1:5"
+            },
+            "execution_plan": {
+                "Status": "READY",
+                "Direction": {
+                    "decision": "WAIT",
+                    "analysis": {
+                        "trend": {
+                            "Trend": "Bullish",
+                            "EMA20": 1.34497,
+                            "EMA50": 1.34495
+                        },
+                        "market_bias": {
+                            "Market Bias": "WAIT",
+                            "Reason": "Transition"
+                        },
+                        "market_state": {
+                            "Market State": "Transition"
+                        },
+                        "market_structure": {
+                            "Structure": "Sideways"
+                        },
+                        "confidence": 65,
+                        "structure_memory": {
+                            "Latest High": {
+                                "index": 94,
+                                "time": 94,
+                                "price": 1.34512
+                            },
+                            "Previous High": {
+                                "index": 75,
+                                "time": 75,
+                                "price": 1.34522
+                            },
+                            "Latest Low": {
+                                "index": 91,
+                                "time": 91,
+                                "price": 1.34496
+                            },
+                            "Previous Low": {
+                                "index": 81,
+                                "time": 81,
+                                "price": 1.34487
+                            },
+                            "Trend": "Sideways"
+                        },
+                        "protected_levels": {
+                            "Protected High": null,
+                            "Protected Low": null
+                        },
+                        "structure_strength": {
+                            "Structure Strength": "Weak / Transition"
+                        }
+                    }
+                },
+                "Entry": null,
+                "Stop Loss": null,
+                "TP1": 100,
+                "TP2": 200,
+                "Positions": 2,
+                "Lot Size": 0.01,
+                "Management": {
+                    "TP1": "Close Position 1",
+                    "TP2": "Hold Position 2",
+                    "After TP1": "Move SL to Break Even"
+                }
+            },
+            "execution": {
+                "status": "WAIT",
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null
+            },
+            "narrative": "No strong confluence detected.",
+            "validation": {
+                "Valid": false,
+                "Errors": [
+                    "risk missing"
+                ]
+            },
+            "confidence_breakdown": {
+                "Trend": 0,
+                "Structure": 0,
+                "Zones": 0,
+                "Liquidity": 0,
+                "Momentum": 0
+            },
+            "trade_allowed": false,
+            "risk_reason": "Confidence below trading threshold.",
+            "execution_quality": {
+                "Score": 0,
+                "Max Score": 5,
+                "Quality": "Poor",
+                "Reasons": []
+            },
+            "wait_signal": {
+                "Signal": "WAIT",
+                "Reasons": [
+                    "Confidence below 70.",
+                    "Weak confluence.",
+                    "Poor execution quality.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "final_filter": {
+                "Passed": false,
+                "Reasons": [
+                    "Confidence too low.",
+                    "Execution quality insufficient.",
+                    "Wait signal active.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "fresh_zone": {
+                "Freshness": "Fresh"
+            },
+            "session": {
+                "Session": "Asian"
+            },
+            "trade_score": {
+                "Trade Score": 0
+            },
+            "market_memory": {
+                "Previous Bias": "WAIT",
+                "Previous Trend": "Bullish",
+                "Previous Structure": "Sideways",
+                "Previous Decision": "IGNORE"
+            },
+            "continuation": {
+                "Continuation": "Unknown"
+            },
+            "setup_tracker": {
+                "Bias": "WAIT",
+                "Confidence": 0,
+                "Grade": "NO TRADE",
+                "Decision": "IGNORE",
+                "Trade Score": 0
+            },
+            "reflection": {
+                "Reflection": [
+                    "Bias: WAIT",
+                    "Trend: Bullish",
+                    "Confidence: 0",
+                    "Trade Score: 0",
+                    "Decision: IGNORE"
+                ]
+            },
+            "improvements": {
+                "Improvements": [
+                    "Increase confidence before execution.",
+                    "Wait for stronger confluence.",
+                    "Risk conditions are not satisfied.",
+                    "Market bias is neutral. Wait.",
+                    "No Change Of Character detected.",
+                    "No executable setup."
+                ]
+            },
+            "strengths": {
+                "Strengths": [
+                    "Trend is bullish.",
+                    "Break of Structure confirmed.",
+                    "Liquidity sweep detected."
+                ]
+            },
+            "watchlist": {
+                "Watchlist": [
+                    "Watch for bullish continuation.",
+                    "Watch for Change of Character.",
+                    "Watch for bullish reaction in demand.",
+                    "No trade until risk conditions improve."
+                ]
+            },
+            "checklist": {
+                "Trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34497,
+                    "EMA50": 1.34495
+                },
+                "Market Bias": "WAIT",
+                "BOS": "Bearish BOS",
+                "CHoCH": "No CHoCH",
+                "Liquidity": "Sell-side Liquidity Swept",
+                "Risk Allowed": false,
+                "Confidence": 0,
+                "Decision": "IGNORE"
+            },
+            "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+            "historical_probability": {
+                "Probability": 0.0,
+                "Wins": 0,
+                "Losses": 0,
+                "Sample Size": 2
+            },
+            "adaptive_confidence": {
+                "Current Confidence": 0,
+                "Historical Confidence": 0.0,
+                "Adaptive Confidence": 0,
+                "Confidence Level": "Very Low",
+                "Sample Size": 2,
+                "Wins": 0,
+                "Losses": 0,
+                "Confidence Weight": 0.7,
+                "History Weight": 0.3
+            },
+            "adaptive_recommendation": "Avoid trade. Wait for better confirmation.",
+            "coach": [
+                "Trade blocked by Risk Manager.",
+                "Weak setup. Preserve capital.",
+                "Break of Structure confirmed.",
+                "Change of Character detected.",
+                "Liquidity Event: Sell-side Liquidity Swept"
+            ],
+            "coach_summary": "IGNORE | Confidence: 0%",
+            "best_conditions": [],
+            "worst_conditions": [],
+            "behaviour": {
+                "Early Entries": 0,
+                "Late Entries": 0,
+                "Rule Violations": 0,
+                "Wins": 0,
+                "Losses": 0,
+                "Behaviour Score": 100
+            },
+            "behaviour_recommendation": "Excellent discipline.",
+            "trader_dna": {
+                "Preferred Bias": "WAIT",
+                "Preferred Pair": "GBPUSD",
+                "Preferred Session": null,
+                "Preferred Zone": "Supply",
+                "Preferred Grade": "NO TRADE",
+                "Average Duration": 0.0,
+                "Trading Style": "Scalper"
+            },
+            "dna_summary": "Scalper | GBPUSD | None",
+            "strategy_evolution": {
+                "SELL | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 9,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | Sell-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 3,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | Buy-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 1,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 4,
+                    "Win Rate": 0.0
+                }
+            },
+            "strongest_strategy": "SELL | Demand | No Sweep",
+            "weakest_strategy": "SELL | Demand | No Sweep",
+            "timeline": [
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "XAUUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "EURUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "Buy-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "USDJPY",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                }
+            ],
+            "last_trade": {
+                "symbol": "GBPUSD",
+                "bias": "WAIT",
+                "trend": "Bullish",
+                "bos": "Bearish BOS",
+                "choch": "No CHoCH",
+                "zone": "Demand",
+                "liquidity": "Sell-side Liquidity Swept",
+                "strength": "Weak / Transition",
+                "confidence": 0,
+                "decision": "IGNORE",
+                "grade": "NO TRADE",
+                "trade_allowed": false,
+                "outcome": "Pending"
+            },
+            "intelligence": {
+                "Decision": "IGNORE",
+                "Confidence": 0,
+                "Behaviour": 100,
+                "DNA": "Scalper",
+                "Strongest Strategy": "SELL | Demand | No Sweep",
+                "Coach": "IGNORE | Confidence: 0%"
+            },
+            "intelligence_score": 30.0,
+            "final_recommendation": "Stand Aside",
+            "replay_matches": [
+                {
+                    "symbol": "XAUUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "Bearish BOS",
+                    "choch": "Bearish CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "Sell-side Liquidity Swept",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "Bearish BOS",
+                    "choch": "Bearish CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "Sell-side Liquidity Swept",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "Bearish BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "Sell-side Liquidity Swept",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                }
+            ],
+            "replay_statistics": {
+                "Total": 3,
+                "Wins": 0,
+                "Losses": 0,
+                "Pending": 3,
+                "Win Rate": 0.0
+            },
+            "patterns": {
+                "Most Common Bias": "WAIT",
+                "Most Common Zone": "Demand",
+                "Most Common Liquidity": "Sell-side Liquidity Swept",
+                "Best Grade": "NO TRADE",
+                "Total Trades": 3
+            },
+            "strongest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            },
+            "weakest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            }
+        }
+    },
+    {
+        "time": "2026-08-05 02:12:59",
+        "symbol": "GBPUSD",
+        "results": {
+            "symbol": "GBPUSD",
+            "trend": {
+                "Trend": "Bullish",
+                "EMA20": 1.34502,
+                "EMA50": 1.34498
+            },
+            "rsi": {
+                "RSI": 49.35,
+                "Direction": "Rising",
+                "Territory": "Below 50"
+            },
+            "atr": {
+                "ATR": 9e-05,
+                "Volatility": "Decreasing"
+            },
+            "market_bias": {
+                "Market Bias": "WAIT",
+                "Reason": "Transition"
+            },
+            "market_state": {
+                "Market State": "Transition"
+            },
+            "swings": {
+                "swing_highs": [
+                    {
+                        "index": 6,
+                        "time": 6,
+                        "price": 1.34445
+                    },
+                    {
+                        "index": 12,
+                        "time": 12,
+                        "price": 1.34444
+                    },
+                    {
+                        "index": 23,
+                        "time": 23,
+                        "price": 1.34485
+                    },
+                    {
+                        "index": 27,
+                        "time": 27,
+                        "price": 1.34501
+                    },
+                    {
+                        "index": 37,
+                        "time": 37,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 40,
+                        "time": 40,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 57,
+                        "time": 57,
+                        "price": 1.34506
+                    },
+                    {
+                        "index": 67,
+                        "time": 67,
+                        "price": 1.34522
+                    },
+                    {
+                        "index": 86,
+                        "time": 86,
+                        "price": 1.34512
+                    },
+                    {
+                        "index": 94,
+                        "time": 94,
+                        "price": 1.34513
+                    },
+                    {
+                        "index": 97,
+                        "time": 97,
+                        "price": 1.34513
+                    }
+                ],
+                "swing_lows": [
+                    {
+                        "index": 2,
+                        "time": 2,
+                        "price": 1.34398
+                    },
+                    {
+                        "index": 10,
+                        "time": 10,
+                        "price": 1.34429
+                    },
+                    {
+                        "index": 14,
+                        "time": 14,
+                        "price": 1.34422
+                    },
+                    {
+                        "index": 27,
+                        "time": 27,
+                        "price": 1.34427
+                    },
+                    {
+                        "index": 30,
+                        "time": 30,
+                        "price": 1.34449
+                    },
+                    {
+                        "index": 36,
+                        "time": 36,
+                        "price": 1.34477
+                    },
+                    {
+                        "index": 48,
+                        "time": 48,
+                        "price": 1.34493
+                    },
+                    {
+                        "index": 52,
+                        "time": 52,
+                        "price": 1.34494
+                    },
+                    {
+                        "index": 65,
+                        "time": 65,
+                        "price": 1.34505
+                    },
+                    {
+                        "index": 73,
+                        "time": 73,
+                        "price": 1.34487
+                    },
+                    {
+                        "index": 83,
+                        "time": 83,
+                        "price": 1.34496
+                    },
+                    {
+                        "index": 90,
+                        "time": 90,
+                        "price": 1.34474
+                    },
+                    {
+                        "index": 97,
+                        "time": 97,
+                        "price": 1.34498
+                    }
+                ]
+            },
+            "structure_memory": {
+                "Latest High": {
+                    "index": 97,
+                    "time": 97,
+                    "price": 1.34513
+                },
+                "Previous High": {
+                    "index": 94,
+                    "time": 94,
+                    "price": 1.34513
+                },
+                "Latest Low": {
+                    "index": 97,
+                    "time": 97,
+                    "price": 1.34498
+                },
+                "Previous Low": {
+                    "index": 90,
+                    "time": 90,
+                    "price": 1.34474
+                },
+                "Trend": "Sideways"
+            },
+            "protected_levels": {
+                "Protected High": null,
+                "Protected Low": null
+            },
+            "bos": {
+                "BOS": "No BOS",
+                "Last Swing High": 1.34513,
+                "Last Swing Low": 1.34498
+            },
+            "choch": {
+                "CHoCH": "No CHoCH"
+            },
+            "supply_demand": {
+                "Current Zone": "Demand",
+                "Supply Zone": {
+                    "high": 1.34513,
+                    "low": 1.34413
+                },
+                "Demand Zone": {
+                    "high": 1.34598,
+                    "low": 1.34498
+                }
+            },
+            "liquidity": {
+                "Liquidity": "No Sweep",
+                "Buy-side": 1.34513,
+                "Sell-side": 1.34498
+            },
+            "levels": {
+                "Support": 1.34474,
+                "Resistance": 1.34513,
+                "Current Price": 1.34503,
+                "Location": "Between Levels"
+            },
+            "market_structure": {
+                "Structure": "Sideways"
+            },
+            "structure_strength": {
+                "Structure Strength": "Weak / Transition"
+            },
+            "multi_timeframe": {
+                "H4 Trend": "Bullish",
+                "H1 Structure": "Sideways",
+                "M15 Structure": "Lower High / Lower Low",
+                "alignment": false
+            },
+            "market_context": {
+                "Context": "Reversal Watch",
+                "HTF Alignment": false
+            },
+            "support": 1.34474,
+            "resistance": 1.34513,
+            "confidence": 0,
+            "confluence": {
+                "Score": 0,
+                "Max Score": 16,
+                "Percentage": 0.0,
+                "Strength": "Low",
+                "Aligned Modules": [],
+                "Conflicting Modules": [
+                    {
+                        "Module": "Trend",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "BOS",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "CHoCH",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Supply & Demand",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Liquidity",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Structure Memory",
+                        "Weight": 2
+                    },
+                    {
+                        "Module": "Protected Levels",
+                        "Weight": 1
+                    },
+                    {
+                        "Module": "Structure Strength",
+                        "Weight": 2
+                    }
+                ],
+                "Summary": "0/16 (0.0%) confluence with wait bias."
+            },
+            "grade": "NO TRADE",
+            "decision": "IGNORE",
+            "reasons": [
+                "Trend: {'Trend': 'Bullish', 'EMA20': np.float64(1.34502), 'EMA50': np.float64(1.34498)}",
+                "Market Bias: WAIT",
+                "Structure: Sideways",
+                "Supply/Demand Zone: Demand",
+                "Liquidity: No Sweep",
+                "BOS: No BOS",
+                "CHOCH: No CHoCH"
+            ],
+            "setup": {
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null,
+                "risk_reward": "1:5"
+            },
+            "execution_plan": {
+                "Status": "READY",
+                "Direction": {
+                    "decision": "WAIT",
+                    "analysis": {
+                        "trend": {
+                            "Trend": "Bullish",
+                            "EMA20": 1.34502,
+                            "EMA50": 1.34498
+                        },
+                        "market_bias": {
+                            "Market Bias": "WAIT",
+                            "Reason": "Transition"
+                        },
+                        "market_state": {
+                            "Market State": "Transition"
+                        },
+                        "market_structure": {
+                            "Structure": "Sideways"
+                        },
+                        "confidence": 65,
+                        "structure_memory": {
+                            "Latest High": {
+                                "index": 97,
+                                "time": 97,
+                                "price": 1.34513
+                            },
+                            "Previous High": {
+                                "index": 94,
+                                "time": 94,
+                                "price": 1.34513
+                            },
+                            "Latest Low": {
+                                "index": 97,
+                                "time": 97,
+                                "price": 1.34498
+                            },
+                            "Previous Low": {
+                                "index": 90,
+                                "time": 90,
+                                "price": 1.34474
+                            },
+                            "Trend": "Sideways"
+                        },
+                        "protected_levels": {
+                            "Protected High": null,
+                            "Protected Low": null
+                        },
+                        "structure_strength": {
+                            "Structure Strength": "Weak / Transition"
+                        }
+                    }
+                },
+                "Entry": null,
+                "Stop Loss": null,
+                "TP1": 100,
+                "TP2": 200,
+                "Positions": 2,
+                "Lot Size": 0.01,
+                "Management": {
+                    "TP1": "Close Position 1",
+                    "TP2": "Hold Position 2",
+                    "After TP1": "Move SL to Break Even"
+                }
+            },
+            "execution": {
+                "status": "WAIT",
+                "entry": null,
+                "stop_loss": null,
+                "take_profit": null
+            },
+            "narrative": "No strong confluence detected.",
+            "validation": {
+                "Valid": false,
+                "Errors": [
+                    "risk missing"
+                ]
+            },
+            "confidence_breakdown": {
+                "Trend": 0,
+                "Structure": 0,
+                "Zones": 0,
+                "Liquidity": 0,
+                "Momentum": 0
+            },
+            "trade_allowed": false,
+            "risk_reason": "Confidence below trading threshold.",
+            "execution_quality": {
+                "Score": 0,
+                "Max Score": 5,
+                "Quality": "Poor",
+                "Reasons": []
+            },
+            "wait_signal": {
+                "Signal": "WAIT",
+                "Reasons": [
+                    "Confidence below 70.",
+                    "Weak confluence.",
+                    "Poor execution quality.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "final_filter": {
+                "Passed": false,
+                "Reasons": [
+                    "Confidence too low.",
+                    "Execution quality insufficient.",
+                    "Wait signal active.",
+                    "Risk manager blocked trade."
+                ]
+            },
+            "fresh_zone": {
+                "Freshness": "Fresh"
+            },
+            "session": {
+                "Session": "Asian"
+            },
+            "trade_score": {
+                "Trade Score": 0
+            },
+            "market_memory": {
+                "Previous Bias": "WAIT",
+                "Previous Trend": "Bullish",
+                "Previous Structure": "Sideways",
+                "Previous Decision": "IGNORE"
+            },
+            "continuation": {
+                "Continuation": "Unknown"
+            },
+            "setup_tracker": {
+                "Bias": "WAIT",
+                "Confidence": 0,
+                "Grade": "NO TRADE",
+                "Decision": "IGNORE",
+                "Trade Score": 0
+            },
+            "reflection": {
+                "Reflection": [
+                    "Bias: WAIT",
+                    "Trend: Bullish",
+                    "Confidence: 0",
+                    "Trade Score: 0",
+                    "Decision: IGNORE"
+                ]
+            },
+            "improvements": {
+                "Improvements": [
+                    "Increase confidence before execution.",
+                    "Wait for stronger confluence.",
+                    "Risk conditions are not satisfied.",
+                    "Market bias is neutral. Wait.",
+                    "Wait for a Break Of Structure.",
+                    "No Change Of Character detected.",
+                    "Wait for liquidity sweep.",
+                    "No executable setup."
+                ]
+            },
+            "strengths": {
+                "Strengths": [
+                    "Trend is bullish."
+                ]
+            },
+            "watchlist": {
+                "Watchlist": [
+                    "Watch for bullish continuation.",
+                    "Watch for liquidity sweep.",
+                    "Watch for Break of Structure.",
+                    "Watch for Change of Character.",
+                    "Watch for bullish reaction in demand.",
+                    "No trade until risk conditions improve."
+                ]
+            },
+            "checklist": {
+                "Trend": {
+                    "Trend": "Bullish",
+                    "EMA20": 1.34502,
+                    "EMA50": 1.34498
+                },
+                "Market Bias": "WAIT",
+                "BOS": "No BOS",
+                "CHoCH": "No CHoCH",
+                "Liquidity": "No Sweep",
+                "Risk Allowed": false,
+                "Confidence": 0,
+                "Decision": "IGNORE"
+            },
+            "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+            "historical_probability": {
+                "Probability": 0.0,
+                "Wins": 0,
+                "Losses": 0,
+                "Sample Size": 2
+            },
+            "adaptive_confidence": {
+                "Current Confidence": 0,
+                "Historical Confidence": 0.0,
+                "Adaptive Confidence": 0,
+                "Confidence Level": "Very Low",
+                "Sample Size": 2,
+                "Wins": 0,
+                "Losses": 0,
+                "Confidence Weight": 0.7,
+                "History Weight": 0.3
+            },
+            "adaptive_recommendation": "Avoid trade. Wait for better confirmation.",
+            "coach": [
+                "Trade blocked by Risk Manager.",
+                "Weak setup. Preserve capital.",
+                "Break of Structure confirmed.",
+                "Change of Character detected.",
+                "Liquidity Event: No Sweep"
+            ],
+            "coach_summary": "IGNORE | Confidence: 0%",
+            "best_conditions": [],
+            "worst_conditions": [],
+            "behaviour": {
+                "Early Entries": 0,
+                "Late Entries": 0,
+                "Rule Violations": 0,
+                "Wins": 0,
+                "Losses": 0,
+                "Behaviour Score": 100
+            },
+            "behaviour_recommendation": "Excellent discipline.",
+            "trader_dna": {
+                "Preferred Bias": "WAIT",
+                "Preferred Pair": "GBPUSD",
+                "Preferred Session": null,
+                "Preferred Zone": "Demand",
+                "Preferred Grade": "NO TRADE",
+                "Average Duration": 0.0,
+                "Trading Style": "Scalper"
+            },
+            "dna_summary": "Scalper | GBPUSD | None",
+            "strategy_evolution": {
+                "SELL | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 2,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 9,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | Sell-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 3,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Supply | Buy-side Liquidity Swept": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 1,
+                    "Win Rate": 0.0
+                },
+                "WAIT | Demand | No Sweep": {
+                    "Wins": 0,
+                    "Losses": 0,
+                    "Total": 5,
+                    "Win Rate": 0.0
+                }
+            },
+            "strongest_strategy": "SELL | Demand | No Sweep",
+            "weakest_strategy": "SELL | Demand | No Sweep",
+            "timeline": [
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "SELL",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "XAUUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "EURUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "Buy-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "USDJPY",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Supply",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "Sell-side Liquidity Swept",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                },
+                {
+                    "Date": null,
+                    "Pair": "GBPUSD",
+                    "Bias": "WAIT",
+                    "Zone": "Demand",
+                    "Liquidity": "No Sweep",
+                    "Decision": "IGNORE",
+                    "Outcome": "Pending",
+                    "Confidence": 0
+                }
+            ],
+            "last_trade": {
+                "symbol": "GBPUSD",
+                "bias": "WAIT",
+                "trend": "Bullish",
+                "bos": "No BOS",
+                "choch": "No CHoCH",
+                "zone": "Demand",
+                "liquidity": "No Sweep",
+                "strength": "Weak / Transition",
+                "confidence": 0,
+                "decision": "IGNORE",
+                "grade": "NO TRADE",
+                "trade_allowed": false,
+                "outcome": "Pending"
+            },
+            "intelligence": {
+                "Decision": "IGNORE",
+                "Confidence": 0,
+                "Behaviour": 100,
+                "DNA": "Scalper",
+                "Strongest Strategy": "SELL | Demand | No Sweep",
+                "Coach": "IGNORE | Confidence: 0%"
+            },
+            "intelligence_score": 30.0,
+            "final_recommendation": "Stand Aside",
+            "replay_matches": [
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bearish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bearish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Strong Bullish Structure",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                },
+                {
+                    "symbol": "GBPUSD",
+                    "bias": "WAIT",
+                    "trend": "Bullish",
+                    "bos": "No BOS",
+                    "choch": "No CHoCH",
+                    "zone": "Demand",
+                    "liquidity": "No Sweep",
+                    "strength": "Weak / Transition",
+                    "confidence": 0,
+                    "decision": "IGNORE",
+                    "grade": "NO TRADE",
+                    "trade_allowed": false,
+                    "outcome": "Pending"
+                }
+            ],
+            "replay_statistics": {
+                "Total": 5,
+                "Wins": 0,
+                "Losses": 0,
+                "Pending": 5,
+                "Win Rate": 0.0
+            },
+            "patterns": {
+                "Most Common Bias": "WAIT",
+                "Most Common Zone": "Demand",
+                "Most Common Liquidity": "No Sweep",
+                "Best Grade": "NO TRADE",
+                "Total Trades": 5
+            },
+            "strongest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            },
+            "weakest_pattern": {
+                "Most Common Bias": null,
+                "Most Common Zone": null,
+                "Most Common Liquidity": null,
+                "Best Grade": null,
+                "Total Trades": 0
+            }
+        }
     }
 ]
