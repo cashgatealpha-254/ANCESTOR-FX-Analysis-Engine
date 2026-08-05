@@ -102,6 +102,9 @@ from engine.session_memory import get as session
 from engine.health_check import run as health_check
 from engine.performance import success, failure, stats
 
+from environment.market_scanner import MarketScanner
+from environment.correlation_engine import CorrelationEngine
+
 from journal.logger import Journal 
 
 from dashboard.history import save_analysis
@@ -129,13 +132,17 @@ evolution_engine = StrategyEvolution()
 replay_studio = ReplayStudio()
 intelligence = IntelligenceCore()
 container = Container()
+scanner = MarketScanner()
+market = scanner.scan()
+correlation_report = CorrelationEngine().analyse(market)
 save_analysis = save_analysis
 send_alert = send_alert
 
 health = health_check()
 
 results = {
-    "health": health
+    "health": health,
+    "correlation": correlation_report
 }
 
 def run_analysis(symbol):
