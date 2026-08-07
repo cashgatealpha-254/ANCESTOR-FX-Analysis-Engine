@@ -23,9 +23,9 @@ class MarketScanner:
             "XAUUSD",
             "XAGUSD",
 
-            "US30",
-            "NAS100",
-            "SPX500"
+            "US500",
+            "NASDAQ-100",
+            "DE30",
 
         ]
 
