@@ -1129,3 +1129,15 @@
 2026-08-08 17:37:57,964 | WARNING | Failed to retrieve data for US500
 2026-08-08 17:37:57,965 | WARNING | Failed to retrieve data for NASDAQ-100
 2026-08-08 17:37:57,966 | WARNING | Failed to retrieve data for DE30
+2026-08-08 17:57:53,792 | WARNING | Failed to retrieve data for GBPUSD
+2026-08-08 17:57:53,794 | WARNING | Failed to retrieve data for EURUSD
+2026-08-08 17:57:53,795 | WARNING | Failed to retrieve data for USDJPY
+2026-08-08 17:57:53,796 | WARNING | Failed to retrieve data for AUDUSD
+2026-08-08 17:57:53,797 | WARNING | Failed to retrieve data for USDCHF
+2026-08-08 17:57:53,798 | WARNING | Failed to retrieve data for USDCAD
+2026-08-08 17:57:53,800 | WARNING | Failed to retrieve data for NZDUSD
+2026-08-08 17:57:53,800 | WARNING | Failed to retrieve data for XAUUSD
+2026-08-08 17:57:53,801 | WARNING | Failed to retrieve data for XAGUSD
+2026-08-08 17:57:53,801 | WARNING | Failed to retrieve data for US500
+2026-08-08 17:57:53,801 | WARNING | Failed to retrieve data for NASDAQ-100
+2026-08-08 17:57:53,802 | WARNING | Failed to retrieve data for DE30
