@@ -10,6 +10,7 @@ from environment.fvg_engine import FVGEngine
 from environment.order_block_engine import OrderBlockEngine
 from environment.location_engine import LocationEngine
 from environment.confluence_engine import ConfluenceEngine
+from environment.zone_relevance import ZoneRelevance
 
 
 class HorizonEngine:
@@ -27,7 +28,16 @@ class HorizonEngine:
         self.location_engine = LocationEngine()
         self.confluence_engine = ConfluenceEngine()
 
+        # ==========================================
+        # ZONE RELEVANCE
+        # ==========================================
+
+        self.zone_relevance = ZoneRelevance(
+            max_zones=3
+        )
+
         self.horizons = {
+
             "SWING": {
                 "timeframe": mt5.TIMEFRAME_H4,
                 "bars": 300
@@ -52,6 +62,10 @@ class HorizonEngine:
 
             timeframe = settings["timeframe"]
             bars = settings["bars"]
+
+            # ==========================================
+            # MARKET DATA
+            # ==========================================
 
             rates = mt5.copy_rates_from_pos(
                 symbol,
@@ -127,6 +141,27 @@ class HorizonEngine:
             )
 
             # ==========================================
+            # DIRECTION
+            # ==========================================
+
+            direction = self._get_direction(
+                trend,
+                smc
+            )
+
+            # ==========================================
+            # RELEVANT ZONES
+            # ==========================================
+
+            relevant_zones = self._safe_analyze(
+                self.zone_relevance.analyze,
+                direction=direction,
+                fvg=fvg,
+                order_blocks=order_blocks,
+                profile=market_profile
+            )
+
+            # ==========================================
             # LOCATION INTELLIGENCE
             # ==========================================
 
@@ -135,17 +170,27 @@ class HorizonEngine:
                 df,
                 supply_demand=supply_demand,
                 market_profile=market_profile,
-                fvg=fvg,
-                order_blocks=order_blocks
-            )
 
-            # ==========================================
-            # DIRECTION
-            # ==========================================
+                # Use filtered zones
+                fvg=relevant_zones.get(
+                    "fvg",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else [],
 
-            direction = self._get_direction(
-                trend,
-                smc
+                order_blocks=relevant_zones.get(
+                    "order_blocks",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else []
             )
 
             # ==========================================
@@ -159,8 +204,27 @@ class HorizonEngine:
                 smc,
                 liquidity,
                 location,
-                fvg,
-                order_blocks
+
+                # Use filtered zones
+                relevant_zones.get(
+                    "fvg",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else [],
+
+                relevant_zones.get(
+                    "order_blocks",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else []
             )
 
             # ==========================================
@@ -189,9 +253,13 @@ class HorizonEngine:
 
                 "liquidity": liquidity,
 
+                # Keep RAW zones available for debugging
                 "fvg": fvg,
 
                 "order_blocks": order_blocks,
+
+                # NEW FILTERED ZONES
+                "relevant_zones": relevant_zones,
 
                 "location": location,
 
@@ -202,22 +270,22 @@ class HorizonEngine:
 
         return results
 
+    # ==================================================
+    # DIRECTION
+    # ==================================================
+
     @staticmethod
     def _get_direction(
         trend,
         smc
     ):
-        """
-        Determine directional bias.
-
-        Trend provides the primary directional context.
-        SMC structure confirms the direction when
-        a clear structural bias exists.
-        """
 
         trend_direction = "NEUTRAL"
 
-        if isinstance(trend, dict):
+        if isinstance(
+            trend,
+            dict
+        ):
 
             trend_direction = str(
                 trend.get(
@@ -236,7 +304,10 @@ class HorizonEngine:
         bullish_structure = 0
         bearish_structure = 0
 
-        if isinstance(smc, dict):
+        if isinstance(
+            smc,
+            dict
+        ):
 
             structure = smc.get(
                 "structure",
@@ -244,6 +315,13 @@ class HorizonEngine:
             )
 
             for item in structure[-6:]:
+
+                if not isinstance(
+                    item,
+                    dict
+                ):
+
+                    continue
 
                 structure_type = str(
                     item.get(
@@ -294,21 +372,16 @@ class HorizonEngine:
 
         return trend_direction
 
+    # ==================================================
+    # SAFE ANALYZE
+    # ==================================================
+
     @staticmethod
     def _safe_analyze(
         engine,
         *args,
         **kwargs
     ):
-        """
-        Safely execute any analysis engine.
-
-        Supports both:
-            engine(df)
-
-        and engines requiring multiple
-        positional/keyword arguments.
-        """
 
         try:
 

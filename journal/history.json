@@ -14691,5 +14691,437 @@
         },
         "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
         "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-08-08 09:31:17",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.34906,
+            "EMA50": 1.34921
+        },
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "liquidity": "No Sweep",
+        "market_state": {
+            "Market State": "Bearish Momentum"
+        },
+        "confluence": {
+            "Score": 4,
+            "Max Score": 16,
+            "Percentage": 25.0,
+            "Strength": "Low",
+            "Aligned Modules": [
+                {
+                    "Module": "Trend",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Supply & Demand",
+                    "Weight": 2
+                }
+            ],
+            "Conflicting Modules": [
+                {
+                    "Module": "BOS",
+                    "Weight": 2
+                },
+                {
+                    "Module": "CHoCH",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Liquidity",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Memory",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Protected Levels",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure Strength",
+                    "Weight": 2
+                }
+            ],
+            "Summary": "4/16 (25.0%) confluence with sell bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-08-08 09:31:19",
+        "symbol": "XAUUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 4339.64331,
+            "EMA50": 4340.34756
+        },
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "liquidity": "No Sweep",
+        "market_state": {
+            "Market State": "Transition"
+        },
+        "confluence": {
+            "Score": 7,
+            "Max Score": 16,
+            "Percentage": 43.8,
+            "Strength": "Low",
+            "Aligned Modules": [
+                {
+                    "Module": "Trend",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Supply & Demand",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Memory",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Protected Levels",
+                    "Weight": 1
+                }
+            ],
+            "Conflicting Modules": [
+                {
+                    "Module": "BOS",
+                    "Weight": 2
+                },
+                {
+                    "Module": "CHoCH",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Liquidity",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Strength",
+                    "Weight": 2
+                }
+            ],
+            "Summary": "7/16 (43.8%) confluence with wait bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-08-08 09:31:21",
+        "symbol": "EURUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.15551,
+            "EMA50": 1.15561
+        },
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "liquidity": "No Sweep",
+        "market_state": {
+            "Market State": "Bearish Momentum"
+        },
+        "confluence": {
+            "Score": 2,
+            "Max Score": 16,
+            "Percentage": 12.5,
+            "Strength": "Low",
+            "Aligned Modules": [
+                {
+                    "Module": "Trend",
+                    "Weight": 2
+                }
+            ],
+            "Conflicting Modules": [
+                {
+                    "Module": "BOS",
+                    "Weight": 2
+                },
+                {
+                    "Module": "CHoCH",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Supply & Demand",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Liquidity",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Memory",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Protected Levels",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure Strength",
+                    "Weight": 2
+                }
+            ],
+            "Summary": "2/16 (12.5%) confluence with sell bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-08-08 09:31:23",
+        "symbol": "USDJPY",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "WAIT",
+        "trend": {
+            "Trend": "Bullish",
+            "EMA20": 157.77088,
+            "EMA50": 157.7421
+        },
+        "bos": "Bearish BOS",
+        "choch": "No CHoCH",
+        "liquidity": "Sell-side Liquidity Swept",
+        "market_state": {
+            "Market State": "Transition"
+        },
+        "confluence": {
+            "Score": 2,
+            "Max Score": 16,
+            "Percentage": 12.5,
+            "Strength": "Low",
+            "Aligned Modules": [
+                {
+                    "Module": "BOS",
+                    "Weight": 2
+                }
+            ],
+            "Conflicting Modules": [
+                {
+                    "Module": "Trend",
+                    "Weight": 2
+                },
+                {
+                    "Module": "CHoCH",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Supply & Demand",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Liquidity",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Memory",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Protected Levels",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure Strength",
+                    "Weight": 2
+                }
+            ],
+            "Summary": "2/16 (12.5%) confluence with wait bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-08-08 09:31:25",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.34906,
+            "EMA50": 1.34921
+        },
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "liquidity": "No Sweep",
+        "market_state": {
+            "Market State": "Bearish Momentum"
+        },
+        "confluence": {
+            "Score": 4,
+            "Max Score": 16,
+            "Percentage": 25.0,
+            "Strength": "Low",
+            "Aligned Modules": [
+                {
+                    "Module": "Trend",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Supply & Demand",
+                    "Weight": 2
+                }
+            ],
+            "Conflicting Modules": [
+                {
+                    "Module": "BOS",
+                    "Weight": 2
+                },
+                {
+                    "Module": "CHoCH",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Liquidity",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Memory",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Protected Levels",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure Strength",
+                    "Weight": 2
+                }
+            ],
+            "Summary": "4/16 (25.0%) confluence with sell bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
+    },
+    {
+        "date": "2026-08-08 13:51:38",
+        "symbol": "GBPUSD",
+        "confidence": 0,
+        "grade": "NO TRADE",
+        "decision": "IGNORE",
+        "entry": null,
+        "stop_loss": null,
+        "tp1": 100,
+        "tp2": 200,
+        "market_bias": "SELL",
+        "trend": {
+            "Trend": "Bearish",
+            "EMA20": 1.34906,
+            "EMA50": 1.34921
+        },
+        "bos": "No BOS",
+        "choch": "No CHoCH",
+        "liquidity": "No Sweep",
+        "market_state": {
+            "Market State": "Bearish Momentum"
+        },
+        "confluence": {
+            "Score": 4,
+            "Max Score": 16,
+            "Percentage": 25.0,
+            "Strength": "Low",
+            "Aligned Modules": [
+                {
+                    "Module": "Trend",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Supply & Demand",
+                    "Weight": 2
+                }
+            ],
+            "Conflicting Modules": [
+                {
+                    "Module": "BOS",
+                    "Weight": 2
+                },
+                {
+                    "Module": "CHoCH",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Liquidity",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Structure Memory",
+                    "Weight": 2
+                },
+                {
+                    "Module": "Protected Levels",
+                    "Weight": 1
+                },
+                {
+                    "Module": "Structure Strength",
+                    "Weight": 2
+                }
+            ],
+            "Summary": "4/16 (25.0%) confluence with sell bias."
+        },
+        "reasoning": "Recent Break of Structure confirms continuation. Change of Character detected. Liquidity sweep has occurred.",
+        "narrative": "No strong confluence detected."
     }
 ]
