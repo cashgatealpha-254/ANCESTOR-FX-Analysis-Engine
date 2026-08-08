@@ -1,57 +1,53 @@
 import MetaTrader5 as mt5
-from datetime import datetime
+
+from execution.execution_registry import ExecutionRegistry
+from execution.broker_reconciler import BrokerReconciler
 
 
 class ExecutionEngine:
 
     def __init__(
         self,
-        deviation=20,
-        magic_number=260806,
-        comment="AncestorFX",
-        max_positions=1
+        risk_engine,
+        position_sizer,
+        magic=260807
     ):
 
-        self.deviation = int(deviation)
-        self.magic_number = int(magic_number)
-        self.comment = str(comment)
-        self.max_positions = int(max_positions)
+        self.risk_engine = risk_engine
+        self.position_sizer = position_sizer
+
+        self.magic = int(magic)
+
+        self.registry = ExecutionRegistry()
+
+        self.reconciler = BrokerReconciler()
 
     # ==================================================
     # EXECUTE
     # ==================================================
 
-    def execute(self, setup):
+    def execute(
+        self,
+        setup,
+        dry_run=True
+    ):
 
         # ------------------------------------------------
-        # BASIC VALIDATION
+        # 1. BASIC SETUP VALIDATION
         # ------------------------------------------------
 
-        if not isinstance(setup, dict):
+        if not isinstance(
+            setup,
+            dict
+        ):
 
             return self._blocked(
-                "Invalid execution payload"
+                "Invalid setup"
             )
 
-        if setup.get("status") != "READY":
-
-            return self._blocked(
-                "Position sizing did not produce READY setup"
-            )
-
-        symbol = setup.get("symbol")
-
-        direction = str(
-            setup.get(
-                "direction",
-                ""
-            )
-        ).upper()
-
-        entry = setup.get("entry")
-        stop_loss = setup.get("stop_loss")
-        take_profit = setup.get("take_profit")
-        volume = setup.get("volume")
+        symbol = setup.get(
+            "symbol"
+        )
 
         if not symbol:
 
@@ -59,387 +55,326 @@ class ExecutionEngine:
                 "Missing symbol"
             )
 
-        if direction not in {
-            "BULLISH",
-            "BEARISH"
-        }:
+        # ------------------------------------------------
+        # 2. MT5 CONNECTION
+        # ------------------------------------------------
 
-            return self._blocked(
-                "Invalid direction",
-                symbol=symbol
+        if not mt5.terminal_info():
+
+            return self._error(
+                symbol,
+                "MT5 terminal unavailable"
             )
 
         # ------------------------------------------------
-        # LEVEL VALIDATION
+        # 3. RISK ENGINE
         # ------------------------------------------------
+
+        risk = self.risk_engine.validate(
+            setup
+        )
+
+        if not isinstance(
+            risk,
+            dict
+        ):
+
+            return self._error(
+                symbol,
+                "Risk engine returned invalid result"
+            )
+
+        if risk.get(
+            "status"
+        ) != "ALLOW":
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "RISK",
+
+                "symbol": symbol,
+
+                "reason": risk.get(
+                    "reason",
+                    "Risk validation failed"
+                ),
+
+                "risk": risk
+            }
+
+        # ------------------------------------------------
+        # 4. POSITION SIZING
+        # ------------------------------------------------
+
+        sizing = self.position_sizer.calculate(
+            risk
+        )
+
+        if not isinstance(
+            sizing,
+            dict
+        ):
+
+            return self._error(
+                symbol,
+                "Position sizer returned invalid result"
+            )
+
+        if sizing.get(
+            "status"
+        ) != "READY":
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "POSITION_SIZE",
+
+                "symbol": symbol,
+
+                "reason": sizing.get(
+                    "reason",
+                    "Position sizing failed"
+                ),
+
+                "sizing": sizing
+            }
+
+        volume = sizing.get(
+            "volume"
+        )
+
+        if volume is None:
+
+            return self._error(
+                symbol,
+                "Position volume unavailable"
+            )
 
         try:
 
-            entry = float(entry)
-            stop_loss = float(stop_loss)
-            take_profit = float(take_profit)
-            volume = float(volume)
+            volume = float(
+                volume
+            )
 
         except (
             TypeError,
             ValueError
         ):
 
-            return self._blocked(
-                "Invalid execution levels",
-                symbol=symbol
+            return self._error(
+                symbol,
+                "Invalid position volume"
             )
 
         if volume <= 0:
 
             return self._blocked(
-                "Invalid trade volume",
-                symbol=symbol
+                "Position volume is zero"
             )
 
         # ------------------------------------------------
-        # CONNECTIVITY
+        # 5. BUILD UNIQUE TRADE ID
         # ------------------------------------------------
 
-        terminal = mt5.terminal_info()
-
-        if terminal is None:
-
-            return self._error(
-                "MT5 terminal information unavailable",
-                symbol=symbol
+        trade_id = (
+            self.registry.build_trade_id(
+                setup
             )
-
-        if not terminal.connected:
-
-            return self._error(
-                "MT5 terminal is not connected",
-                symbol=symbol
-            )
-
-        # ------------------------------------------------
-        # ACCOUNT SAFETY
-        # ------------------------------------------------
-
-        account = mt5.account_info()
-
-        if account is None:
-
-            return self._error(
-                "Unable to retrieve account information",
-                symbol=symbol
-            )
-
-        balance = float(
-            account.balance
         )
 
-        equity = float(
-            account.equity
-        )
-
-        if balance <= 0:
+        if not trade_id:
 
             return self._blocked(
-                "Account balance is zero or invalid",
+                "Unable to build trade identity"
+            )
+
+        # ------------------------------------------------
+        # 6. DUPLICATE CHECK
+        # ------------------------------------------------
+
+        existing = self.registry.get(
+            trade_id
+        )
+
+        if existing:
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "REGISTRY",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "reason": (
+                    "Trade already exists "
+                    "in execution registry"
+                ),
+
+                "existing": existing
+            }
+
+        # ------------------------------------------------
+        # 7. BROKER RECONCILIATION
+        # ------------------------------------------------
+
+        reconciliation = (
+            self.reconciler.reconcile(
                 symbol=symbol,
-                balance=balance,
-                equity=equity
+                trade_id=trade_id,
+                magic=self.magic
             )
-
-        if equity <= 0:
-
-            return self._blocked(
-                "Account equity is zero or invalid",
-                symbol=symbol,
-                balance=balance,
-                equity=equity
-            )
-
-        # ------------------------------------------------
-        # SYMBOL
-        # ------------------------------------------------
-
-        symbol_info = mt5.symbol_info(
-            symbol
         )
 
-        if symbol_info is None:
+        if reconciliation.get(
+            "status"
+        ) in {
+            "FILLED",
+            "PENDING"
+        }:
 
-            return self._error(
-                "Symbol information unavailable",
-                symbol=symbol
-            )
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "RECONCILIATION",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "reason": (
+                    "Matching broker trade "
+                    "already exists"
+                ),
+
+                "reconciliation": reconciliation
+            }
+
+        if reconciliation.get(
+            "status"
+        ) == "UNKNOWN":
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "RECONCILIATION",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "reason": (
+                    "Broker state could not "
+                    "be determined safely"
+                ),
+
+                "reconciliation": reconciliation
+            }
 
         # ------------------------------------------------
-        # ENSURE SYMBOL IS VISIBLE
+        # 8. DRY RUN GATE
         # ------------------------------------------------
 
-        if not symbol_info.visible:
+        if dry_run:
 
-            selected = mt5.symbol_select(
-                symbol,
-                True
-            )
+            return {
 
-            if not selected:
+                "status": "DRY_RUN",
 
-                return self._error(
-                    "Unable to select symbol",
-                    symbol=symbol
+                "stage": "READY_FOR_BROKER",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "volume": volume,
+
+                "risk": risk,
+
+                "sizing": sizing,
+
+                "message": (
+                    "All execution gates passed. "
+                    "No order was sent."
                 )
+            }
 
-            symbol_info = mt5.symbol_info(
-                symbol
-            )
+        # ------------------------------------------------
+        # 9. REGISTER SUBMITTING
+        # ------------------------------------------------
 
-            if symbol_info is None:
+        registered = self.registry.register(
 
-                return self._error(
-                    "Symbol unavailable after selection",
-                    symbol=symbol
+            trade_id=trade_id,
+
+            status="SUBMITTING",
+
+            setup=setup
+        )
+
+        if registered.get(
+            "status"
+        ) != "REGISTERED":
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "REGISTRY",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "reason": (
+                    "Unable to reserve "
+                    "trade identity"
                 )
+            }
 
         # ------------------------------------------------
-        # CURRENT TICK
+        # 10. BUILD MT5 REQUEST
         # ------------------------------------------------
 
-        tick = mt5.symbol_info_tick(
-            symbol
+        request = self._build_request(
+            setup,
+            volume,
+            trade_id
         )
 
-        if tick is None:
+        if request is None:
 
-            return self._error(
-                "Unable to retrieve current tick",
-                symbol=symbol
+            self.registry.update(
+                trade_id,
+                "FAILED",
+                reason="Invalid MT5 request"
             )
 
-        bid = float(tick.bid)
-        ask = float(tick.ask)
+            return {
 
-        if bid <= 0 or ask <= 0:
+                "status": "BLOCKED",
 
-            return self._blocked(
-                "Invalid market prices",
-                symbol=symbol,
-                bid=bid,
-                ask=ask
-            )
+                "stage": "REQUEST",
 
-        # ------------------------------------------------
-        # EXECUTION PRICE
-        # ------------------------------------------------
+                "symbol": symbol,
 
-        if direction == "BULLISH":
+                "trade_id": trade_id,
 
-            order_type = mt5.ORDER_TYPE_BUY
-            market_price = ask
-
-            if not (
-                stop_loss < market_price
-                and take_profit > market_price
-            ):
-
-                return self._blocked(
-                    "Invalid bullish SL/TP relative to market",
-                    symbol=symbol,
-                    market_price=market_price
+                "reason": (
+                    "Unable to build "
+                    "broker request"
                 )
-
-        else:
-
-            order_type = mt5.ORDER_TYPE_SELL
-            market_price = bid
-
-            if not (
-                stop_loss > market_price
-                and take_profit < market_price
-            ):
-
-                return self._blocked(
-                    "Invalid bearish SL/TP relative to market",
-                    symbol=symbol,
-                    market_price=market_price
-                )
+            }
 
         # ------------------------------------------------
-        # POSITION LIMIT
-        # ------------------------------------------------
-
-        positions = mt5.positions_get(
-            symbol=symbol
-        )
-
-        if positions is None:
-
-            positions = []
-
-        if len(positions) >= self.max_positions:
-
-            return self._blocked(
-                "Maximum open-position limit reached",
-                symbol=symbol,
-                open_positions=len(positions)
-            )
-
-        # ------------------------------------------------
-        # VOLUME VALIDATION
-        # ------------------------------------------------
-
-        volume_min = float(
-            symbol_info.volume_min
-        )
-
-        volume_max = float(
-            symbol_info.volume_max
-        )
-
-        volume_step = float(
-            symbol_info.volume_step
-        )
-
-        if volume < volume_min:
-
-            return self._blocked(
-                "Volume below broker minimum",
-                symbol=symbol,
-                volume=volume,
-                broker_minimum=volume_min
-            )
-
-        if volume > volume_max:
-
-            return self._blocked(
-                "Volume above broker maximum",
-                symbol=symbol,
-                volume=volume,
-                broker_maximum=volume_max
-            )
-
-        # ------------------------------------------------
-        # VOLUME STEP VALIDATION
-        # ------------------------------------------------
-
-        step_count = round(
-            volume / volume_step
-        )
-
-        normalized_volume = round(
-            step_count * volume_step,
-            8
-        )
-
-        if abs(
-            normalized_volume - volume
-        ) > 1e-8:
-
-            return self._blocked(
-                "Volume does not match broker volume step",
-                symbol=symbol,
-                volume=volume,
-                volume_step=volume_step
-            )
-
-        # ------------------------------------------------
-        # PRICE NORMALIZATION
-        # ------------------------------------------------
-
-        digits = int(
-            symbol_info.digits
-        )
-
-        stop_loss = round(
-            stop_loss,
-            digits
-        )
-
-        take_profit = round(
-            take_profit,
-            digits
-        )
-
-        market_price = round(
-            market_price,
-            digits
-        )
-
-        # ------------------------------------------------
-        # FINAL RISK CHECK
-        # ------------------------------------------------
-
-        risk_percent = setup.get(
-            "actual_risk_percent"
-        )
-
-        if risk_percent is not None:
-
-            try:
-
-                risk_percent = float(
-                    risk_percent
-                )
-
-            except (
-                TypeError,
-                ValueError
-            ):
-
-                return self._blocked(
-                    "Invalid calculated risk percentage",
-                    symbol=symbol
-                )
-
-            if risk_percent <= 0:
-
-                return self._blocked(
-                    "Calculated risk is invalid",
-                    symbol=symbol
-                )
-
-            if risk_percent > 2.0:
-
-                return self._blocked(
-                    "Execution risk exceeds hard safety limit",
-                    symbol=symbol,
-                    actual_risk_percent=risk_percent
-                )
-
-        # ------------------------------------------------
-        # ORDER REQUEST
-        # ------------------------------------------------
-
-        request = {
-
-            "action": mt5.TRADE_ACTION_DEAL,
-
-            "symbol": symbol,
-
-            "volume": normalized_volume,
-
-            "type": order_type,
-
-            "price": market_price,
-
-            "sl": stop_loss,
-
-            "tp": take_profit,
-
-            "deviation": self.deviation,
-
-            "magic": self.magic_number,
-
-            "comment": self.comment,
-
-            "type_time": mt5.ORDER_TIME_GTC,
-
-            "type_filling": (
-                mt5.ORDER_FILLING_IOC
-            )
-        }
-
-        # ------------------------------------------------
-        # PRE-TRADE CHECK
+        # 11. BROKER PRE-CHECK
         # ------------------------------------------------
 
         check = mt5.order_check(
@@ -448,169 +383,345 @@ class ExecutionEngine:
 
         if check is None:
 
-            return self._error(
-                "MT5 order_check returned no result",
-                symbol=symbol
-            )
-
-        check_retcode = getattr(
-            check,
-            "retcode",
-            None
-        )
-
-        if check_retcode != mt5.TRADE_RETCODE_DONE:
-
-            return self._blocked(
-                "Broker rejected pre-trade check",
-                symbol=symbol,
-                retcode=check_retcode,
-                comment=getattr(
-                    check,
-                    "comment",
-                    ""
+            self.registry.update(
+                trade_id,
+                "UNKNOWN",
+                reason=(
+                    "MT5 order_check returned None"
                 )
             )
 
+            return {
+
+                "status": "UNKNOWN",
+
+                "stage": "ORDER_CHECK",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "reason": (
+                    "Broker pre-check "
+                    "returned no result"
+                )
+            }
+
+        if check.retcode != mt5.TRADE_RETCODE_DONE:
+
+            reason = (
+                f"Broker rejected pre-check: "
+                f"{check.retcode} "
+                f"{getattr(check, 'comment', '')}"
+            )
+
+            self.registry.update(
+                trade_id,
+                "FAILED",
+                reason=reason
+            )
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "ORDER_CHECK",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "retcode": check.retcode,
+
+                "reason": reason
+            }
+
         # ------------------------------------------------
-        # EXECUTE
+        # 12. SEND ORDER
         # ------------------------------------------------
 
         result = mt5.order_send(
             request
         )
 
+        # ------------------------------------------------
+        # 13. NO RESPONSE = UNKNOWN
+        # ------------------------------------------------
+
         if result is None:
 
-            return self._error(
-                "MT5 order_send returned no result",
-                symbol=symbol
+            self.registry.update(
+                trade_id,
+                "UNKNOWN",
+                reason=(
+                    "MT5 order_send returned None"
+                )
             )
-
-        retcode = getattr(
-            result,
-            "retcode",
-            None
-        )
-
-        # ------------------------------------------------
-        # SUCCESS
-        # ------------------------------------------------
-
-        if retcode == mt5.TRADE_RETCODE_DONE:
 
             return {
 
-                "status": "EXECUTED",
+                "status": "UNKNOWN",
+
+                "stage": "ORDER_SEND",
 
                 "symbol": symbol,
 
-                "direction": direction,
+                "trade_id": trade_id,
 
-                "volume": normalized_volume,
-
-                "entry": market_price,
-
-                "stop_loss": stop_loss,
-
-                "take_profit": take_profit,
-
-                "ticket": getattr(
-                    result,
-                    "order",
-                    None
-                ),
-
-                "deal": getattr(
-                    result,
-                    "deal",
-                    None
-                ),
-
-                "retcode": retcode,
-
-                "comment": getattr(
-                    result,
-                    "comment",
-                    ""
-                ),
-
-                "timestamp": (
-                    datetime.utcnow().isoformat()
+                "reason": (
+                    "Broker response unavailable"
                 )
             }
 
         # ------------------------------------------------
-        # REJECTION
+        # 14. SUCCESS
         # ------------------------------------------------
+
+        if result.retcode in {
+            mt5.TRADE_RETCODE_DONE,
+            mt5.TRADE_RETCODE_PLACED
+        }:
+
+            ticket = getattr(
+                result,
+                "order",
+                None
+            )
+
+            if not ticket:
+
+                ticket = getattr(
+                    result,
+                    "deal",
+                    None
+                )
+
+            self.registry.update(
+
+                trade_id,
+
+                "SUBMITTED",
+
+                ticket=ticket,
+
+                reason=getattr(
+                    result,
+                    "comment",
+                    ""
+                )
+            )
+
+            # ------------------------------------------------
+            # 15. IMMEDIATE RECONCILIATION
+            # ------------------------------------------------
+
+            reconciled = (
+                self.reconciler.reconcile(
+                    symbol=symbol,
+                    trade_id=trade_id,
+                    magic=self.magic
+                )
+            )
+
+            return {
+
+                "status": "SUBMITTED",
+
+                "stage": "BROKER",
+
+                "symbol": symbol,
+
+                "trade_id": trade_id,
+
+                "ticket": ticket,
+
+                "volume": volume,
+
+                "risk": risk,
+
+                "sizing": sizing,
+
+                "broker_result": {
+                    "retcode": result.retcode,
+                    "comment": getattr(
+                        result,
+                        "comment",
+                        ""
+                    )
+                },
+
+                "reconciliation": reconciled
+            }
+
+        # ------------------------------------------------
+        # 16. BROKER REJECTION
+        # ------------------------------------------------
+
+        reason = (
+            f"Broker rejected order: "
+            f"{result.retcode} "
+            f"{getattr(result, 'comment', '')}"
+        )
+
+        self.registry.update(
+            trade_id,
+            "FAILED",
+            reason=reason
+        )
 
         return {
 
             "status": "REJECTED",
 
+            "stage": "BROKER",
+
             "symbol": symbol,
 
-            "direction": direction,
+            "trade_id": trade_id,
 
-            "volume": normalized_volume,
+            "retcode": result.retcode,
 
-            "entry": market_price,
+            "reason": reason
+        }
 
-            "stop_loss": stop_loss,
+    # ==================================================
+    # BUILD REQUEST
+    # ==================================================
 
-            "take_profit": take_profit,
+    def _build_request(
+        self,
+        setup,
+        volume,
+        trade_id
+    ):
 
-            "retcode": retcode,
+        symbol = setup.get(
+            "symbol"
+        )
 
-            "comment": getattr(
-                result,
-                "comment",
+        direction = str(
+            setup.get(
+                "direction",
                 ""
+            )
+        ).upper()
+
+        entry = setup.get(
+            "entry"
+        )
+
+        stop_loss = setup.get(
+            "stop_loss"
+        )
+
+        take_profit = setup.get(
+            "take_profit"
+        )
+
+        if (
+            not symbol
+            or entry is None
+            or stop_loss is None
+            or take_profit is None
+        ):
+
+            return None
+
+        symbol_info = mt5.symbol_info(
+            symbol
+        )
+
+        tick = mt5.symbol_info_tick(
+            symbol
+        )
+
+        if (
+            symbol_info is None
+            or tick is None
+        ):
+
+            return None
+
+        if direction == "BULLISH":
+
+            order_type = mt5.ORDER_TYPE_BUY
+            price = tick.ask
+
+        elif direction == "BEARISH":
+
+            order_type = mt5.ORDER_TYPE_SELL
+            price = tick.bid
+
+        else:
+
+            return None
+
+        return {
+
+            "action": mt5.TRADE_ACTION_DEAL,
+
+            "symbol": symbol,
+
+            "volume": float(
+                volume
             ),
 
-            "timestamp": (
-                datetime.utcnow().isoformat()
+            "type": order_type,
+
+            "price": float(
+                price
+            ),
+
+            "sl": float(
+                stop_loss
+            ),
+
+            "tp": float(
+                take_profit
+            ),
+
+            "deviation": 20,
+
+            "magic": self.magic,
+
+            "comment": trade_id,
+
+            "type_time": (
+                mt5.ORDER_TIME_GTC
+            ),
+
+            "type_filling": (
+                mt5.ORDER_FILLING_FOK
             )
         }
 
     # ==================================================
-    # HELPERS
+    # RESPONSE HELPERS
     # ==================================================
 
     @staticmethod
     def _blocked(
-        reason,
-        **kwargs
+        reason
     ):
 
-        result = {
+        return {
 
             "status": "BLOCKED",
 
             "reason": reason
         }
 
-        result.update(
-            kwargs
-        )
-
-        return result
-
     @staticmethod
     def _error(
-        reason,
-        **kwargs
+        symbol,
+        reason
     ):
 
-        result = {
+        return {
 
             "status": "ERROR",
 
+            "symbol": symbol,
+
             "reason": reason
         }
-
-        result.update(
-            kwargs
-        )
-
-        return result

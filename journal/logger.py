@@ -6,60 +6,38 @@ from datetime import datetime
 class Journal:
 
     def __init__(self):
-
         self.file = "journal/history.json"
 
+        os.makedirs(
+            os.path.dirname(self.file),
+            exist_ok=True
+        )
+
         if not os.path.exists(self.file):
+            self._write([])
 
-            with open(self.file, "w") as f:
-                json.dump([], f)
+    def _read(self):
+        try:
+            with open(self.file, "r") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, FileNotFoundError):
+            return []
 
-    def save(self, analysis):
-
-        record = {
-
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-
-            "symbol": analysis["symbol"],
-
-            "confidence": analysis["confidence"],
-
-            "grade": analysis["grade"],
-
-            "decision": analysis["decision"],
-
-            "entry": analysis["execution_plan"]["Entry"],
-
-            "stop_loss": analysis["execution_plan"]["Stop Loss"],
-
-            "tp1": analysis["execution_plan"]["TP1"],
-
-            "tp2": analysis["execution_plan"]["TP2"],
-
-            "market_bias": analysis["market_bias"]["Market Bias"],
-
-            "trend": analysis["trend"],
-
-            "bos": analysis["bos"]["BOS"],
-
-            "choch": analysis["choch"]["CHoCH"],
-
-            "liquidity": analysis["liquidity"]["Liquidity"],
-
-            "market_state": analysis["market_state"],
-
-            "confluence": analysis["confluence"],
-
-            "reasoning": analysis["reasoning"],
-
-            "narrative": analysis["narrative"]
-
-        }
-
-        with open(self.file, "r") as f:
-            data = json.load(f)
-
-        data.append(record)
-
+    def _write(self, data):
         with open(self.file, "w") as f:
             json.dump(data, f, indent=4)
+
+    def save(self, record):
+        data = self._read()
+
+        record = {
+            "timestamp": datetime.now().strftime(
+                "%Y-%m-%d %H:%M:%S"
+            ),
+            **record
+        }
+
+        data.append(record)
+        self._write(data)
+
+        return record
