@@ -3,47 +3,55 @@ import MetaTrader5 as mt5
 from execution.mt5_markup_publisher import MT5MarkupPublisher
 
 
-if not mt5.initialize():
-    print("MT5 initialization failed")
-    print("Error:", mt5.last_error())
-    raise SystemExit
+def main():
 
+    if not mt5.initialize():
 
-publisher = MT5MarkupPublisher()
+        print("MT5 initialization failed")
+        print(mt5.last_error())
+        return
 
-result = publisher.publish(
-    symbol="GBPUSD",
-    horizon="INTRADAY",
+    publisher = MT5MarkupPublisher()
 
-    zones=[
-        {
-            "type": "FVG",
-            "direction": "BULLISH",
-            "low": 1.1500,
-            "high": 1.1520
-        },
-        {
-            "type": "ORDER_BLOCK",
-            "direction": "BULLISH",
-            "low": 1.1470,
-            "high": 1.1490
+    result = publisher.publish(
+        symbol="GBPUSD",
+        horizon="M15",
+        zones=[
+            {
+                "type": "demand",
+                "low": 1.2700,
+                "high": 1.2720
+            }
+        ],
+        liquidity=[
+            {
+                "type": "sell_side",
+                "price": 1.2680
+            }
+        ],
+        structure=[
+            {
+                "type": "BOS",
+                "direction": "bullish",
+                "price": 1.2740
+            }
+        ],
+        trade_setup={
+            "direction": "BUY",
+            "entry": 1.2720,
+            "stop_loss": 1.2680,
+            "take_profit": 1.2800
         }
-    ],
+    )
 
-    liquidity=[
-        {
-            "type": "BUY_SIDE",
-            "price": 1.1580
-        }
-    ],
+    print(result)
 
-    trade_setup={
-        "entry": 1.1510,
-        "stop_loss": 1.1460,
-        "take_profit": 1.1610
-    }
-)
+    clear_result = publisher.clear()
 
-print(result)
+    print(clear_result)
 
-mt5.shutdown()
+    mt5.shutdown()
+
+
+if __name__ == "__main__":
+    main()
