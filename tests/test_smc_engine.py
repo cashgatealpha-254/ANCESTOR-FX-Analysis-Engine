@@ -22,21 +22,71 @@ for symbol, df in markets.items():
     print(f"\n{'=' * 60}")
     print(symbol)
 
-    print("\nSWING HIGHS:")
-    for swing in result["swing_highs"][-5:]:
-        print(swing)
+    print("\nSTRUCTURE SUMMARY")
+    print("-" * 60)
 
-    print("\nSWING LOWS:")
-    for swing in result["swing_lows"][-5:]:
-        print(swing)
+    print(
+        f"Structure Bias: "
+        f"{result.get('structure_bias', 'NEUTRAL')}"
+    )
 
-    print("\nSTRUCTURE:")
-    for item in result["structure"][-10:]:
-        print(item)
+    structure = result.get("structure", [])
 
-    print("\nSTRUCTURE BREAKS:")
-    for event in result["structure_breaks"][-10:]:
-        print(event)
+    if structure:
+        latest = structure[-1]
+
+        print(
+            f"Latest Structure: "
+            f"{latest['type']} "
+            f"@ {latest['price']}"
+        )
+    else:
+        print("Latest Structure: NONE")
+
+    breaks = result.get(
+        "structure_breaks",
+        []
+    )
+
+    if breaks:
+
+        latest_break = breaks[-1]
+
+        print(
+            f"Latest Break: "
+            f"{latest_break['type']} "
+            f"{latest_break['direction']} "
+            f"@ {latest_break['price']}"
+        )
+
+    else:
+
+        print("Latest Break: NONE")
+
+    print("\nMSS")
+    print("-" * 60)
+
+    mss = result.get("mss", {})
+
+    print(
+        f"MSS: "
+        f"{mss.get('mss', False)}"
+    )
+
+    print(
+        f"Direction: "
+        f"{mss.get('direction', 'NEUTRAL')}"
+    )
+
+    print(
+        f"Type: "
+        f"{mss.get('type')}"
+    )
+
+    print(
+        f"Reason: "
+        f"{mss.get('reason')}"
+    )
 
 
 mt5.shutdown()

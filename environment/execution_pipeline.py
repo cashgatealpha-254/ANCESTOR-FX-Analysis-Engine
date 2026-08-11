@@ -1,3 +1,4 @@
+from environment.setup_validator import SetupValidator
 from environment.risk_engine import RiskEngine
 from environment.position_sizer import PositionSizer
 from environment.execution_engine import ExecutionEngine
@@ -13,6 +14,12 @@ class ExecutionPipeline:
         max_positions=1,
         dry_run=True
     ):
+
+        self.setup_validator = SetupValidator(
+            minimum_rr=minimum_rr,
+            minimum_zone_ticks=2.0,
+            minimum_stop_ticks=2.0
+        )
 
         self.risk_engine = RiskEngine(
             risk_percent=risk_percent,
@@ -38,12 +45,74 @@ class ExecutionPipeline:
         setup
     ):
 
+        if not isinstance(
+            setup,
+            dict
+        ):
+
+            return {
+                "status": "BLOCKED",
+                "stage": "SETUP_VALIDATION",
+                "reason": "Invalid setup"
+            }
+
         # ==================================================
-        # STEP 1 — RISK VALIDATION
+        # STEP 1 — SETUP VALIDATION
+        # ==================================================
+
+        validation = self.setup_validator.validate(
+            setup
+        )
+
+        if validation.get(
+            "status"
+        ) != "READY":
+
+            return {
+
+                "status": "BLOCKED",
+
+                "stage": "SETUP_VALIDATION",
+
+                "symbol": setup.get(
+                    "symbol"
+                ),
+
+                "direction": setup.get(
+                    "direction"
+                ),
+
+                "horizon": setup.get(
+                    "horizon"
+                ),
+
+                "score": setup.get(
+                    "score"
+                ),
+
+                "validation": validation,
+
+                "reason": validation.get(
+                    "reason",
+                    "Setup validation failed"
+                )
+            }
+
+        # ==================================================
+        # MERGE VALIDATION
+        # ==================================================
+
+        enriched_setup = {
+            **setup,
+            **validation
+        }
+
+        # ==================================================
+        # STEP 2 — RISK VALIDATION
         # ==================================================
 
         risk = self.risk_engine.validate(
-            setup
+            enriched_setup
         )
 
         if risk.get(
@@ -56,6 +125,24 @@ class ExecutionPipeline:
 
                 "stage": "RISK",
 
+                "symbol": enriched_setup.get(
+                    "symbol"
+                ),
+
+                "direction": enriched_setup.get(
+                    "direction"
+                ),
+
+                "horizon": enriched_setup.get(
+                    "horizon"
+                ),
+
+                "score": enriched_setup.get(
+                    "score"
+                ),
+
+                "validation": validation,
+
                 "risk": risk,
 
                 "reason": risk.get(
@@ -65,16 +152,15 @@ class ExecutionPipeline:
             }
 
         # ==================================================
-        # MERGE RISK DATA
+        # MERGE RISK
         # ==================================================
 
-        enriched_setup = {
-            **setup,
-            **risk
-        }
+        enriched_setup.update(
+            risk
+        )
 
         # ==================================================
-        # STEP 2 — POSITION SIZING
+        # STEP 3 — POSITION SIZING
         # ==================================================
 
         sizing = self.position_sizer.calculate(
@@ -90,6 +176,24 @@ class ExecutionPipeline:
                 "status": "BLOCKED",
 
                 "stage": "POSITION_SIZE",
+
+                "symbol": enriched_setup.get(
+                    "symbol"
+                ),
+
+                "direction": enriched_setup.get(
+                    "direction"
+                ),
+
+                "horizon": enriched_setup.get(
+                    "horizon"
+                ),
+
+                "score": enriched_setup.get(
+                    "score"
+                ),
+
+                "validation": validation,
 
                 "risk": risk,
 
@@ -110,7 +214,7 @@ class ExecutionPipeline:
         )
 
         # ==================================================
-        # STEP 3 — EXECUTION
+        # STEP 4 — EXECUTION
         # ==================================================
 
         execution = self.execution_engine.execute(
@@ -161,6 +265,8 @@ class ExecutionPipeline:
             "rr": enriched_setup.get(
                 "rr"
             ),
+
+            "validation": validation,
 
             "risk": risk,
 

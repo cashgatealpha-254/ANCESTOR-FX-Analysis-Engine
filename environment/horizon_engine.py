@@ -40,17 +40,17 @@ class HorizonEngine:
 
             "SWING": {
                 "timeframe": mt5.TIMEFRAME_H4,
-                "bars": 300
+                "bars": 540
             },
 
             "INTRADAY": {
                 "timeframe": mt5.TIMEFRAME_M15,
-                "bars": 300
+                "bars": 8640
             },
 
             "SCALPING": {
                 "timeframe": mt5.TIMEFRAME_M5,
-                "bars": 300
+                "bars": 25920
             }
         }
 

@@ -1,0 +1,40 @@
+{
+    "context_version": "20260811_123947",
+    "analysis_time": "2026-08-11T12:39:47.593962",
+    "symbol": "GBPUSD",
+    "horizon": "SWING",
+    "context": {
+        "schema_version": "1.0",
+        "symbol": "GBPUSD",
+        "horizon": "SWING",
+        "analysis_time": null,
+        "timeframe": null,
+        "bars": null,
+        "direction": "BEARISH",
+        "trend": {
+            "trend": "BEARISH"
+        },
+        "smc": {
+            "structure": []
+        },
+        "liquidity": {
+            "status": "TEST"
+        },
+        "supply_demand": null,
+        "market_profile": {
+            "poc": 1.35
+        },
+        "location": {
+            "status": "TEST"
+        },
+        "fvg": null,
+        "order_blocks": null,
+        "relevant_zones": {
+            "fvg": [],
+            "order_blocks": []
+        },
+        "confluence": {
+            "score": 70
+        }
+    }
+}

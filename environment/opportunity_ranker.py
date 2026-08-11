@@ -13,13 +13,37 @@ class OpportunityRanker:
 
         self.max_zone_distance = 0.50
 
-    def rank(self, horizon_results):
+    # ==================================================
+    # RANK
+    # ==================================================
+
+    def rank(
+        self,
+        horizon_results
+    ):
 
         opportunities = []
 
+        if not isinstance(
+            horizon_results,
+            dict
+        ):
+
+            return opportunities
+
         for horizon, data in horizon_results.items():
 
-            if data.get("status") != "OK":
+            if not isinstance(
+                data,
+                dict
+            ):
+
+                continue
+
+            if data.get(
+                "status"
+            ) != "OK":
+
                 continue
 
             direction_score, direction, direction_reasons = (
@@ -72,32 +96,276 @@ class OpportunityRanker:
                 + liquidity_reasons
                 + structure_reasons
                 + imbalance_reasons
-                + [f"{horizon.lower()} horizon analyzed"]
+                + [
+                    f"{horizon.lower()} horizon analyzed"
+                ]
             )
 
             opportunities.append({
-                "symbol": data.get("symbol"),
+
+                "symbol": data.get(
+                    "symbol"
+                ),
+
                 "horizon": horizon,
+
                 "direction": direction,
-                "score": min(round(score), 100),
+
+                "score": min(
+                    round(score),
+                    100
+                ),
+
+                "direction_score": direction_score,
+
                 "location_score": location_score,
 
-                # Preserve intelligence for TradeSetupEngine
-                "trend": data.get("trend"),
-                "smc": data.get("smc"),
-                "liquidity": data.get("liquidity"),
-                "location": data.get("location"),
-                "relevant_zones": data.get("relevant_zones"),
+                "liquidity_score": liquidity_score,
+
+                "structure_score": structure_score,
+
+                "imbalance_score": imbalance_score,
+
+                # Preserve intelligence
+                "trend": data.get(
+                    "trend"
+                ),
+
+                "smc": data.get(
+                    "smc"
+                ),
+
+                "liquidity": data.get(
+                    "liquidity"
+                ),
+
+                "location": data.get(
+                    "location"
+                ),
+
+                "relevant_zones": data.get(
+                    "relevant_zones"
+                ),
 
                 "reasons": reasons,
             })
 
         opportunities.sort(
-            key=lambda item: item["score"],
+            key=lambda item: item.get(
+                "score",
+                0
+            ),
             reverse=True
         )
 
         return opportunities
+
+    # ==================================================
+    # DIRECTION
+    # ==================================================
+
+    def _score_direction(
+        self,
+        trend,
+        smc
+    ):
+
+        score = 0
+
+        reasons = []
+
+        # ------------------------------------------
+        # TREND
+        # ------------------------------------------
+
+        trend_direction = "NEUTRAL"
+
+        if isinstance(
+            trend,
+            dict
+        ):
+
+            trend_direction = str(
+                trend.get(
+                    "trend",
+                    ""
+                )
+            ).upper()
+
+            if trend_direction not in {
+                "BULLISH",
+                "BEARISH"
+            }:
+
+                trend_direction = "NEUTRAL"
+
+        # ------------------------------------------
+        # SMC STRUCTURE
+        # ------------------------------------------
+
+        bullish_structure = 0
+
+        bearish_structure = 0
+
+        if isinstance(
+            smc,
+            dict
+        ):
+
+            structure = smc.get(
+                "structure",
+                []
+            )
+
+            if isinstance(
+                structure,
+                list
+            ):
+
+                for item in structure[-6:]:
+
+                    if not isinstance(
+                        item,
+                        dict
+                    ):
+
+                        continue
+
+                    structure_type = str(
+                        item.get(
+                            "type",
+                            ""
+                        )
+                    ).upper()
+
+                    if structure_type in {
+                        "HH",
+                        "HL"
+                    }:
+
+                        bullish_structure += 1
+
+                    elif structure_type in {
+                        "LH",
+                        "LL"
+                    }:
+
+                        bearish_structure += 1
+
+        # ------------------------------------------
+        # DETERMINE DIRECTION
+        # ------------------------------------------
+
+        if bullish_structure > bearish_structure:
+
+            direction = "BULLISH"
+
+        elif bearish_structure > bullish_structure:
+
+            direction = "BEARISH"
+
+        elif trend_direction in {
+            "BULLISH",
+            "BEARISH"
+        }:
+
+            direction = trend_direction
+
+        else:
+
+            direction = "NEUTRAL"
+
+        # ------------------------------------------
+        # TREND SCORE
+        # ------------------------------------------
+
+        if (
+            direction in {
+                "BULLISH",
+                "BEARISH"
+            }
+            and
+            trend_direction == direction
+        ):
+
+            score += 15
+
+            reasons.append(
+                f"{direction.lower()} trend confirmation"
+            )
+
+        elif trend_direction == direction:
+
+            score += 8
+
+            reasons.append(
+                f"{direction.lower()} trend identified"
+            )
+
+        # ------------------------------------------
+        # STRUCTURE SCORE
+        # ------------------------------------------
+
+        if direction == "BULLISH":
+
+            if bullish_structure >= 3:
+
+                score += 10
+
+                reasons.append(
+                    "strong bullish structure"
+                )
+
+            elif bullish_structure > 0:
+
+                score += 5
+
+                reasons.append(
+                    "bullish structure identified"
+                )
+
+        elif direction == "BEARISH":
+
+            if bearish_structure >= 3:
+
+                score += 10
+
+                reasons.append(
+                    "strong bearish structure"
+                )
+
+            elif bearish_structure > 0:
+
+                score += 5
+
+                reasons.append(
+                    "bearish structure identified"
+                )
+
+        # ------------------------------------------
+        # CAP
+        # ------------------------------------------
+
+        score = min(
+            score,
+            self.weights["direction"]
+        )
+
+        # ------------------------------------------
+        # NEUTRAL
+        # ------------------------------------------
+
+        if direction == "NEUTRAL":
+
+            reasons.append(
+                "no actionable directional bias"
+            )
+
+        return (
+            score,
+            direction,
+            reasons
+        )
 
     # ==================================================
     # LOCATION
@@ -114,7 +382,10 @@ class OpportunityRanker:
             dict
         ):
 
-            return 0, []
+            return (
+                0,
+                []
+            )
 
         nearby = location.get(
             "nearby_zones",
@@ -125,24 +396,49 @@ class OpportunityRanker:
 
             return (
                 0,
-                ["no nearby actionable zones"]
+                [
+                    "no nearby actionable zones"
+                ]
             )
 
         score = 0
+
         reasons = []
 
         best_distance = None
 
         for zone in nearby:
 
+            if not isinstance(
+                zone,
+                dict
+            ):
+
+                continue
+
             distance = zone.get(
                 "distance_pct"
             )
 
             if distance is None:
+
+                continue
+
+            try:
+
+                distance = float(
+                    distance
+                )
+
+            except (
+                TypeError,
+                ValueError
+            ):
+
                 continue
 
             if distance > self.max_zone_distance:
+
                 continue
 
             if (
@@ -159,21 +455,22 @@ class OpportunityRanker:
                 )
             ).upper()
 
-            # Closer zones receive more weight.
             if distance <= 0.05:
+
                 zone_score = 8
 
             elif distance <= 0.10:
+
                 zone_score = 6
 
             elif distance <= 0.25:
+
                 zone_score = 4
 
             else:
+
                 zone_score = 2
 
-            # Profile zones are context,
-            # not primary entry zones.
             if zone_type.startswith(
                 "PROFILE_"
             ):
@@ -203,7 +500,10 @@ class OpportunityRanker:
                 f"{best_distance:.2f}% away"
             )
 
-        return score, reasons
+        return (
+            score,
+            reasons
+        )
 
     # ==================================================
     # LIQUIDITY
@@ -220,9 +520,13 @@ class OpportunityRanker:
             dict
         ):
 
-            return 0, []
+            return (
+                0,
+                []
+            )
 
         score = 0
+
         reasons = []
 
         buy_side = liquidity.get(
@@ -312,7 +616,10 @@ class OpportunityRanker:
             dict
         ):
 
-            return 0, []
+            return (
+                0,
+                []
+            )
 
         breaks = smc.get(
             "structure_breaks",
@@ -323,10 +630,24 @@ class OpportunityRanker:
 
             return (
                 0,
-                ["no structural confirmation"]
+                [
+                    "no structural confirmation"
+                ]
             )
 
         latest = breaks[-1]
+
+        if not isinstance(
+            latest,
+            dict
+        ):
+
+            return (
+                0,
+                [
+                    "invalid structural information"
+                ]
+            )
 
         structure_type = str(
             latest.get(
@@ -346,7 +667,9 @@ class OpportunityRanker:
 
             return (
                 5,
-                ["structure conflicts with direction"]
+                [
+                    "structure conflicts with direction"
+                ]
             )
 
         if structure_type == "BOS":
@@ -369,7 +692,9 @@ class OpportunityRanker:
 
         return (
             5,
-            ["structural information available"]
+            [
+                "structural information available"
+            ]
         )
 
     # ==================================================
@@ -389,10 +714,13 @@ class OpportunityRanker:
 
             return (
                 0,
-                ["no relevant zones"]
+                [
+                    "no relevant zones"
+                ]
             )
 
         score = 0
+
         reasons = []
 
         fvg = relevant_zones.get(
@@ -411,20 +739,32 @@ class OpportunityRanker:
 
         aligned_fvg = []
 
-        for zone in fvg:
+        if isinstance(
+            fvg,
+            list
+        ):
 
-            zone_direction = str(
-                zone.get(
-                    "direction",
-                    direction
-                )
-            ).upper()
+            for zone in fvg:
 
-            if zone_direction == direction:
+                if not isinstance(
+                    zone,
+                    dict
+                ):
 
-                aligned_fvg.append(
-                    zone
-                )
+                    continue
+
+                zone_direction = str(
+                    zone.get(
+                        "direction",
+                        direction
+                    )
+                ).upper()
+
+                if zone_direction == direction:
+
+                    aligned_fvg.append(
+                        zone
+                    )
 
         if aligned_fvg:
 
@@ -440,20 +780,32 @@ class OpportunityRanker:
 
         aligned_ob = []
 
-        for zone in order_blocks:
+        if isinstance(
+            order_blocks,
+            list
+        ):
 
-            zone_direction = str(
-                zone.get(
-                    "direction",
-                    direction
-                )
-            ).upper()
+            for zone in order_blocks:
 
-            if zone_direction == direction:
+                if not isinstance(
+                    zone,
+                    dict
+                ):
 
-                aligned_ob.append(
-                    zone
-                )
+                    continue
+
+                zone_direction = str(
+                    zone.get(
+                        "direction",
+                        direction
+                    )
+                ).upper()
+
+                if zone_direction == direction:
+
+                    aligned_ob.append(
+                        zone
+                    )
 
         if aligned_ob:
 

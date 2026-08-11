@@ -4,8 +4,10 @@ from environment.horizon_engine import HorizonEngine
 
 
 if not mt5.initialize():
+
     print("MT5 initialization failed")
     print(mt5.last_error())
+
     raise SystemExit
 
 
@@ -19,9 +21,10 @@ symbols = [
     "DE30"
 ]
 
+
 for symbol in symbols:
 
-    print(f"\n{'=' * 70}")
+    print("\n" + "=" * 70)
     print(symbol)
 
     result = engine.analyze(symbol)
@@ -30,27 +33,155 @@ for symbol in symbols:
 
         print(f"\n--- {horizon} ---")
 
-        print(f"Status: {data['status']}")
+        if data.get("status") != "OK":
 
-        if data["status"] == "OK":
+            print(f"Status: {data.get('status')}")
+            print(f"Error: {data.get('error', 'N/A')}")
+            continue
+
+        print("Status: OK")
+        print(f"Bars: {data.get('bars')}")
+
+        # ==========================================
+        # DIRECTION
+        # ==========================================
+
+        print(
+            f"Direction: "
+            f"{data.get('direction')}"
+        )
+
+        # ==========================================
+        # TREND
+        # ==========================================
+
+        trend = data.get("trend", {})
+
+        if isinstance(trend, dict):
 
             print(
-                f"Bars: {data['bars']}"
+                f"Trend: "
+                f"{trend.get('trend', 'N/A')}"
+            )
+
+        # ==========================================
+        # SMC
+        # ==========================================
+
+        smc = data.get("smc", {})
+
+        if isinstance(smc, dict):
+
+            print(
+                f"Structure Bias: "
+                f"{smc.get('structure_bias', 'N/A')}"
+            )
+
+            structure = smc.get(
+                "structure",
+                []
             )
 
             print(
-                f"Trend: {data['trend']}"
+                f"Latest Structure: "
+                f"{structure[-1] if structure else 'None'}"
+            )
+
+            breaks = smc.get(
+                "structure_breaks",
+                []
             )
 
             print(
-                f"Market Profile: "
-                f"{data['market_profile']}"
+                f"Latest Break: "
+                f"{breaks[-1] if breaks else 'None'}"
+            )
+
+            mss = smc.get(
+                "mss",
+                {}
             )
 
             print(
-                f"SMC structure: "
-                f"{data['smc'].get('structure', [])[-3:]}"
+                f"MSS: "
+                f"{mss.get('mss', False)}"
             )
+
+            print(
+                f"MSS Direction: "
+                f"{mss.get('direction', 'N/A')}"
+            )
+
+            print(
+                f"MSS Type: "
+                f"{mss.get('type', 'None')}"
+            )
+
+        # ==========================================
+        # LIQUIDITY
+        # ==========================================
+
+        liquidity = data.get(
+            "liquidity",
+            {}
+        )
+
+        print(
+            f"Liquidity: "
+            f"{liquidity}"
+        )
+
+        # ==========================================
+        # RELEVANT ZONES
+        # ==========================================
+
+        relevant_zones = data.get(
+            "relevant_zones",
+            {}
+        )
+
+        if isinstance(
+            relevant_zones,
+            dict
+        ):
+
+            print(
+                f"Relevant FVGs: "
+                f"{len(relevant_zones.get('fvg', []))}"
+            )
+
+            print(
+                f"Relevant OBs: "
+                f"{len(relevant_zones.get('order_blocks', []))}"
+            )
+
+        # ==========================================
+        # LOCATION
+        # ==========================================
+
+        location = data.get(
+            "location",
+            {}
+        )
+
+        print(
+            f"Location: "
+            f"{location}"
+        )
+
+        # ==========================================
+        # CONFLUENCE
+        # ==========================================
+
+        confluence = data.get(
+            "confluence",
+            {}
+        )
+
+        print(
+            f"Confluence: "
+            f"{confluence}"
+        )
 
 
 mt5.shutdown()

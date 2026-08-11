@@ -1,453 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Ancestor FX Dashboard</title>
 
     <style>
-        body{
-            background:#0f172a;
-            color:white;
-            font-family:Arial, Helvetica, sans-serif;
-            margin:40px;
+
+        body {
+            background: #0f172a;
+            color: white;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            margin: 0;
+            padding: 30px;
         }
 
-        h1{
-            color:#38bdf8;
+        h1 {
+            color: #38bdf8;
         }
 
-        .card{
-            background:#1e293b;
-            padding:20px;
-            margin-bottom:20px;
-            border-radius:12px;
+        h2 {
+            color: #e2e8f0;
         }
 
-        table{
-            width:100%;
-            border-collapse:collapse;
+        h3 {
+            color: #cbd5e1;
         }
 
-        th,td{
-            padding:10px;
-            border-bottom:1px solid #334155;
-            text-align:left;
+        .card {
+
+            background: #1e293b;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            border-radius: 12px;
         }
 
-        th{
-            color:#38bdf8;
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
+
+            gap: 20px;
         }
 
-        .green{
-            color:#22c55e;
+        .status-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 12px;
         }
 
-        .red{
-            color:#ef4444;
+        .status-item {
+
+            background: #0f172a;
+
+            padding: 14px;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
         }
+
+        table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+        }
+
+        th,
+        td {
+
+            padding: 10px;
+
+            border-bottom:
+                1px solid #334155;
+
+            text-align: left;
+        }
+
+        th {
+            color: #38bdf8;
+        }
+
+        .green {
+            color: #22c55e;
+        }
+
+        .red {
+            color: #ef4444;
+        }
+
+        .orange {
+            color: #f59e0b;
+        }
+
+        .blue {
+            color: #38bdf8;
+        }
+
+        .muted {
+            color: #94a3b8;
+        }
+
+        .big {
+
+            font-size: 28px;
+
+            font-weight: bold;
+        }
+
+        .badge {
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #334155;
+        }
+
+        .online {
+
+            color: #22c55e;
+        }
+
+        .offline {
+
+            color: #ef4444;
+        }
+
+        .waiting {
+
+            color: #f59e0b;
+        }
+
+        .stored {
+
+            color: #22c55e;
+        }
+
+        .standby {
+
+            color: #94a3b8;
+        }
+
     </style>
 
 </head>
 
+
 <body>
+
+
+<!-- ====================================================== -->
+<!-- HEADER -->
+<!-- ====================================================== -->
 
 <div class="card">
 
-<h1>📊 Ancestor FX Dashboard</h1>
+    <h1>Ancestor FX Dashboard</h1>
 
-<p><strong>Symbol:</strong> {{ symbol }}</p>
+    <p>
+        <strong>Symbol:</strong>
+        GBPUSD
+    </p>
 
-<p><strong>Time:</strong> {{ current_time }}</p>
+    <p>
+        <strong>Time:</strong>
+        {{ current_time }}
+    </p>
 
-{% if connected %}
-<p class="green">🟢 Engine Online</p>
-{% else %}
-<p class="red">🔴 Engine Offline</p>
-{% endif %}
+    {% if connected %}
+
+        <p class="green">
+            Engine Online
+        </p>
+
+    {% else %}
+
+        <p class="red">
+            Engine Offline
+        </p>
+
+    {% endif %}
 
 </div>
 
-<!-- SUMMARY CARDS GO HERE -->
 
-<div style="display:flex; gap:20px; flex-wrap:wrap;">
+<!-- ====================================================== -->
+<!-- ACCOUNT SUMMARY -->
+<!-- ====================================================== -->
+
+<div class="grid">
 
     <div class="card">
+
         <h3>Balance</h3>
-        <h2>{{ account.balance }}</h2>
+
+        <div class="big">
+
+            {{ account.get("balance", "—") }}
+
+        </div>
+
     </div>
 
+
     <div class="card">
+
         <h3>Equity</h3>
-        <h2>{{ account.equity }}</h2>
+
+        <div class="big">
+
+            {{ account.get("equity", "—") }}
+
+        </div>
+
     </div>
 
+
     <div class="card">
+
         <h3>Profit</h3>
 
-        {% if account.profit >= 0 %}
-            <h2 class="green">{{ account.profit }}</h2>
+        {% if account.get("profit", 0) >= 0 %}
+
+            <div class="big green">
+
+                {{ account.get("profit", "—") }}
+
+            </div>
+
         {% else %}
-            <h2 class="red">{{ account.profit }}</h2>
+
+            <div class="big red">
+
+                {{ account.get("profit", "—") }}
+
+            </div>
+
         {% endif %}
 
     </div>
 
+
     <div class="card">
+
         <h3>Leverage</h3>
-        <h2>1:{{ account.leverage }}</h2>
+
+        <div class="big">
+
+            1:{{ account.get("leverage", "—") }}
+
+        </div>
+
     </div>
 
 </div>
 
-<!-- MT5 CARD CONTINUES HERE -->
+
+<!-- ====================================================== -->
+<!-- MT5 -->
+<!-- ====================================================== -->
 
 <div class="card">
 
-{% if connected %}
+    <h2>MT5 Connection</h2>
 
-<h2 class="green">MT5 Connected</h2>
+    {% if connected %}
 
-<p><strong>Name:</strong> {{ account.name }}</p>
+        <p class="green">
+            Connected
+        </p>
 
-<p><strong>Server:</strong> {{ account.server }}</p>
+        <p>
+            <strong>Name:</strong>
+            {{ account.get("name", "—") }}
+        </p>
 
-<p><strong>Login:</strong> {{ account.login }}</p>
+        <p>
+            <strong>Server:</strong>
+            {{ account.get("server", "—") }}
+        </p>
 
-<p><strong>Balance:</strong> {{ account.balance }} {{ account.currency }}</p>
+        <p>
+            <strong>Login:</strong>
+            {{ account.get("login", "—") }}
+        </p>
 
-<p><strong>Equity:</strong> {{ account.equity }}</p>
+        <p>
+            <strong>Currency:</strong>
+            {{ account.get("currency", "—") }}
+        </p>
 
-<p><strong>Profit:</strong> {{ account.profit }}</p>
+        <p>
+            <strong>Margin:</strong>
+            {{ account.get("margin", "—") }}
+        </p>
 
-<p><strong>Margin:</strong> {{ account.margin }}</p>
+        <p>
+            <strong>Free Margin:</strong>
+            {{ account.get("free_margin", "—") }}
+        </p>
 
-<p><strong>Free Margin:</strong> {{ account.free_margin }}</p>
+    {% else %}
 
-<p><strong>Leverage:</strong> 1:{{ account.leverage }}</p>
+        <p class="red">
+            MT5 Not Connected
+        </p>
 
-{% else %}
-
-<h2 class="red">MT5 Not Connected</h2>
-
-{% endif %}
+    {% endif %}
 
 </div>
 
-<div class="card">
-
-<h2>Open Positions</h2>
-
-{% if positions %}
-
-<table>
-
-<tr>
-<th>Symbol</th>
-<th>Type</th>
-<th>Lot</th>
-<th>Entry</th>
-<th>Current</th>
-<th>Profit</th>
-</tr>
-
-{% for p in positions %}
-
-<tr>
-
-<td>{{ p.symbol }}</td>
-
-<td>{{ p.type }}</td>
-
-<td>{{ p.volume }}</td>
-
-<td>{{ p.price_open }}</td>
-
-<td>{{ p.price_current }}</td>
-
-<td>{{ p.profit }}</td>
-
-</tr>
-
-{% endfor %}
-
-</table>
-
-{% else %}
-
-<p>No open positions.</p>
-
-{% endif %}
-
-</div>
+<!-- ====================================================== -->
+<!-- ENGINE HEALTH -->
+<!-- ====================================================== -->
 
 <div class="card">
 
-<h2>Market Signals</h2>
+    <h2>🧠 Engine Health</h2>
 
-{% if signals %}
+    {% if health.healthy %}
 
-<table>
+        <h3 class="green">🟢 ALL SYSTEMS HEALTHY</h3>
 
-<tr>
+    {% else %}
 
-<th>Symbol</th>
-<th>Decision</th>
-<th>Confidence</th>
-<th>Supply Zone</th>
-<th>Demand Zone</th>
+        <h3 class="red">🔴 SYSTEM CHECK REQUIRED</h3>
 
-</tr>
-
-{% for signal in signals %}
-
-<tr>
-
-<td>{{ signal.symbol }}</td>
-
-<td>{{ signal.decision }}</td>
-
-<td>{{ signal.confidence }}%</td>
-
-<td>
-{{ signal.supply_low }}
--
-{{ signal.supply_high }}
-</td>
-
-<td>
-{{ signal.demand_low }}
--
-{{ signal.demand_high }}
-</td>
-
-</tr>
-
-{% endfor %}
-
-</table>
-
-{% else %}
-
-<p>No signals available.</p>
-
-{% endif %}
-
-</div>
-
-<div class="card">
-
-    <h2>✅ Trade Checklist</h2>
-
-    <ul>
-
-        <li>✅ Trend aligned</li>
-
-        <li>✅ Market Structure confirmed</li>
-
-        <li>✅ Supply/Demand respected</li>
-
-        <li>✅ Liquidity sweep confirmed</li>
-
-        <li>⬜ Risk check</li>
-
-        <li>⬜ Session check</li>
-
-        <li>⬜ News check</li>
-
-    </ul>
-
-</div>
-
-<!-- EXECUTION PLAN -->
-
-<div class="card">
-
-    <h2>🎯 Execution Plan</h2>
-
-    {% if execution_plan %}
+    {% endif %}
 
     <table>
 
         <tr>
-            <th>Direction</th>
+            <th>Component</th>
+            <th>Status</th>
+        </tr>
+
+        {% for component, status in health.checks.items() %}
+
+        <tr>
+
+            <td>{{ component | upper }}</td>
+
             <td>
-                {% if execution_plan.Direction == "BUY" %}
-                    <span class="green">🟢 BUY</span>
+                {% if status %}
+                    <span class="green">✓ ONLINE</span>
                 {% else %}
-                    <span class="red">🔴 SELL</span>
+                    <span class="red">✗ FAILED</span>
                 {% endif %}
             </td>
-        </tr>
-
-        <tr>
-            <th>Entry</th>
-            <td>{{ execution_plan.Entry }}</td>
-        </tr>
-
-        <tr>
-            <th>Stop Loss</th>
-            <td>{{ execution_plan["Stop Loss"] }}</td>
-        </tr>
-
-        <tr>
-            <th>Take Profit</th>
-            <td>{{ execution_plan.Take_Profit }}</td>
-        </tr>
-
-        <tr>
-            <th>Risk : Reward</th>
-            <td>{{ execution_plan["Risk Reward"] }}</td>
-        </tr>
-
-        <tr>
-            <th>Lot Size</th>
-            <td>{{ execution_plan["Lot Size"] }}</td>
-        </tr>
-
-        <tr>
-            <th>Positions</th>
-            <td>{{ execution_plan.Positions }}</td>
-        </tr>
-
-    </table>
-
-    {% else %}
-
-    <p>No execution plan available.</p>
-
-    {% endif %}
-
-</div>
-
-<!-- LIVE CHART -->
-
-<div class="card">
-    <h2>Live Chart</h2>
-
-    {{ chart | safe }}
-
-</div>
-
-<div class="card">
-    <h3>Market Narrative</h3>
-
-    <p>{{ narrative }}</p>
-
-    </div>
-
-    <div class="card">
-
-    <h2>📈 Market Snapshot</h2>
-
-    <p><strong>Trend:</strong> {{ trend.Trend }}</p>
-
-    <p><strong>Bias:</strong> {{ market_bias["Market Bias"] }}</p>
-
-    <p><strong>Market State:</strong> {{ market_state["Market State"] }}</p>
-
-    <p><strong>Structure:</strong> {{ market_structure["Structure"] }}</p>
-
-    <p><strong>BOS:</strong> {{ bos.Result }}</p>
-
-    <p><strong>CHOCH:</strong> {{ choch.Result }}</p>
-
-</div>
-
-<div class="card">
-
-    <h2>🧠 Analysis Pipeline</h2>
-
-    <ul>
-
-        <li>✅ Trend Analysis</li>
-
-        <li>✅ Market Structure</li>
-
-        <li>✅ Supply & Demand</li>
-
-        <li>✅ Liquidity Sweep</li>
-
-        <li>✅ BOS / CHOCH</li>
-
-        <li>✅ Confidence Engine</li>
-
-        <li>⬜ Risk Manager</li>
-
-        <li>⬜ Auto Execution</li>
-
-    </ul>
-
-</div>
-
-<div class="card">
-
-    <h2>🎯 Trade Decision</h2>
-
-    {% if decision == "EXECUTE" %}
-
-    <h1 class="green">🟢 {{ decision }}</h1>
-
-    {% elif decision == "WAIT" %}
-
-    <h1 style="color:orange;">🟡 {{ decision }}</h1>
-
-    {% else %}
-
-    <h1 class="red">🔴 {{ decision }}</h1>
-
-    {% endif %}
-
-    <p><strong>Confidence:</strong>
-
-    {% if confidence >= 80 %}
-        <span class="green">{{ confidence }}%</span>
-
-    {% elif confidence >= 60 %}
-        <span style="color:orange;">{{ confidence }}%</span>
-
-    {% else %}
-        <span class="red">{{ confidence }}%</span>
-
-    {% endif %}
-
-    </p>
-
-        <p><strong>Grade:</strong> {{ grade }}</p>
-
-    <hr>
-
-        <h3>Reasoning</h3>
-
-        <p>{{ reasoning }}
-
-<div class="card">
-
-    <h2>📒 Latest Analysis</h2>
-
-    <table>
-
-        <tr>
-            <th>Time</th>
-            <th>Pair</th>
-            <th>Decision</th>
-            <th>Confidence</th>
-            <th>Grade</th>
-        </tr>
-
-        {% for item in history %}
-
-        <tr>
-
-            <td>{{ item.timestamp }}</td>
-
-            <td>{{ item.symbol }}</td>
-
-            <td>{{ item.decision }}</td>
-
-            <td>{{ item.confidence }}%</td>
-
-            <td>{{ item.grade }}</td>
 
         </tr>
 
@@ -457,41 +389,793 @@
 
 </div>
 
+
+<!-- ====================================================== -->
+<!-- BRAIN STATUS -->
+<!-- ====================================================== -->
+
 <div class="card">
 
-    <h2>⭐ Ancestor Score</h2>
+    <h2>Brain &amp; Pipeline Status</h2>
 
-    <h1>{{ confidence }}%</h1>
+    <div class="status-grid">
 
-    <progress value="{{ confidence }}" max="100"></progress>
+        {% for item in brain_status %}
 
-    <p><strong>Grade:</strong> {{ grade }}</p>
+            <div class="status-item">
+
+                <span>
+                    {{ item.name }}
+                </span>
+
+                {% if item.status == "READY" %}
+
+                    <strong class="green">
+                        READY
+                    </strong>
+
+                {% elif item.status == "RUNNING" %}
+
+                    <strong class="blue">
+                        RUNNING
+                    </strong>
+
+                {% elif item.status == "WAITING" %}
+
+                    <strong class="waiting">
+                        WAITING
+                    </strong>
+
+                {% elif item.status == "STANDBY" %}
+
+                    <strong class="standby">
+                        STANDBY
+                    </strong>
+
+                {% elif item.status == "DISABLED" %}
+
+                    <strong class="standby">
+                        DISABLED
+                    </strong>
+
+                {% else %}
+
+                    <strong class="red">
+                        {{ item.status }}
+                    </strong>
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 </div>
 
+
+<!-- ====================================================== -->
+<!-- DEEP CONTEXT -->
+<!-- ====================================================== -->
+
 <div class="card">
 
-    <h2>⚙️ Engine Status</h2>
+    <h2>Deep Context Memory</h2>
 
-    <p>Connection:
-        {% if connected %}
-            <span class="green">🟢 ONLINE</span>
+    <table>
+
+        <tr>
+
+            <th>Symbol</th>
+
+            <th>Horizon</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        {% for item in deep_context %}
+
+            <tr>
+
+                <td>
+                    {{ item.symbol }}
+                </td>
+
+                <td>
+                    {{ item.horizon }}
+                </td>
+
+                <td>
+
+                    {% if item.status == "STORED" %}
+
+                        <span class="stored">
+                            STORED
+                        </span>
+
+                    {% else %}
+
+                        <span class="waiting">
+                            WAITING FOR 90-DAY DATA
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- OPEN POSITIONS -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Open Positions</h2>
+
+    {% if positions %}
+
+        <table>
+
+            <tr>
+
+                <th>Symbol</th>
+                <th>Type</th>
+                <th>Lot</th>
+                <th>Entry</th>
+                <th>Current</th>
+                <th>Profit</th>
+
+            </tr>
+
+            {% for p in positions %}
+
+                <tr>
+
+                    <td>{{ p.symbol }}</td>
+
+                    <td>{{ p.type }}</td>
+
+                    <td>{{ p.volume }}</td>
+
+                    <td>{{ p.price_open }}</td>
+
+                    <td>{{ p.price_current }}</td>
+
+                    <td>{{ p.profit }}</td>
+
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+
+        <p class="muted">
+            No open positions.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- MARKET SIGNALS -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Market Signals</h2>
+
+    {% if signals %}
+
+        <table>
+
+            <tr>
+
+                <th>Symbol</th>
+                <th>Decision</th>
+                <th>Confidence</th>
+                <th>Supply Zone</th>
+                <th>Demand Zone</th>
+
+            </tr>
+
+            {% for signal in signals %}
+
+                <tr>
+
+                    <td>
+                        {{ signal.symbol }}
+                    </td>
+
+                    <td>
+                        {{ signal.decision }}
+                    </td>
+
+                    <td>
+                        {{ signal.confidence }}%
+                    </td>
+
+                    <td>
+                        {{ signal.supply_low }}
+                        -
+                        {{ signal.supply_high }}
+                    </td>
+
+                    <td>
+                        {{ signal.demand_low }}
+                        -
+                        {{ signal.demand_high }}
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+
+        <p class="muted">
+            No signals available.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- MARKET SNAPSHOT -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Market Snapshot</h2>
+
+    <p>
+        <strong>Trend:</strong>
+        {{ trend.get("Trend", "—") }}
+    </p>
+
+    <p>
+        <strong>Bias:</strong>
+        {{ market_bias.get("Market Bias", "—") }}
+    </p>
+
+    <p>
+        <strong>Market State:</strong>
+        {{ market_state.get("Market State", "—") }}
+    </p>
+
+    <p>
+        <strong>Structure:</strong>
+        {{ market_structure.get("Structure", "—") }}
+    </p>
+
+    <p>
+        <strong>BOS:</strong>
+        {{ bos.get("Result", "—") }}
+    </p>
+
+    <p>
+        <strong>CHOCH:</strong>
+        {{ choch.get("Result", "—") }}
+    </p>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- EXECUTION PLAN -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Execution Plan</h2>
+
+    {% if execution_plan %}
+
+        <table>
+
+            <tr>
+                <th>Direction</th>
+
+                <td>
+
+                    {% if execution_plan.get("Direction") == "BUY" %}
+
+                        <span class="green">
+                            BUY
+                        </span>
+
+                    {% elif execution_plan.get("Direction") == "SELL" %}
+
+                        <span class="red">
+                            SELL
+                        </span>
+
+                    {% else %}
+
+                        {{ execution_plan.get("Direction", "—") }}
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Entry</th>
+
+                <td>
+                    {{ execution_plan.get("Entry", "—") }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Stop Loss</th>
+
+                <td>
+                    {{ execution_plan.get("Stop Loss", "—") }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Take Profit</th>
+
+                <td>
+                    {{ execution_plan.get("Take_Profit", "—") }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Risk : Reward</th>
+
+                <td>
+                    {{ execution_plan.get("Risk Reward", "—") }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Lot Size</th>
+
+                <td>
+                    {{ execution_plan.get("Lot Size", "—") }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Positions</th>
+
+                <td>
+                    {{ execution_plan.get("Positions", "—") }}
+                </td>
+
+            </tr>
+
+        </table>
+
+    {% else %}
+
+        <p class="muted">
+            No execution plan available.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- RISK -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Risk Management</h2>
+
+    {% if risk %}
+
+        <table>
+
+            <tr>
+
+                <th>Risk</th>
+
+                <td>
+                    {{ risk.get("risk", "—") }}
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Reward</th>
+
+                <td>
+                    {{ risk.get("reward", "—") }}
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Risk : Reward</th>
+
+                <td>
+                    {{ risk.get("rr", "—") }}
+                </td>
+
+            </tr>
+
+        </table>
+
+    {% else %}
+
+        <p class="orange">
+            No executable trade — risk calculation not active.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- LIVE CHART -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Live Chart</h2>
+
+    {% if chart %}
+
+        {{ chart | safe }}
+
+    {% else %}
+
+        <p class="muted">
+            Chart unavailable.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- NARRATIVE -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Market Narrative</h2>
+
+    <p>
+        {{ narrative }}
+    </p>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- TRADE DECISION -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Trade Decision</h2>
+
+    {% if decision == "EXECUTE" %}
+
+        <div class="big green">
+            EXECUTE
+        </div>
+
+    {% elif decision == "WAIT" %}
+
+        <div class="big orange">
+            WAIT
+        </div>
+
+    {% else %}
+
+        <div class="big red">
+            {{ decision }}
+        </div>
+
+    {% endif %}
+
+
+    <p>
+
+        <strong>
+            Confidence:
+        </strong>
+
+        {% if confidence >= 80 %}
+
+            <span class="green">
+                {{ confidence }}%
+            </span>
+
+        {% elif confidence >= 60 %}
+
+            <span class="orange">
+                {{ confidence }}%
+            </span>
+
         {% else %}
-            <span class="red">🔴 OFFLINE</span>
+
+            <span class="red">
+                {{ confidence }}%
+            </span>
+
         {% endif %}
+
     </p>
 
-    <p>Symbol: GBPUSD</p>
 
-    <p>Analysis Engine:
-        <span class="green">READY</span>
-    </p>
+    <p>
 
-    <p>Dashboard Version:
-        v1.0
+        <strong>
+            Grade:
+        </strong>
+
+        {{ grade }}
+
     </p>
 
 </div>
+
+
+<!-- ====================================================== -->
+<!-- REASONING -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Reasoning</h2>
+
+    {% if reasoning %}
+
+        <p>
+            {{ reasoning }}
+        </p>
+
+    {% else %}
+
+        <p class="muted">
+            No reasoning available.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- ANALYSIS PIPELINE -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Analysis Pipeline</h2>
+
+    <table>
+
+        <tr>
+            <th>Component</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>Trend Analysis</td>
+            <td class="green">READY</td>
+        </tr>
+
+        <tr>
+            <td>Market Structure</td>
+            <td class="green">READY</td>
+        </tr>
+
+        <tr>
+            <td>Supply &amp; Demand</td>
+            <td class="green">READY</td>
+        </tr>
+
+        <tr>
+            <td>Liquidity</td>
+            <td class="green">READY</td>
+        </tr>
+
+        <tr>
+            <td>BOS / CHOCH</td>
+            <td class="green">READY</td>
+        </tr>
+
+        <tr>
+            <td>Confidence Engine</td>
+            <td class="green">READY</td>
+        </tr>
+
+        <tr>
+            <td>Risk Calculation</td>
+
+            <td>
+
+                {% if risk %}
+
+                    <span class="green">
+                        ACTIVE
+                    </span>
+
+                {% else %}
+
+                    <span class="orange">
+                        NO TRADE
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>Auto Execution</td>
+            <td class="standby">DISABLED</td>
+        </tr>
+
+    </table>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- LATEST ANALYSIS -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Latest Analysis</h2>
+
+    {% if history %}
+
+        <table>
+
+            <tr>
+
+                <th>Time</th>
+                <th>Pair</th>
+                <th>Decision</th>
+                <th>Confidence</th>
+                <th>Grade</th>
+
+            </tr>
+
+            {% for item in history %}
+
+                <tr>
+
+                    <td>
+                        {{ item.timestamp }}
+                    </td>
+
+                    <td>
+                        {{ item.symbol }}
+                    </td>
+
+                    <td>
+                        {{ item.decision }}
+                    </td>
+
+                    <td>
+                        {{ item.confidence }}%
+                    </td>
+
+                    <td>
+                        {{ item.grade }}
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+
+        <p class="muted">
+            No analysis history available.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- FOOTER STATUS -->
+<!-- ====================================================== -->
+
+<div class="card">
+
+    <h2>Engine Status</h2>
+
+    <p>
+
+        Connection:
+
+        {% if connected %}
+
+            <span class="green">
+                ONLINE
+            </span>
+
+        {% else %}
+
+            <span class="red">
+                OFFLINE
+            </span>
+
+        {% endif %}
+
+    </p>
+
+    <p>
+        Analysis Engine:
+        <span class="green">
+            READY
+        </span>
+    </p>
+
+    <p>
+        Deep Context:
+        <span class="blue">
+            BUILDING
+        </span>
+    </p>
+
+    <p>
+        Dashboard Version:
+        v2.0
+    </p>
+
+</div>
+
 
 </body>
+
 </html>

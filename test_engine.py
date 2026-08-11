@@ -1,120 +1,148 @@
-from data.fetcher import connect_mt5, disconnect_mt5
-from data.get_candles import get_candles
-
-from indicators.ema import calculate_ema
-from indicators.rsi import calculate_rsi, analyze_rsi
-from indicators.atr import calculate_atr, analyze_atr
-
-from analysis.trend import analyze_trend
-from analysis.market_state import analyze_market_state
-from analysis.market_bias import analyze_market_bias
-from analysis.support_resistance import analyze_support_resistance
-from analysis.market_structure import analyze_market_structure
-from analysis.confidence import calculate_confidence
-from analysis.signal import generate_signal
+from engine.analyze import run_analysis
 
 
 def main():
 
-    connect_mt5()
+    symbol = "GBPUSD"
+
+    print()
+    print("=" * 70)
+    print("MARKET ANALYSIS ENGINE TEST")
+    print("=" * 70)
+
+    print()
+    print(f"Testing: {symbol}")
+    print()
 
     try:
 
-        # Fetch market data
-        df = get_candles("GBPUSD", n=100)
+        result = run_analysis(symbol)
 
-        # Calculate Indicators
-        df = calculate_ema(df, period=20)
-        df = calculate_ema(df, period=50)
+        if not isinstance(result, dict):
 
-        df = calculate_rsi(df)
+            print("RESULT: FAIL")
+            print("Reason: Engine did not return a dictionary.")
+            return
 
-        df = calculate_atr(df)
+        print("RESULT: ENGINE RETURNED DATA")
+        print()
 
-        # Analyze Indicators
-        trend = analyze_trend(df)
-        rsi = analyze_rsi(df)
-        atr = analyze_atr(df)
-
-        # Market State
-        market_state = analyze_market_state(
-            trend,
-            rsi,
-            atr
+        print(
+            f"Symbol: "
+            f"{result.get('symbol', symbol)}"
         )
 
-        # Market Bias
-        market_bias = analyze_market_bias(
-            trend,
-            rsi,
-            atr,
-            market_state
-        )
-        structure = analyze_market_structure(df)
-        levels = analyze_support_resistance(df)
-        bos = structure.get("bos")
-        choch = structure.get("choch")
-        liquidity = structure.get("liquidity")
-        supply_demand = structure.get("supply_demand")
-        structure_memory = structure.get("structure_memory")
-        protected_levels = structure.get("protected_levels")
-        structure_strength = structure.get("structure_strength")
-
-        confidence = calculate_confidence(
-            trend,
-            rsi,
-            atr,
-            market_state,
-            market_bias,
-            structure,
-            bos,
-            choch,
-            liquidity,
-            supply_demand,
-            structure_memory,
-            protected_levels,
-            structure_strength
-        )
-        signal = generate_signal(
-            trend,
-            market_bias,
-            confidence
+        print(
+            f"Decision: "
+            f"{result.get('decision', 'N/A')}"
         )
 
-        # Output
-        print("\n========== MARKET ANALYSIS ENGINE ==========")
+        print(
+            f"Confidence: "
+            f"{result.get('confidence', 'N/A')}"
+        )
 
-        print("\nTrend")
-        print(trend)
+        print(
+            f"Grade: "
+            f"{result.get('grade', 'N/A')}"
+        )
 
-        print("\nRSI")
-        print(rsi)
+        print()
 
-        print("\nATR")
-        print(atr)
+        # ------------------------------------------------
+        # CORE OUTPUT CHECKS
+        # ------------------------------------------------
 
-        print("\nMarket State")
-        print(market_state)
+        required_fields = [
+            "decision",
+            "confidence",
+            "grade",
+        ]
 
-        print("\nMarket Bias")
-        print(market_bias)
+        print("CORE OUTPUT CHECKS")
+        print("-" * 40)
 
-        print("\nSupport and Resistance Levels")
-        print(levels)
+        passed = True
 
-        print("\nMarket Structure")
-        print(structure)
+        for field in required_fields:
 
-        print("\nConfidence")
-        print(confidence)
+            exists = field in result
 
-        print("\nTrading Signal")
-        print(signal)
+            print(
+                f"{field}: "
+                f"{'PASS' if exists else 'FAIL'}"
+            )
 
-    finally:
+            if not exists:
+                passed = False
 
-        disconnect_mt5()
+        # ------------------------------------------------
+        # OPTIONAL ENGINE OUTPUTS
+        # ------------------------------------------------
+
+        optional_fields = [
+            "trend",
+            "market_bias",
+            "market_state",
+            "market_structure",
+            "bos",
+            "choch",
+            "liquidity",
+            "supply_demand",
+            "confidence_breakdown",
+            "execution_plan",
+            "risk",
+            "narrative",
+            "reasoning",
+        ]
+
+        print()
+        print("ENGINE OUTPUT CHECK")
+        print("-" * 40)
+
+        for field in optional_fields:
+
+            status = (
+                "AVAILABLE"
+                if field in result
+                else "MISSING"
+            )
+
+            print(
+                f"{field}: {status}"
+            )
+
+        # ------------------------------------------------
+        # FINAL RESULT
+        # ------------------------------------------------
+
+        print()
+        print("=" * 70)
+
+        if passed:
+
+            print("RESULT: PASS")
+
+        else:
+
+            print("RESULT: FAIL")
+
+        print("=" * 70)
+
+    except Exception as error:
+
+        print()
+        print("=" * 70)
+        print("RESULT: ENGINE ERROR")
+        print("=" * 70)
+
+        print()
+        print(
+            f"{type(error).__name__}: "
+            f"{error}"
+        )
 
 
 if __name__ == "__main__":
+
     main()
