@@ -7,3 +7,9 @@ __pycache__/
 
 # Generated market data
 data/deep_context/
+
+# Runtime state and logs
+analysis_history.json
+brain/memory.json
+journal/history.json
+logs/ancestor.log
