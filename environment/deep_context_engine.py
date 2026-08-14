@@ -2,145 +2,190 @@
 
 from datetime import datetime
 
-from environment.deep_context_config import (
-    get_symbols,
-    get_horizon_timeframes,
-)
-
-from environment.deep_context_data import (
-    fetch_timeframe_context,
-)
+from environment.candle_cache import CandleCache
+from environment.horizon_engine import HorizonEngine
+from environment.deep_context_store import DeepContextStore
+from environment.deep_context_config import get_symbols
 
 
 class DeepContextEngine:
 
     def __init__(self):
 
+        self.cache = CandleCache()
+
+        self.horizon_engine = HorizonEngine()
+
+        self.store = DeepContextStore()
+
         self.context = {}
 
-    # ========================================================
-    # BUILD CONTEXT FOR ONE SYMBOL
-    # ========================================================
+    # ==================================================
+    # BUILD ONE SYMBOL
+    # ==================================================
 
-    def build_symbol_context(self, symbol):
+    def build_symbol_context(
+        self,
+        symbol
+    ):
 
         symbol = symbol.upper()
 
+        print()
+        print("=" * 70)
+        print(
+            f"BUILDING DEEP CONTEXT: {symbol}"
+        )
+        print("=" * 70)
+
+        # --------------------------------------------------
+        # GET CACHED MARKET DATA
+        # --------------------------------------------------
+
+        candles = (
+            self.cache.build_symbol_context(
+                symbol
+            )
+        )
+
+        if not candles:
+
+            raise ValueError(
+                f"No candle context available for {symbol}"
+            )
+
+        # --------------------------------------------------
+        # ANALYZE HORIZONS
+        # --------------------------------------------------
+
+        print()
+        print(
+            "Running horizon intelligence..."
+        )
+
+        horizons = (
+            self.horizon_engine.analyze_context(
+                symbol,
+                candles
+            )
+        )
+
+        # --------------------------------------------------
+        # BUILD FINAL CONTEXT
+        # --------------------------------------------------
+
         symbol_context = {
+
+            "schema_version": "2.0",
+
             "symbol": symbol,
-            "created_at": datetime.now().isoformat(),
+
+            "created_at":
+                datetime.now().isoformat(),
+
             "timeframes": {},
-            "horizons": {},
+
+            "horizons": horizons
         }
 
-        # ----------------------------------------------------
-        # FETCH EACH TIMEFRAME ONLY ONCE
-        # ----------------------------------------------------
+        # --------------------------------------------------
+        # TIMEFRAME METADATA
+        # --------------------------------------------------
 
-        all_timeframes = set()
+        for timeframe, df in candles.items():
 
-        for horizon in [
-            "SWING",
-            "INTRADAY",
-            "SCALPING",
-        ]:
-
-            timeframes = get_horizon_timeframes(
-                horizon
-            )
-
-            all_timeframes.update(
-                timeframes
-            )
-
-        for timeframe_name in all_timeframes:
-
-            try:
-
-                candles = fetch_timeframe_context(
-                    symbol,
-                    timeframe_name
-                )
+            if df is None or df.empty:
 
                 symbol_context[
                     "timeframes"
-                ][timeframe_name] = {
+                ][timeframe] = {
 
-                    "status": "READY",
+                    "status": "NO_DATA",
 
-                    "candles": candles,
-
-                    "count": len(candles),
-
-                    "start": (
-                        candles.index.min()
-                        .isoformat()
-                    ),
-
-                    "end": (
-                        candles.index.max()
-                        .isoformat()
-                    ),
+                    "candles": 0
                 }
 
-            except Exception as e:
-
-                symbol_context[
-                    "timeframes"
-                ][timeframe_name] = {
-
-                    "status": "ERROR",
-
-                    "candles": None,
-
-                    "count": 0,
-
-                    "error": str(e),
-                }
-
-        # ----------------------------------------------------
-        # BUILD HORIZONS FROM FETCHED DATA
-        # ----------------------------------------------------
-
-        for horizon in [
-            "SWING",
-            "INTRADAY",
-            "SCALPING",
-        ]:
-
-            horizon_context = {}
-
-            for timeframe_name in (
-                get_horizon_timeframes(
-                    horizon
-                )
-            ):
-
-                timeframe_data = (
-                    symbol_context[
-                        "timeframes"
-                    ].get(
-                        timeframe_name
-                    )
-                )
-
-                horizon_context[
-                    timeframe_name
-                ] = timeframe_data
+                continue
 
             symbol_context[
-                "horizons"
-            ][horizon] = horizon_context
+                "timeframes"
+            ][timeframe] = {
+
+                "status": "READY",
+
+                "candles": len(df),
+
+                "start": (
+                    df["time"].min()
+                    .isoformat()
+                ),
+
+                "end": (
+                    df["time"].max()
+                    .isoformat()
+                )
+            }
+
+        # --------------------------------------------------
+        # STORE IN MEMORY
+        # --------------------------------------------------
 
         self.context[symbol] = (
             symbol_context
         )
 
+        # --------------------------------------------------
+        # PERSIST HORIZONS
+        # --------------------------------------------------
+
+        for horizon, analysis in (
+            horizons.items()
+        ):
+
+            if not isinstance(
+                analysis,
+                dict
+            ):
+                continue
+
+            if analysis.get(
+                "status"
+            ) != "OK":
+                continue
+
+            result = self.store.save(
+                symbol=symbol,
+                horizon=horizon,
+                context=analysis
+            )
+
+            if result.get(
+                "status"
+            ) == "REJECTED":
+
+                print(
+                    f"Context rejected: "
+                    f"{symbol} {horizon}"
+                )
+
+                print(
+                    result.get(
+                        "errors"
+                    )
+                )
+
+            else:
+
+                print(
+                    f"Stored: "
+                    f"{symbol} {horizon}"
+                )
+
         return symbol_context
 
-    # ========================================================
-    # BUILD ALL SYMBOLS
-    # ========================================================
+    # ==================================================
+    # BUILD ALL
+    # ==================================================
 
     def build_all(self):
 
@@ -156,7 +201,7 @@ class DeepContextEngine:
                     )
                 )
 
-            except Exception as e:
+            except Exception as error:
 
                 results[symbol] = {
 
@@ -164,24 +209,27 @@ class DeepContextEngine:
 
                     "status": "ERROR",
 
-                    "error": str(e),
+                    "error": str(error)
                 }
 
         return results
 
-    # ========================================================
-    # GET STORED CONTEXT
-    # ========================================================
+    # ==================================================
+    # GET
+    # ==================================================
 
-    def get(self, symbol):
+    def get(
+        self,
+        symbol
+    ):
 
         return self.context.get(
             symbol.upper()
         )
 
-    # ========================================================
-    # GET ONE TIMEFRAME
-    # ========================================================
+    # ==================================================
+    # GET TIMEFRAME
+    # ==================================================
 
     def get_timeframe(
         self,
@@ -199,12 +247,12 @@ class DeepContextEngine:
         return symbol_context[
             "timeframes"
         ].get(
-            timeframe
+            timeframe.upper()
         )
 
-    # ========================================================
+    # ==================================================
     # STATUS
-    # ========================================================
+    # ==================================================
 
     def status(self):
 
@@ -214,7 +262,17 @@ class DeepContextEngine:
             self.context.items()
         ):
 
-            output[symbol] = {}
+            output[symbol] = {
+
+                "created_at":
+                    context.get(
+                        "created_at"
+                    ),
+
+                "timeframes": {},
+
+                "horizons": {}
+            }
 
             for timeframe, data in (
                 context[
@@ -223,19 +281,34 @@ class DeepContextEngine:
             ):
 
                 output[symbol][
-                    timeframe
-                ] = {
+                    "timeframes"
+                ][timeframe] = data
+
+            for horizon, data in (
+                context[
+                    "horizons"
+                ].items()
+            ):
+
+                output[symbol][
+                    "horizons"
+                ][horizon] = {
 
                     "status":
                         data.get(
                             "status"
                         ),
 
-                    "count":
+                    "direction":
                         data.get(
-                            "count",
-                            0
+                            "direction"
                         ),
+
+                    "bars":
+                        data.get(
+                            "bars",
+                            0
+                        )
                 }
 
         return output

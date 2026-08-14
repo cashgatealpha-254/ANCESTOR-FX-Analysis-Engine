@@ -1,4 +1,5 @@
-import MetaTrader5 as mt5
+# environment/horizon_engine.py
+
 import pandas as pd
 
 from environment.trend_engine import TrendEngine
@@ -28,245 +29,278 @@ class HorizonEngine:
         self.location_engine = LocationEngine()
         self.confluence_engine = ConfluenceEngine()
 
-        # ==========================================
-        # ZONE RELEVANCE
-        # ==========================================
-
         self.zone_relevance = ZoneRelevance(
             max_zones=3
         )
 
-        self.horizons = {
+    # ==================================================
+    # ANALYZE ONE HORIZON
+    # ==================================================
 
-            "SWING": {
-                "timeframe": mt5.TIMEFRAME_H4,
-                "bars": 540
-            },
+    def analyze(
+        self,
+        symbol,
+        horizon,
+        timeframe,
+        candles
+    ):
 
-            "INTRADAY": {
-                "timeframe": mt5.TIMEFRAME_M15,
-                "bars": 8640
-            },
+        symbol = symbol.upper()
+        horizon = horizon.upper()
+        timeframe = timeframe.upper()
 
-            "SCALPING": {
-                "timeframe": mt5.TIMEFRAME_M5,
-                "bars": 25920
+        if candles is None:
+
+            return {
+                "status": "NO_DATA",
+                "symbol": symbol,
+                "horizon": horizon,
+                "timeframe": timeframe,
+                "bars": 0
             }
+
+        if not isinstance(
+            candles,
+            pd.DataFrame
+        ):
+
+            return {
+                "status": "ERROR",
+                "symbol": symbol,
+                "horizon": horizon,
+                "timeframe": timeframe,
+                "bars": 0,
+                "error": "Candles must be a pandas DataFrame"
+            }
+
+        if candles.empty:
+
+            return {
+                "status": "NO_DATA",
+                "symbol": symbol,
+                "horizon": horizon,
+                "timeframe": timeframe,
+                "bars": 0
+            }
+
+        df = candles.copy()
+
+        # --------------------------------------------------
+        # NORMALIZE TIME
+        # --------------------------------------------------
+
+        if "time" in df.columns:
+
+            df["time"] = pd.to_datetime(
+                df["time"]
+            )
+
+        # ==================================================
+        # ENVIRONMENTAL INTELLIGENCE
+        # ==================================================
+
+        trend = self._safe_analyze(
+            self.trend_engine.analyze,
+            df
+        )
+
+        supply_demand = self._safe_analyze(
+            self.supply_demand_engine.analyze,
+            df
+        )
+
+        market_profile = self._safe_analyze(
+            self.market_profile_engine.analyze,
+            df
+        )
+
+        smc = self._safe_analyze(
+            self.smc_engine.analyze,
+            df
+        )
+
+        liquidity = self._safe_analyze(
+            self.liquidity_engine.analyze,
+            df
+        )
+
+        fvg = self._safe_analyze(
+            self.fvg_engine.analyze,
+            df
+        )
+
+        order_blocks = self._safe_analyze(
+            self.order_block_engine.analyze,
+            df
+        )
+
+        # ==================================================
+        # DIRECTION
+        # ==================================================
+
+        direction = self._get_direction(
+            trend,
+            smc
+        )
+
+        # ==================================================
+        # RELEVANT ZONES
+        # ==================================================
+
+        relevant_zones = self._safe_analyze(
+            self.zone_relevance.analyze,
+            direction=direction,
+            fvg=fvg,
+            order_blocks=order_blocks,
+            profile=market_profile
+        )
+
+        # ==================================================
+        # LOCATION
+        # ==================================================
+
+        location = self._safe_analyze(
+            self.location_engine.analyze,
+            df,
+            supply_demand=supply_demand,
+            market_profile=market_profile,
+            fvg=(
+                relevant_zones.get(
+                    "fvg",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else []
+            ),
+            order_blocks=(
+                relevant_zones.get(
+                    "order_blocks",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else []
+            )
+        )
+
+        # ==================================================
+        # CONFLUENCE
+        # ==================================================
+
+        confluence = self._safe_analyze(
+            self.confluence_engine.analyze,
+            direction,
+            trend,
+            smc,
+            liquidity,
+            location,
+            (
+                relevant_zones.get(
+                    "fvg",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else []
+            ),
+            (
+                relevant_zones.get(
+                    "order_blocks",
+                    []
+                )
+                if isinstance(
+                    relevant_zones,
+                    dict
+                )
+                else []
+            )
+        )
+
+        # ==================================================
+        # SNAPSHOT
+        # ==================================================
+
+        return {
+
+            "status": "OK",
+
+            "symbol": symbol,
+
+            "horizon": horizon,
+
+            "timeframe": timeframe,
+
+            "bars": len(df),
+
+            "analysis_time": (
+                pd.Timestamp.now().isoformat()
+            ),
+
+            "direction": direction,
+
+            "trend": trend,
+
+            "supply_demand": supply_demand,
+
+            "market_profile": market_profile,
+
+            "smc": smc,
+
+            "liquidity": liquidity,
+
+            "fvg": fvg,
+
+            "order_blocks": order_blocks,
+
+            "relevant_zones": relevant_zones,
+
+            "location": location,
+
+            "confluence": confluence
         }
 
-    def analyze(self, symbol):
+    # ==================================================
+    # ANALYZE ALL HORIZONS
+    # ==================================================
+
+    def analyze_context(
+        self,
+        symbol,
+        context
+    ):
 
         results = {}
 
-        for horizon, settings in self.horizons.items():
+        horizon_map = {
 
-            timeframe = settings["timeframe"]
-            bars = settings["bars"]
+            "SWING": "H4",
 
-            # ==========================================
-            # MARKET DATA
-            # ==========================================
+            "INTRADAY": "M15",
 
-            rates = mt5.copy_rates_from_pos(
-                symbol,
-                timeframe,
-                0,
-                bars
+            "SCALPING": "M5"
+        }
+
+        for horizon, timeframe in (
+            horizon_map.items()
+        ):
+
+            candles = context.get(
+                timeframe
             )
 
-            if rates is None:
-
-                results[horizon] = {
-                    "status": "NO_DATA",
-                    "symbol": symbol,
-                    "horizon": horizon
-                }
-
-                continue
-
-            df = pd.DataFrame(rates)
-
-            if df.empty:
-
-                results[horizon] = {
-                    "status": "NO_DATA",
-                    "symbol": symbol,
-                    "horizon": horizon
-                }
-
-                continue
-
-            df["time"] = pd.to_datetime(
-                df["time"],
-                unit="s"
+            results[horizon] = self.analyze(
+                symbol=symbol,
+                horizon=horizon,
+                timeframe=timeframe,
+                candles=candles
             )
-
-            # ==========================================
-            # ENVIRONMENTAL INTELLIGENCE
-            # ==========================================
-
-            trend = self._safe_analyze(
-                self.trend_engine.analyze,
-                df
-            )
-
-            supply_demand = self._safe_analyze(
-                self.supply_demand_engine.analyze,
-                df
-            )
-
-            market_profile = self._safe_analyze(
-                self.market_profile_engine.analyze,
-                df
-            )
-
-            smc = self._safe_analyze(
-                self.smc_engine.analyze,
-                df
-            )
-
-            liquidity = self._safe_analyze(
-                self.liquidity_engine.analyze,
-                df
-            )
-
-            fvg = self._safe_analyze(
-                self.fvg_engine.analyze,
-                df
-            )
-
-            order_blocks = self._safe_analyze(
-                self.order_block_engine.analyze,
-                df
-            )
-
-            # ==========================================
-            # DIRECTION
-            # ==========================================
-
-            direction = self._get_direction(
-                trend,
-                smc
-            )
-
-            # ==========================================
-            # RELEVANT ZONES
-            # ==========================================
-
-            relevant_zones = self._safe_analyze(
-                self.zone_relevance.analyze,
-                direction=direction,
-                fvg=fvg,
-                order_blocks=order_blocks,
-                profile=market_profile
-            )
-
-            # ==========================================
-            # LOCATION INTELLIGENCE
-            # ==========================================
-
-            location = self._safe_analyze(
-                self.location_engine.analyze,
-                df,
-                supply_demand=supply_demand,
-                market_profile=market_profile,
-
-                # Use filtered zones
-                fvg=relevant_zones.get(
-                    "fvg",
-                    []
-                )
-                if isinstance(
-                    relevant_zones,
-                    dict
-                )
-                else [],
-
-                order_blocks=relevant_zones.get(
-                    "order_blocks",
-                    []
-                )
-                if isinstance(
-                    relevant_zones,
-                    dict
-                )
-                else []
-            )
-
-            # ==========================================
-            # CONFLUENCE INTELLIGENCE
-            # ==========================================
-
-            confluence = self._safe_analyze(
-                self.confluence_engine.analyze,
-                direction,
-                trend,
-                smc,
-                liquidity,
-                location,
-
-                # Use filtered zones
-                relevant_zones.get(
-                    "fvg",
-                    []
-                )
-                if isinstance(
-                    relevant_zones,
-                    dict
-                )
-                else [],
-
-                relevant_zones.get(
-                    "order_blocks",
-                    []
-                )
-                if isinstance(
-                    relevant_zones,
-                    dict
-                )
-                else []
-            )
-
-            # ==========================================
-            # HORIZON SNAPSHOT
-            # ==========================================
-
-            results[horizon] = {
-
-                "status": "OK",
-
-                "symbol": symbol,
-
-                "horizon": horizon,
-
-                "timeframe": timeframe,
-
-                "bars": len(df),
-
-                "trend": trend,
-
-                "supply_demand": supply_demand,
-
-                "market_profile": market_profile,
-
-                "smc": smc,
-
-                "liquidity": liquidity,
-
-                # Keep RAW zones available for debugging
-                "fvg": fvg,
-
-                "order_blocks": order_blocks,
-
-                # NEW FILTERED ZONES
-                "relevant_zones": relevant_zones,
-
-                "location": location,
-
-                "direction": direction,
-
-                "confluence": confluence
-            }
 
         return results
 
@@ -320,7 +354,6 @@ class HorizonEngine:
                     item,
                     dict
                 ):
-
                     continue
 
                 structure_type = str(
@@ -344,10 +377,6 @@ class HorizonEngine:
 
                     bearish_structure += 1
 
-        # ==========================================
-        # STRUCTURE CONFIRMATION
-        # ==========================================
-
         if bullish_structure > bearish_structure:
 
             if trend_direction in {
@@ -365,10 +394,6 @@ class HorizonEngine:
             }:
 
                 return "BEARISH"
-
-        # ==========================================
-        # FALLBACK TO TREND
-        # ==========================================
 
         return trend_direction
 

@@ -205,5 +205,20 @@ for index, setup in enumerate(
             f"{setup.get('reason')}"
         )
 
+        print(
+            f"TRIGGER: "
+            f"{setup.get('trigger')}"
+        )
+
+        print(
+            f"CURRENT PRICE: "
+            f"{setup.get('current_price')}"
+        )
+
+        print(
+            f"ZONE: "
+            f"{setup.get('zone')}"
+        )
+
 print()
 print("=" * 60)

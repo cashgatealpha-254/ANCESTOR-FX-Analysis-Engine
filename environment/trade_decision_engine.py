@@ -51,6 +51,17 @@ class TradeDecisionEngine:
                 continue
 
             # ------------------------------------------
+            # CROSS-HORIZON FILTER
+            # ------------------------------------------
+
+            if not self._horizon_alignment_allows_trade(
+                opportunity,
+                horizon_results
+            ):
+
+                continue
+
+            # ------------------------------------------
             # Rehydrate opportunity with horizon data
             # ------------------------------------------
 
@@ -97,6 +108,116 @@ class TradeDecisionEngine:
         return decisions[
             :self.max_setups
         ]
+
+    # ==================================================
+    # CROSS-HORIZON ALIGNMENT
+    # ==================================================
+
+    @staticmethod
+    def _horizon_alignment_allows_trade(
+        opportunity,
+        horizon_results
+    ):
+
+        if not isinstance(
+            horizon_results,
+            dict
+        ):
+
+            return True
+
+        direction = str(
+            opportunity.get(
+                "direction",
+                ""
+            )
+        ).upper()
+
+        if direction not in {
+            "BULLISH",
+            "BEARISH"
+        }:
+
+            return False
+
+        swing = horizon_results.get(
+            "SWING",
+            {}
+        )
+
+        intraday = horizon_results.get(
+            "INTRADAY",
+            {}
+        )
+
+        scalping = horizon_results.get(
+            "SCALPING",
+            {}
+        )
+
+        if not all(
+            isinstance(
+                context,
+                dict
+            )
+            for context in (
+                swing,
+                intraday,
+                scalping
+            )
+        ):
+
+            return False
+
+        swing_direction = str(
+            swing.get(
+                "direction",
+                "NEUTRAL"
+            )
+        ).upper()
+
+        intraday_direction = str(
+            intraday.get(
+                "direction",
+                "NEUTRAL"
+            )
+        ).upper()
+
+        scalping_direction = str(
+            scalping.get(
+                "direction",
+                "NEUTRAL"
+            )
+        ).upper()
+
+        # ------------------------------------------
+        # Higher timeframe bias
+        # ------------------------------------------
+
+        if swing_direction != direction:
+
+            return False
+
+        # ------------------------------------------
+        # Intraday must not oppose the trade
+        # ------------------------------------------
+
+        if intraday_direction not in {
+            "NEUTRAL",
+            direction
+        }:
+
+            return False
+
+        # ------------------------------------------
+        # Scalping must agree with execution
+        # ------------------------------------------
+
+        if scalping_direction != direction:
+
+            return False
+
+        return True
 
     # ==================================================
     # REHYDRATE OPPORTUNITY
@@ -149,9 +270,6 @@ class TradeDecisionEngine:
             "location",
             "confluence"
         ):
-
-            # Never overwrite information already
-            # attached by a specialized engine.
 
             if (
                 key not in enriched
@@ -213,11 +331,6 @@ class TradeDecisionEngine:
 
         # ------------------------------------------
         # Relevant zones
-        #
-        # TradeSetupEngine specifically expects:
-        #
-        # opportunity["relevant_zones"]
-        #
         # ------------------------------------------
 
         if not isinstance(
@@ -285,9 +398,6 @@ class TradeDecisionEngine:
             ) or 0
         )
 
-        # READY setups always outrank WAITING
-        # and REJECTED candidates.
-
         status_priority = {
 
             "READY": 3,
@@ -299,6 +409,7 @@ class TradeDecisionEngine:
             "ERROR": 0,
 
             "BLOCKED": 0
+
         }.get(
             status,
             0

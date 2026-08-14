@@ -40,7 +40,7 @@ class ConfluenceEngine:
 
             trend_value = str(
                 trend.get(
-                    "trend",
+                    "direction",
                     ""
                 )
             ).upper()

@@ -1,4 +1,5 @@
 from environment.market_scanner import MarketScanner
+from environment.candle_cache import CandleCache
 from environment.horizon_engine import HorizonEngine
 from environment.opportunity_ranker import OpportunityRanker
 from environment.opportunity_selector import OpportunitySelector
@@ -24,6 +25,8 @@ class TradingEngine:
         # ==================================================
 
         self.market_scanner = MarketScanner()
+
+        self.candle_cache = CandleCache()
 
         self.horizon_engine = HorizonEngine()
 
@@ -73,14 +76,63 @@ class TradingEngine:
         ).upper()
 
         # ==================================================
+        # LOAD REAL MARKET CONTEXT
+        # ==================================================
+
+        try:
+
+            context = (
+                self.candle_cache.build_symbol_context(
+                    symbol
+                )
+            )
+
+        except Exception as error:
+
+            return {
+
+                "status": "ERROR",
+
+                "symbol": symbol,
+
+                "reason": (
+                    "Market context loading failed"
+                ),
+
+                "error": str(
+                    error
+                )
+            }
+
+        # ==================================================
         # HORIZON ANALYSIS
         # ==================================================
 
-        horizon_results = (
-            self.horizon_engine.analyze(
-                symbol
+        try:
+
+            horizon_results = (
+                self.horizon_engine.analyze_context(
+                    symbol=symbol,
+                    context=context
+                )
             )
-        )
+
+        except Exception as error:
+
+            return {
+
+                "status": "ERROR",
+
+                "symbol": symbol,
+
+                "reason": (
+                    "Horizon analysis failed"
+                ),
+
+                "error": str(
+                    error
+                )
+            }
 
         if not isinstance(
             horizon_results,
@@ -88,10 +140,14 @@ class TradingEngine:
         ):
 
             return {
+
                 "status": "ERROR",
+
                 "symbol": symbol,
+
                 "reason": (
-                    "Horizon analysis failed"
+                    "Horizon analysis returned "
+                    "invalid result"
                 )
             }
 
@@ -162,15 +218,32 @@ class TradingEngine:
 
                 continue
 
-            execution = (
-                self.execution_pipeline.execute(
-                    decision
-                )
-            )
+            try:
 
-            executions.append(
-                execution
-            )
+                execution = (
+                    self.execution_pipeline.execute(
+                        decision
+                    )
+                )
+
+                executions.append(
+                    execution
+                )
+
+            except Exception as error:
+
+                executions.append({
+
+                    "status": "ERROR",
+
+                    "stage": "EXECUTION",
+
+                    "symbol": symbol,
+
+                    "reason": str(
+                        error
+                    )
+                })
 
         # ==================================================
         # FINAL RESULT

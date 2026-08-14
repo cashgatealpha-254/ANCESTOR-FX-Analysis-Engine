@@ -5,6 +5,17 @@ class MarketContext:
 
     def get(self, symbol):
 
+        symbol = str(symbol).upper()
+
+        # Ensure MT5 is initialized.
+        if not mt5.initialize():
+
+            return {
+                "status": "NO_DATA",
+                "symbol": symbol,
+                "reason": "MT5 initialization failed"
+            }
+
         tick = mt5.symbol_info_tick(
             symbol
         )
@@ -13,7 +24,8 @@ class MarketContext:
 
             return {
                 "status": "NO_DATA",
-                "symbol": symbol
+                "symbol": symbol,
+                "reason": "No data available for the requested symbol"
             }
 
         bid = float(
